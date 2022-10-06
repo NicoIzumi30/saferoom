@@ -43,4 +43,16 @@ class Type extends CI_Controller
             redirect('type');
         }
     }
+    public function delete($id)
+    {
+        $where = array(
+            'id' => $id
+        );
+        $this->db->where($where);
+        $this->db->delete('room_type');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Room type has been deleted!
+                 </div>');
+        redirect('type');
+    }
 }

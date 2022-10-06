@@ -108,7 +108,7 @@ class City extends CI_Controller
         redirect('city');
     }else{
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        City failed dalete!
+        City failed deleted!
                  </div>');
         redirect('city'); 
     }
