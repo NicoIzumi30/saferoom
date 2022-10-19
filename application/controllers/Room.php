@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Hotel extends CI_Controller
+class Room extends CI_Controller
 {
     public function __construct()
     {
@@ -10,18 +10,18 @@ class Hotel extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Hotel';
+        $data['title'] = 'Room  ';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('city', 'City', 'required');
-        $this->form_validation->set_rules('user', 'User', 'required');
-        $this->form_validation->set_rules('pemilik', 'Pemilik', 'required');
+
 
         if ($this->form_validation->run() == false) {
 
             $data['city'] = $this->db->get('city')->result_array();
             $data['usere'] = $this->db->get('user')->result_array();
-            $data['hotel'] = $this->M_hotel->getHotel();
+            $data['type'] = $this->db->get('room_type')->result_array();
+            $data['hotel'] = $this->db->get('hotel')->result_array();
+            $data['room'] = $this->M_room->getRoom();
             $this->load->view('template/header', $data);
             $this->load->view('hotel/index', $data);
             $this->load->view('template/footer');

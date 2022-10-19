@@ -4948,6 +4948,37 @@ ul.notifications {
   background: #ECF0F1;
   border: 1px solid #fff;
   border-radius: 0; }
+  .text-bg-success {
+    color: #fff !important;
+    background-color: RGBA(25, 135, 84, var(--bs-bg-opacity, 1)) !important;
+  }
+  .text-bg-danger {
+    color: #fff !important;
+    background-color: RGBA(220, 53, 69, var(--bs-bg-opacity, 1)) !important;
+  }
+  .text-bg-warning {
+    color: #000 !important;
+    background-color: RGBA(255, 193, 7, var(--bs-bg-opacity, 1)) !important;
+  }
+  
+  .badge{
+    --bs-badge-padding-x: 0.65em;
+    --bs-badge-padding-y: 0.35em;
+    --bs-badge-font-size: 0.75em;
+    --bs-badge-font-weight: 700;
+    --bs-badge-color: #fff;
+    --bs-badge-border-radius: 0.375rem;
+    display: inline-block;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
+    font-size: var(--bs-badge-font-size);
+    font-weight: var(--bs-badge-font-weight);
+    line-height: 1;
+    color: var(--bs-badge-color);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: var(--bs-badge-border-radius);
+  }
 
 .daterangepicker.picker_4 .calendar-table td.active {
   background: #34495E; }

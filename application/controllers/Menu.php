@@ -49,6 +49,7 @@ class Menu extends CI_Controller
     }
     public function edit($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Change Data Menu';
         $data['menu'] = $this->M_menu->get_data_menu_where($id);
         $this->load->view('template/header', $data);

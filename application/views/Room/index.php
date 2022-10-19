@@ -24,11 +24,14 @@
                             <thead>
                                 <tr>
                                     <th width=5%>No</th>
+                                    <th>Room Name</th>
                                     <th>Hotel</th>
-                                    <th>City</th>
+                                    <th>Type Room</th>
                                     <th>Account</th>
-                                    <th>Pemilik</th>
-                                    <th>Kebijakan</th>
+                                    <th>Address</th>
+                                    <th>Price</th>
+                                    <th>Fasility</th>
+                                    <th>About</th>
                                     <th>Status</th>
                                     <th colspan="2" width="15%">Action</th>
                                 </tr>
@@ -36,15 +39,17 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($hotel as $t) :
+                                foreach ($room as $t) :
                                 ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
+                                    <td><?= $t->room_name ?></td>
                                     <td><?= $t->nama_hotel ?></td>
-                                    <td><?= $t->city ?></td>
+                                    <td><?= $t->name ?></td>
                                     <td><?= $t->email ?></td>
-                                    <td><?= $t->pemilik ?></td>
-                                    <td><?= $t->kebijakan ?></td>
+                                    <td><?= $t->price ?></td>
+                                    <td><?= $t->fasility ?></td>
+                                    <td><?= $t->about ?></td>
                                     <?php if ($t->status) { ?>
                                     <td><span class="badge text-bg-success"
                                             style="color: #fff !important;background-color: RGBA(25, 135, 84, var(--bs-bg-opacity, 1)) !important;">Active</span>

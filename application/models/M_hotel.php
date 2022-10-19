@@ -10,4 +10,9 @@ class M_hotel extends CI_Model
         ";
         return $this->db->query($query)->result();
     }
+    public function update($where, $table, $data)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }
