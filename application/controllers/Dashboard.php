@@ -12,8 +12,10 @@ class Dashboard extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = 'List City';
+		$data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules('name', 'City', 'required');
+        $this->load->view('template/header', $data);
+        $this->load->view('dashboard/index');
+        $this->load->view('template/footer');
 	}
 }
