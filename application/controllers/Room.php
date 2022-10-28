@@ -23,7 +23,7 @@ class Room extends CI_Controller
             $data['hotel'] = $this->db->get('hotel')->result_array();
             $data['room'] = $this->M_room->getRoom();
             $this->load->view('template/header', $data);
-            $this->load->view('hotel/index', $data);
+            $this->load->view('room/index', $data);
             $this->load->view('template/footer');
         } else {
 

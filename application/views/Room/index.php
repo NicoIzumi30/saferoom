@@ -18,6 +18,10 @@
                             Hotel</button>
                     </div>
                 </div>
+                <?php 
+                $dac = $this->M_room->getRoom();
+                var_dump($dac);
+                ?>
                 <div class="card-body ">
                     <div class="table-responsive">
                         <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
@@ -43,12 +47,13 @@
                                 ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $t->room_name ?></td>
+                                    <td><?= $t->hotel_name ?></td>
                                     <td><?= $t->nama_hotel ?></td>
                                     <td><?= $t->name ?></td>
                                     <td><?= $t->email ?></td>
+                                    <td><?= $t->address ?></td>
                                     <td><?= $t->price ?></td>
-                                    <td><?= $t->fasility ?></td>
+                                    <td><?= $t->facility ?></td>
                                     <td><?= $t->about ?></td>
                                     <?php if ($t->status) { ?>
                                     <td><span class="badge text-bg-success"
@@ -59,8 +64,8 @@
                                             style="color: #fff !important;background-color: RGBA(220, 53, 69, var(--bs-bg-opacity, 1)) !important;">Deactivate</span>
                                     </td>
                                     <?php } ?>
-                                    <td onclick="javascript: return confirm('Apakah anda yakin menghapus Hotel ini?')">
-                                        <?php echo anchor('hotel/delete/' . $t->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
+                                    <td onclick="javascript: return confirm('Apakah anda yakin menghapus room ini?')">
+                                        <?php echo anchor('room/delete/' . $t->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
                                     </td>
                                     <!-- <td><?php echo anchor('type/edit/' . $t->id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></div>') ?></td> -->
                                     <td><a href="#" class="btn btn-primary btn-sm" data-toggle="modal"

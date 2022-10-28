@@ -13,6 +13,10 @@
             </div>
             <div class="col-lg-12 mt-4">
                 <div class="row d-flex justify-content-end">
+                <?php 
+                $dac = $this->M_room->getRoom();
+                var_dump($dac);
+                ?>
                     <div class="col-md-3 mt-3 mr-4 text-right">
                         <button class="btn btn-primary" data-toggle="modal" data-target="#add_room_types">Add
                             Hotel</button>
