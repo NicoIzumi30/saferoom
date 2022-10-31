@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Okt 2022 pada 07.01
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.6
+-- Generation Time: Oct 31, 2022 at 05:41 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `city`
+-- Table structure for table `city`
 --
 
 CREATE TABLE `city` (
@@ -34,16 +34,16 @@ CREATE TABLE `city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `city`
+-- Dumping data for table `city`
 --
 
 INSERT INTO `city` (`id`, `city`, `image`) VALUES
-(2, 'Jakarta', 'javascript.jpg');
+(2, 'Jakarta', 'beragam-nama-jakarta-sejak-tahun-397-sampai-sekarang-txm1.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hotel`
+-- Table structure for table `hotel`
 --
 
 CREATE TABLE `hotel` (
@@ -57,16 +57,18 @@ CREATE TABLE `hotel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `hotel`
+-- Dumping data for table `hotel`
 --
 
 INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `kebijakan`, `status`) VALUES
-(1, 'Purnama Hotel', 2, 8, 'Sukardi', 'Check in from 2 pm to 4 am on the next day\r\nCheck out before 12 pm', 1);
+(1, 'Purnama Hotel', 2, 8, 'Sukardi', 'Check in from 2 pm to 4 am on the next day\r\nCheck out before 12 pm', 1),
+(2, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', 'Check in from 2 pm to 4 am on the next day Check out before 12 pm', 1),
+(3, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `room`
+-- Table structure for table `room`
 --
 
 CREATE TABLE `room` (
@@ -87,7 +89,7 @@ CREATE TABLE `room` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `room_type`
+-- Table structure for table `room_type`
 --
 
 CREATE TABLE `room_type` (
@@ -96,7 +98,7 @@ CREATE TABLE `room_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `room_type`
+-- Dumping data for table `room_type`
 --
 
 INSERT INTO `room_type` (`id`, `name`) VALUES
@@ -105,7 +107,7 @@ INSERT INTO `room_type` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -121,7 +123,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `telp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -131,7 +133,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `telp`, `image`, `password`, `role_id
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -141,7 +143,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -161,12 +163,39 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (31, 1, 15),
 (32, 1, 2),
 (35, 1, 14),
-(36, 1, 16);
+(36, 1, 16),
+(37, 1, 17);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_client`
+--
+
+CREATE TABLE `user_client` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `telp` varchar(20) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `is_active` varchar(1) NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `date_created` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_client`
+--
+
+INSERT INTO `user_client` (`id`, `full_name`, `email`, `telp`, `password`, `image`, `is_active`, `role`, `date_created`) VALUES
+(1, 'Izumii', 'xzumi3@gmail.com', '859126462972', '$2y$10$K4d.D3Lg4JVeoyktkh/0SuwTMhoUPijfXvwfs17QjQJpSDdaiWx7.', 'default.jpg', '1', 'member', '1667233868'),
+(2, 'Izumii', 'xzumi31@gmail.com', '859126462972', '$2y$10$i5pQ6AfTeS3ycdkQIXdhle9SDkVQEIU2pOMxhFZEvc2XoUEHRF3la', 'default.jpg', '1', 'member', '1667234340');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -176,7 +205,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
@@ -185,12 +214,13 @@ INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
 (6, 'Menu', 'fas fa-fw fa-folder'),
 (14, 'City', 'fas fa-fw fa-city'),
 (15, 'Type', 'fas fa-fw fa-list'),
-(16, 'Hotel', 'fas fa-fw fa-hotel');
+(16, 'Hotel', 'fas fa-fw fa-hotel'),
+(17, 'Room', 'fas fa-fw fa-bed');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -199,7 +229,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -210,7 +240,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -222,7 +252,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUES
@@ -242,123 +272,136 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 (18, 2, 'Change Password', 'profile/changepassword', 1),
 (19, 14, 'List City', 'city', 1),
 (20, 15, 'List Type', 'type', 1),
-(21, 16, 'Data Hotel', 'hotel', 1);
+(21, 16, 'Data Hotel', 'hotel', 1),
+(22, 17, 'Data room', 'room', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `city`
+-- Indexes for table `city`
 --
 ALTER TABLE `city`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `hotel`
+-- Indexes for table `hotel`
 --
 ALTER TABLE `hotel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `room`
+-- Indexes for table `room`
 --
 ALTER TABLE `room`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `room_type`
+-- Indexes for table `room_type`
 --
 ALTER TABLE `room_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_access_menu`
+-- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_menu`
+-- Indexes for table `user_client`
+--
+ALTER TABLE `user_client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_sub_menu`
+-- Indexes for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `city`
+-- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `hotel`
+-- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `room`
+-- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `room_type`
+-- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `user_access_menu`
+-- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT untuk tabel `user_menu`
+-- AUTO_INCREMENT for table `user_client`
+--
+ALTER TABLE `user_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `user_sub_menu`
+-- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,9 +37,10 @@ class Hotel extends CI_Controller
 
             ];
             $this->db->insert('hotel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                New Hotel added!
-              </div>');
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            //     New Hotel added!
+            //   </div>');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
             redirect('hotel');
         }
     }

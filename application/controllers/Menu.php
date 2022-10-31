@@ -105,6 +105,7 @@ class Menu extends CI_Controller
     }
     public function edit_submenu($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Change Data Sub Menu';
         $data['menuW'] = $this->M_menu->get_data_menu_where($id);
         $data['subMenu'] = $this->M_menu->getSubMenuWhere($id);
@@ -171,6 +172,7 @@ class Menu extends CI_Controller
     }
     public function edit_access($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Change Data Access Menu';
         $data['access'] = $this->M_menu->getAccMenuWhere($id);
         $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -208,6 +210,7 @@ class Menu extends CI_Controller
     }
     public function edit_role($id)
     {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = 'Edit Role';
         $data['role'] = $this->M_menu->get_data_role_where($id);
         $this->load->view('template/header', $data);
