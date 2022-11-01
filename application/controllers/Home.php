@@ -7,7 +7,7 @@ class Home extends CI_Controller
     {
         $this->load->view('home/index');
     }
-    public function registrasi()
+    public function register()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user_client.email]', ['is_unique' => 'This email has already registered!']);
@@ -19,8 +19,7 @@ class Home extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            var_dump($this->form_validation->run());
-            die();
+            $this->load->view('home/registration');
         } else {
             $data = [
                 'full_name' => htmlspecialchars($this->input->post('nama', true)),
@@ -33,11 +32,28 @@ class Home extends CI_Controller
                 'date_created' => time()
             ];
             $this->db->insert('user_client', $data);
-            redirect('home');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Congratulation! your account has been created. Please Login
+          </div>');
+            redirect('home/login');
         }
     }
 
     public function login()
+    {
+        if ($this->session->userdata('email')) {
+            redirect('home');
+        }
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'password', 'trim|required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('home/login');
+        } else {
+            // Validasinya success
+            $this->_login();
+        }
+    }
+    public function _login()
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
@@ -54,25 +70,36 @@ class Home extends CI_Controller
                         'role' => $user['role']
                     ];
                     $this->session->set_userdata($data);
-                    redirect('dashboard');
+                    redirect('home');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong password!
               </div>');
-                    redirect('home');
+                    redirect('home/login');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 This email is has not been activated!
               </div>');
-                redirect('home');
+                redirect('home/login');
             }
         } else {
             // Usernya ga ada
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Email is not regitered!
           </div>');
-            redirect('home');
+            redirect('home/login');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('full_name');
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        You have been logged out! 
+      </div>');
+        redirect('home/login');
     }
 }
