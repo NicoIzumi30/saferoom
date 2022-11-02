@@ -53,6 +53,10 @@ class Home extends CI_Controller
             $this->_login();
         }
     }
+
+    public function profile(){
+        $this->load->view('home/profile');
+    }
     public function _login()
     {
         $email = $this->input->post('email');

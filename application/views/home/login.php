@@ -50,8 +50,7 @@
                             </div>
                             <div class="col-md-9 mt-4 text-center mx-auto">
                                 <p>
-                                    Belum Punya Akun? <a href="#" data-bs-toggle="modal"
-                                        data-bs-target="#register">Daftar Disini</a>
+                                    Belum Punya Akun? <a href="<?=base_url('home/register')?>" >Daftar Disini</a>
                                 </p>
                             </div>
                             <div class="text-center mb-5 mt-4">
