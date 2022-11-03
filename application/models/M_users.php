@@ -9,4 +9,9 @@ class M_users extends CI_Model
         ";
         return $this->db->query($query)->result();
     }
+    public function getRole($id)
+    {
+        $role = $this->db->get_where('user_role', ['id' => $id])->row_array();
+        return $role;
+    }
 }

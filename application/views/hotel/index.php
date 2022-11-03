@@ -25,6 +25,10 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Data Hotel</h2>
+                                <?php
+                                $drole = $this->M_users->getRole(1);
+                                var_dump($drole);
+                                ?>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

@@ -43,8 +43,7 @@
                                                         <th>Role</th>
                                                         <th>Status</th>
                                                         <th>Created</th>
-                                                        <th colspan="2" class="text-center">Action</th>
-                                                        <th style="display: none;"></th>
+                                                        <th width="5%">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -57,7 +56,7 @@
                                                             <td><?= $usr->name ?></td>
                                                             <td><?= $usr->email ?></td>
                                                             <td><?= $usr->telp ?></td>
-                                                            <td><?= $usr->image ?></td>
+                                                            <td class="text-center"><img src="<?= base_url() ?>assets/image/profile/<?= $usr->image ?>" alt="" style="width: 50px;"></td>
                                                             <td><?= $usr->role ?></td>
                                                             <?php if ($usr->is_active) { ?>
                                                                 <td><span class="badge text-bg-success" style="color: #fff !important;background-color: RGBA(25, 135, 84, var(--bs-bg-opacity, 1)) !important;">Active</span>
@@ -67,9 +66,7 @@
                                                                 </td>
                                                             <?php } ?>
                                                             <td><?= date("d-M-Y", $usr->date_created) ?></td>
-                                                            <td onclick="javascript: return confirm('Apakah anda yakin menghapus User ini?')">
-                                                                <?php echo anchor('hotel/delete/' . $usr->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
-                                                            </td>
+
                                                             <td>
                                                                 <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $usr->id ?>"><i class="fa fa-edit"></i>
                                                                 </a>
@@ -87,7 +84,27 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
+                                                                        <form action="<?= base_url() ?>users/update_user/<?= $usr->id ?>" method="post">
+                                                                            <div class="form-group">
+                                                                                <select name="role" id="role" class="form-control">
+                                                                                    <!-- <?php
+                                                                                            $drole = $this->m_users->getRole($usr->id);
+                                                                                            $rolea = $this->db->get('user_role')->result_array();
 
+                                                                                            ?> -->
+                                                                                    <!-- <option value="<?= $$usr->id ?>"><?= $drole[0]->role; ?></option>
+                                                                                    <?php foreach ($rolea as $m) : ?>
+                                                                                        <option value="<?= $m['id'] ?>"><?= $m['role']; ?></option>
+                                                                                    <?php endforeach; ?> -->
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <input type="hidden" value="<?= $usr->id ?>" name="id">
+                                                                            <div class="modal-footer">
+                                                                                <input class="btn btn-primary" type="submit" value="Update">
+                                                                            </div>
+
+                                                                        </form>
                                                                     </div>
 
                                                                 </div>
