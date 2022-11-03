@@ -43,7 +43,8 @@
                                                         <th>Role</th>
                                                         <th>Status</th>
                                                         <th>Created</th>
-                                                        <th>Action</th>
+                                                        <th colspan="2" class="text-center">Action</th>
+                                                        <th style="display: none;"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -66,29 +67,33 @@
                                                                 </td>
                                                             <?php } ?>
                                                             <td><?= date("d-M-Y", $usr->date_created) ?></td>
+                                                            <td onclick="javascript: return confirm('Apakah anda yakin menghapus User ini?')">
+                                                                <?php echo anchor('hotel/delete/' . $usr->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
+                                                            </td>
                                                             <td>
-                                                                <a href="#" onclick="javascript: return confirm('Apakah anda yakin menghapus Hotel ini?')">
-                                                                    <?php echo anchor('hotel/delete/' . $usr->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>></a>
                                                                 <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $usr->id ?>"><i class="fa fa-edit"></i>
-                                                                    <div class="modal fade" id="myModal<?= $usr->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog" role="document">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Room Types</h5>
-                                                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                                        <span aria-hidden="true">×</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </a>
                                                             </td>
+
                                                         </tr>
+
+                                                        <div class="modal fade" id="myModal<?= $usr->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Room Types</h5>
+                                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
 
                                                     <?php endforeach; ?>
                                                 </tbody>
