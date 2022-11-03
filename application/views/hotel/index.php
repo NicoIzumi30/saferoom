@@ -15,19 +15,41 @@
             </div>
             <div class="col-lg-12 mt-4">
                 <div class="row d-flex justify-content-end">
-                    <?php
-                    $dac = $this->M_room->getRoom();
-                    var_dump($dac);
-                    ?>
                     <div class="col-md-3 mt-3 mr-4 text-right">
                         <button class="btn btn-primary" data-toggle="modal" data-target="#add_room_types">Add
                             Hotel</button>
                     </div>
                 </div>
                 <div class="card-body ">
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                    <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Responsive example<small>Users</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                      <div class="row">
+                          <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                    <p class="text-muted font-13 m-b-30">
+                      Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
+                    </p>
+					
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
                                 <tr>
                                     <th width=5%>No</th>
                                     <th>Hotel</th>
@@ -36,7 +58,7 @@
                                     <th>Pemilik</th>
                                     <th>Kebijakan</th>
                                     <th>Status</th>
-                                    <th colspan="2" width="15%">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,11 +82,10 @@
                                         <?php } ?>
                                         <td onclick="javascript: return confirm('Apakah anda yakin menghapus Hotel ini?')">
                                             <?php echo anchor('hotel/delete/' . $t->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
-                                        </td>
+                                        
                                         <!-- <td><?php echo anchor('type/edit/' . $t->id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></div>') ?></td> -->
-                                        <td><a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $t->id ?>"><i class="fa fa-edit"></i></a></td>
-                                    </tr>
-                                    <div class="modal fade" id="myModal<?= $t->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $t->id ?>"><i class="fa fa-edit"></i>
+                                        <div class="modal fade" id="myModal<?= $t->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -133,14 +154,25 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div></a></td>
+                                    </tr>
+                                   
                                 <?php endforeach; ?>
                             </tbody>
-                        </table>
-                    </div>
+                    </table>
+					
+					
+                  </div>
+                </div>
+              </div>
+            </div>
+                </div>
+              </div>
                 </div>
             </div>
         </div>
+
+        
         <div class="modal fade" id="add_room_types" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

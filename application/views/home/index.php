@@ -12,18 +12,18 @@
     <!-- <link rel="stylesheet" href="stylee.css"> -->
 
     <style>
-        .dropdown-menu[data-bs-popper] {
-    top: 100%;
-    left: -100px;
-    margin-top: 1.2rem;
-}
-.dropdown-item{
-    font-size: 23px;
-    border-bottom: .5px solid black;
-    
-   
-}
+    .dropdown-menu[data-bs-popper] {
+        top: 100%;
+        left: -100px;
+        margin-top: 1.2rem;
+    }
 
+    .dropdown-item {
+        font-size: 23px;
+        border-bottom: .5px solid black;
+
+
+    }
     </style>
 
 
@@ -38,28 +38,33 @@
                 </div>
                 <div class="col-md-2">
 
-                <?php  
-                if ($this->session->userdata('email')) {
-                ?>
+                    <?php
+                    if ($this->session->userdata('email')) {
+                    ?>
                     <div class="dropdown">
-                        <a class="btn btn-lg btn-secondary" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
-                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="24px" height="auto" title loading="auto" style="margin-right: 10px; margin-left: 10px;"><span style="margin-right: 10px;"> H </span>
+                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border-radius:9999px">
+                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
+                                width="24px" height="auto" title loading="auto"
+                                style="margin-right: 10px; margin-left: 10px;"><span style="margin-right: 10px;"> H
+                            </span>
                         </a>
 
                         <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
-                            <li><a class="dropdown-item" href="<?=base_url('home/profile')?>">Profile Saya</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
                             <li><a class="dropdown-item" href="#">Saya Booking</a></li>
-                            <li><a class="dropdown-item" href="<?=base_url('home/logout')?>">Keluar</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('home/logout') ?>"
+                                    style="border-bottom: none;">Keluar</a></li>
                         </ul>
                     </div>
-                    <?php }else{ ?>
-                        <a href="<?=base_url('home/login')?>">
-                        <button type="button" class="btn btn-lg"  style="border-radius:9999px; background-color: #ffffff5c; color: #fff; height: 50px;">
+                    <?php } else { ?>
+                    <a href="<?= base_url('home/login') ?>">
+                        <button type="button" class="btn btn-lg"
+                            style="border-radius:9999px; background-color: #ffffff5c; color: #fff; height: 50px;">
                             Gabung | Daftar
                         </button>
-                        </a>
-                        <?php } ?>
+                    </a>
+                    <?php } ?>
                 </div>
             </div>
 
