@@ -24,11 +24,7 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Data Hotel</h2>
-                                <?php
-                                $drole = $this->M_users->getRole(1);
-                                var_dump($drole);
-                                ?>
+
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -46,7 +42,7 @@
                                                         <th>Pemilik</th>
                                                         <th>Kebijakan</th>
                                                         <th>Status</th>
-                                                        <th colspan="2" class="text-center">Action</th>
+                                                        <th class="text-center">Action</th>
                                                         <th style="display: none;"></th>
                                                     </tr>
                                                 </thead>

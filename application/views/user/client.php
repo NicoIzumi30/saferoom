@@ -14,17 +14,11 @@
 
             </div>
             <div class="col-lg-12 mt-4">
-                <div class="row d-flex justify-content-end">
-                    <div class="col-md-3 mt-3 mr-4 text-right">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#add_room_types">Add
-                            Hotel</button>
-                    </div>
-                </div>
                 <div class="card-body ">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Data Hotel</h2>
+                                <h2>Data User Client</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -53,9 +47,9 @@
                                                     ?>
                                                         <tr>
                                                             <td><?= $no++ ?></td>
-                                                            <td><?= $usr->name ?></td>
+                                                            <td><?= $usr->full_name ?></td>
                                                             <td><?= $usr->email ?></td>
-                                                            <td><?= $usr->telp ?></td>
+                                                            <td>+62<?= $usr->telp ?></td>
                                                             <td class="text-center"><img src="<?= base_url() ?>assets/image/profile/<?= $usr->image ?>" alt="" style="width: 50px;"></td>
                                                             <td><?= $usr->role ?></td>
                                                             <?php if ($usr->is_active) { ?>
@@ -84,21 +78,34 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form action="<?= base_url() ?>users/update_user/<?= $usr->id ?>" method="post">
-                                                                            <div class="form-group">
-                                                                                <label for="role">Role</label>
-                                                                                <select name="role" id="role" class="form-control">
-                                                                                    <?php
-                                                                                    $drole = $this->M_users->getRole($usr->role_id);
-                                                                                    $rolea = $this->db->get('user_role')->result_array();
+                                                                        <form action="<?= base_url() ?>users/update_user_client/<?= $usr->id ?>" method="post">
 
-                                                                                    ?>
-                                                                                    <option value="<?= $drole['id']; ?>>"><?= $drole['role']; ?></option>
-                                                                                    <?php foreach ($rolea as $m) : ?>
-                                                                                        <option value="<?= $m['id'] ?>"><?= $m['role']; ?></option>
-                                                                                    <?php endforeach; ?>
-                                                                                </select>
-                                                                            </div>
+                                                                            <?php if ($usr->role == 'member') { ?>
+                                                                                <div class="form-group">
+                                                                                    <label for="status">Role </label>
+                                                                                    <select name="role" id="role" class="form-control">
+                                                                                        <option value="member">Member </option>
+                                                                                        <option value="partner">Partner</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            <?php } elseif ($usr->role == 'partner') { ?>
+                                                                                <div class="form-group">
+                                                                                    <label for="status">Role </label>
+                                                                                    <select name="role" id="role" class="form-control">
+                                                                                        <option value="partner">Partner</option>
+                                                                                        <option value="member">Member </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            <?php } else { ?>
+                                                                                <div class="form-group">
+                                                                                    <label for="status">Role </label>
+                                                                                    <select name="role" id="role" class="form-control">
+                                                                                        <option value="">Pilih Role</option>
+                                                                                        <option value="member">Member </option>
+                                                                                        <option value="partner">Partner</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            <?php } ?>
                                                                             <?php if ($usr->is_active) { ?>
                                                                                 <div class="form-group">
                                                                                     <label for="status">Status </label>

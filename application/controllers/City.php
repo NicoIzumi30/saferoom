@@ -9,7 +9,8 @@ class City extends CI_Controller
         is_logged_in();
     }
 
-    public function index(){
+    public function index()
+    {
         $data['title'] = 'List City';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('name', 'City', 'required');
@@ -96,21 +97,21 @@ class City extends CI_Controller
     {
         $where = array(
             'id' => $id
-        );  
+        );
         $getdata = $this->db->get_where('city', ['id' => $id])->row_array();
-       $delima = unlink(FCPATH . 'assets/image/city/' . $getdata['image']);
-        if($delima){
-        $this->db->where($where);
-        $this->db->delete('city');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        $delima = unlink(FCPATH . 'assets/image/city/' . $getdata['image']);
+        if ($delima) {
+            $this->db->where($where);
+            $this->db->delete('city');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         City has been daleted!
                  </div>');
-        redirect('city');
-    }else{
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            redirect('city');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
         City failed deleted!
                  </div>');
-        redirect('city'); 
-    }
+            redirect('city');
+        }
     }
 }
