@@ -2,6 +2,9 @@
 </link>
 <div class="right_col" role="main">
     <div class="container-fluid ">
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+        <?php if ($this->session->flashdata('flash')) : ?>
+        <?php endif; ?>
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
@@ -9,10 +12,7 @@
         <!-- DataTales Example -->
 
         <div class="card shadow mb-4 ">
-            <div class="card-header col-lg-12 py-3">
-                <?= $this->session->flashdata('message'); ?>
 
-            </div>
             <div class="col-lg-12 mt-4">
                 <div class="card-body ">
                     <div class="col-md-12 col-sm-12 ">

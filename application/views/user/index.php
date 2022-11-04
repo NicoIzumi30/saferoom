@@ -1,6 +1,7 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
-</link>
 <div class="right_col" role="main">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+    <?php if ($this->session->flashdata('flash')) : ?>
+    <?php endif; ?>
     <div class="container-fluid ">
 
         <!-- Page Heading -->
@@ -9,10 +10,7 @@
         <!-- DataTales Example -->
 
         <div class="card shadow mb-4 ">
-            <div class="card-header col-lg-12 py-3">
-                <?= $this->session->flashdata('message'); ?>
 
-            </div>
             <div class="col-lg-12 mt-4">
                 <div class="row d-flex justify-content-end">
                     <div class="col-md-3 mt-3 mr-4 text-right">

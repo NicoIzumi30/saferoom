@@ -1,6 +1,7 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css" rel="stylesheet">
-</link>
 <div class="right_col" role="main">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+    <?php if ($this->session->flashdata('flash')) : ?>
+    <?php endif; ?>
     <div class="container-fluid ">
 
         <!-- Page Heading -->
@@ -43,7 +44,6 @@
                                                         <th>Kebijakan</th>
                                                         <th>Status</th>
                                                         <th class="text-center">Action</th>
-                                                        <th style="display: none;"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -65,10 +65,10 @@
                                                                 <td><span class="badge text-bg-danger" style="color: #fff !important;background-color: RGBA(220, 53, 69, var(--bs-bg-opacity, 1)) !important;">Deactivate</span>
                                                                 </td>
                                                             <?php } ?>
-                                                            <td onclick="javascript: return confirm('Apakah anda yakin menghapus Hotel ini?')">
-                                                                <?php echo anchor('hotel/delete/' . $t->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
-                                                            </td>
                                                             <td>
+                                                                <a href="<?= base_url('hotel/delete/'); ?><?= $t->id; ?>" class="tombol-hapus btn btn-danger btn-sm">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </a>
                                                                 <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $t->id ?>"><i class="fa fa-edit"></i>
                                                                 </a>
                                                             </td>
@@ -223,15 +223,8 @@
 
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
-<script>
-    const flashData = $('.flash-data').data('flashdata');
+<script src="<?= base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?= base_url(); ?>assets/build/js/sweetalert2.all.min.js"></script>
 
-    if (flashData) {
-        Swal({
-            title: 'Sukses',
-            text: 'Data Berhasil ' + flashData,
-            type: 'success'
-        });
-    }
-</script>
+<!-- My Java Script -->
+<script src="<?= base_url(); ?>assets/build/js/script.js"></script>

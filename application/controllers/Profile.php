@@ -95,9 +95,7 @@ class Profile extends CI_Controller
                     $this->db->set('password', $password_hash);
                     $this->db->where('email', $data['user']['email']);
                     $this->db->update('user');
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-               Password Change!
-                 </div>');
+                    $this->session->set_flashdata('flash', 'Di Update');
                     redirect('profile/changepassword');
                 }
             }

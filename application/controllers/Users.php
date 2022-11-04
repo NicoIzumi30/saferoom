@@ -31,9 +31,8 @@ class Users extends CI_Controller
             $this->db->set($data);
             $this->db->where('id', $id);
             $this->db->update('user');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-               User has been update
-              </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
+
             redirect('users/user_admin');
         }
     }
@@ -65,9 +64,7 @@ class Users extends CI_Controller
             $this->db->set($data);
             $this->db->where('id', $id);
             $this->db->update('user_client');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-               User has been update
-              </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
             redirect('users/user_client');
         }
     }

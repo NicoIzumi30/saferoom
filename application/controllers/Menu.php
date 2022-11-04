@@ -25,9 +25,7 @@ class Menu extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->db->insert('user_menu', ['menu' => $this->input->post('menu'), 'icon' => $this->input->post('icon')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            New menu added!
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Tambahkan');
             redirect('menu');
         }
     }
@@ -37,6 +35,7 @@ class Menu extends CI_Controller
             'id' => $id
         );
         $this->M_menu->delete($where, 'user_menu');
+        $this->session->set_flashdata('flash', 'Di Hapus');
         redirect('menu');
     }
     public function delete_sub($id)
@@ -46,15 +45,6 @@ class Menu extends CI_Controller
         );
         $this->M_menu->delete($where, 'user_sub_menu');
         redirect('menu/submenu');
-    }
-    public function edit($id)
-    {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Change Data Menu';
-        $data['menu'] = $this->M_menu->get_data_menu_where($id);
-        $this->load->view('template/header', $data);
-        $this->load->view('menu/edit_menu', $data);
-        $this->load->view('template/footer');
     }
     public function update_menu($id)
     {
@@ -70,9 +60,8 @@ class Menu extends CI_Controller
                 'id' => $id
             );
             $this->M_menu->update($where, 'user_menu', $data);
-            $this->session->set_flashdata('message_update', '<div class="alert alert-success" role="alert">
-            Update Success
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
+
             redirect('menu');
         }
     }

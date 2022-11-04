@@ -70,9 +70,7 @@ class Hotel extends CI_Controller
                 'id' => $id
             );
             $this->M_hotel->update($where, 'hotel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Update Success
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Ubah');
             redirect('hotel');
         }
     }
@@ -83,9 +81,7 @@ class Hotel extends CI_Controller
         );
         $this->db->where($where);
         $this->db->delete('hotel');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Hotel has been deleted!
-                 </div>');
+        $this->session->set_flashdata('flash', 'Dihapus');
         redirect('hotel');
     }
 }
