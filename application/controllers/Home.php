@@ -7,6 +7,10 @@ class Home extends CI_Controller
     {
         $this->load->view('home/index');
     }
+    public function list()
+    {
+        $this->load->view('home/list_room');
+    }
     public function register()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -54,7 +58,8 @@ class Home extends CI_Controller
         }
     }
 
-    public function profile(){
+    public function profile()
+    {
         $this->load->view('home/profile');
     }
     public function _login()

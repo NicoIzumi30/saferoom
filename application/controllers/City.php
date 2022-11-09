@@ -41,9 +41,7 @@ class City extends CI_Controller
                     'image' => $image
                 );
                 $acc = $this->db->insert('city', $dataa);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                City ​​added!!
-                 </div>');
+                $this->session->set_flashdata('flash', 'Di Tambahkan');
                 redirect('city');
             }
         }
@@ -55,10 +53,8 @@ class City extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('city', 'City', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $data['city'] = $this->db->get_where('city', ['id' => $id])->row_array();
-            $this->load->view('template/header', $data);
-            $this->load->view('city/edit', $data);
-            $this->load->view('template/footer');
+            $this->session->set_flashdata('flash', 'Gagal Update');
+            redirect('city');
         } else {
             $city = $this->input->post('city');
 
@@ -86,9 +82,7 @@ class City extends CI_Controller
             $this->db->set('city', $city);
             $this->db->where('id', $id);
             $this->db->update('city');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-			City has been updated!
-			 </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
             redirect('city');
         }
     }
@@ -103,14 +97,10 @@ class City extends CI_Controller
         if ($delima) {
             $this->db->where($where);
             $this->db->delete('city');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        City has been daleted!
-                 </div>');
+            $this->session->set_flashdata('flash', 'Di Hapus');
             redirect('city');
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        City failed deleted!
-                 </div>');
+            $this->session->set_flashdata('flash', 'Gagal Hapus');
             redirect('city');
         }
     }

@@ -4,88 +4,409 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/intlTelInput.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/demo.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/style.css">
-
-
-    <!-- <link rel="stylesheet" href="stylee.css"> -->
-
-    <style>
-    .dropdown-menu[data-bs-popper] {
-        top: 100%;
-        left: -100px;
-        margin-top: 1.2rem;
-    }
-
-    .dropdown-item {
-        font-size: 23px;
-        border-bottom: .5px solid black;
-
-
-    }
-    </style>
-
-
+    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/styleU.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/fontawesome/css/all.min.css">
+    <script type='text/javascript' src='<?= base_url() ?>assets/build/js/popper.min.js'></script>
+    <script type='text/javascript' src='<?= base_url() ?>assets/build/js/bootstrap.min.js'></script>
 </head>
 
 <body>
-    <div class="sc1">
-        <nav class="navbar navbar-expand-lg" style="background-color: transparant;">
-            <div class="container-fluid">
-                <div class="col-md-10">
-                    <h1 class="p-3 text-white">Safe Room</h1>
-                </div>
-                <div class="col-md-2">
+    <section id="header-bg">
+        <div class="sc1">
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <nav class="navbar navbar-expand-lg" style="background-color: transparant;">
+                        <div class="col-md-10">
+                            <h1 class="p-3 text-white" style="font-size: 32px;">SafeRoom</h1>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <div class="dropdown">
+                                <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
+                                    <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                                    </span>
+                                </a>
 
-                    <?php
-                    if ($this->session->userdata('email')) {
-                    ?>
-                    <div class="dropdown">
-                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="border-radius:9999px">
-                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
-                                width="24px" height="auto" title loading="auto"
-                                style="margin-right: 10px; margin-left: 10px;"><span style="margin-right: 10px;"> H
-                            </span>
-                        </a>
+                                <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
+                                    <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
+                                    <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
+                                    <li><a class="dropdown-item" href="login.html" style="border-bottom: none;">Keluar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
 
-                        <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
-                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
-                            <li><a class="dropdown-item" href="#">Saya Booking</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('home/logout') ?>"
-                                    style="border-bottom: none;">Keluar</a></li>
-                        </ul>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-sm-5 mt-5">
+                            <div class="input-group mb-3 mt-4">
+                                <input type="text" class="form-control" placeholder="&nbsp Enter a City, Locality or Hotel" aria-label="Enter a City, Locality or Hotel" aria-describedby="basic-addon2" style="border: none; border-bottom-left-radius: 9999px;border-top-left-radius: 9999px; background-color: #D6D6D6; box-shadow: none; height: 45px;">
+                                <button type="submit" class="input-group-text" id="basic-addon2" style="border: none; border-bottom-right-radius: 9999px;border-top-right-radius: 9999px; background-color: #b9b9b9;
+                        ;">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa-solid fa-magnifying-glass"></i></td>
+                                            <td class="ml-2">Cari</td>
+                                        </tr>
+                                    </table>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <?php } else { ?>
-                    <a href="<?= base_url('home/login') ?>">
-                        <button type="button" class="btn btn-lg"
-                            style="border-radius:9999px; background-color: #ffffff5c; color: #fff; height: 50px;">
-                            Gabung | Daftar
-                        </button>
-                    </a>
-                    <?php } ?>
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <section id="content">
+        <div class="row justify-content-center  mt-5">
+            <div class="col-11">
+                <div>
+                    <div class="kota-populer" style="overflow: hidden; position: relative;">
+                        <div class="h3">
+                            Kota Populer
+                        </div>
+                        <div class="img-city mt-3 " style="overflow-x: scroll; display: flex;">
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/istockphoto-850508806-170667a 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Jakarta</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/istockphoto-675172642-170667a 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Bali</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/istockphoto-1266859636-170667a 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Yogyakarta</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/istockphoto-1305893755-170667a 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Bandung</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/download (4) 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Malang</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/download (5) 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Medan</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/download (6) 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Solo</p>
+                            </div>
+                            <div class="city-detail text-center">
+                                <img src="<?= base_url() ?>assets/build/images/tugu-pancakarsa-sentul 1.png" class="img-list-city mx-2">
+                                <p style="font-weight:500">Bogor</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="kamar-hotel p-3  mt-5">
+                        <div class="list-kamar">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h3 class="mb-3">Tempat Populer</h3>
+                                    </div>
+                                    <div class="col-12">
+                                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <div class="row justify-content-start" style="overflow-x: scroll; display: flex;">
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (3).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Wisma Bintang RedPartner</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bogor</p>
+                                                                <p class="card-text text-danger">Rp245.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (2).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Hayam Wuruk</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Jakarta
+                                                                </p>
+                                                                <p class="card-text text-danger">Rp445.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (1).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Galaxy Bekasi</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bekasi</p>
+                                                                <p class="card-text text-danger">Rp390.000</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="row justify-content-start" style="overflow-x: scroll; display: flex;">
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (3).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Wisma Bintang RedPartner</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bogor</p>
+                                                                <p class="card-text text-danger">Rp245.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (2).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Hayam Wuruk</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Jakarta
+                                                                </p>
+                                                                <p class="card-text text-danger">Rp445.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (1).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Galaxy Bekasi</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bekasi</p>
+                                                                <p class="card-text text-danger">Rp390.000</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <div class="row justify-content-start" style="overflow-x: scroll; display: flex;">
+
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (2).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Hayam Wuruk</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Jakarta
+                                                                </p>
+                                                                <p class="card-text text-danger">Rp445.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (1).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Galaxy Bekasi</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bekasi</p>
+                                                                <p class="card-text text-danger">Rp390.000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card col-md-4 mt-3">
+                                                            <img src="<?= base_url() ?>assets/build/images/1 (3).png" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <p class="card-text">Wisma Bintang RedPartner</p>
+                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bogor</p>
+                                                                <p class="card-text text-danger">Rp245.000</p>
+                                                            </div>
+                                                        </div>1` 2
+
+                                                    </div>
+                                                </div>
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
 
 
-        </nav>
-
-    </div>
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Login
-    </button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">
-        Register
-    </button> -->
 
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-11">
+                <div class="about p-5">
+                    <div>
+                        <h1><span style="color:#000000;">Pesan Hotel Murah di Indonesia yang Bernilai untuk Anda</span>
+                        </h1>
+
+                        <p><span style="color:#000000;">Apakah Anda merencanakan perjalanan Anda berikutnya ke
+                                Indonesia? Sebagai rumah bagi populasi terbesar keempat di dunia, negara cantik ini
+                                memiliki lebih dari 17.000 pulau dengan 6.000 di antaranya berpenghuni. Dari
+                                jalan-jalan, berbelanja, dan lainnya, ada banyak sekali aktivitas untuk setiap wisatawan
+                                di Indonesia.</span></p>
+
+                        <p><span style="color:#000000;">Dengan ribuan pulau untuk dijelajahi, Indonesia menawarkan
+                                beragam pilihan tujuan wisata baik bagi penduduk lokal maupun mancanegara. Dari kuil
+                                yang megah hingga pegunungan yang megah, Anda memiliki banyak hal untuk ditemukan di
+                                negara yang indah ini. RedDoorz akan membantu membuat pengalaman perjalanan Anda
+                                keliling Indonesia menjadi lebih baik dengan pesan hotel murah kami!</span></p>
+
+                        <p><span style="color:#000000;">Selain semua tempat indah yang dapat Anda kunjungi di negara
+                                ini, Anda tidak akan kehabisan akomodasi hebat dan terjangkau berkat RedDoorz Indonesia.
+                                Anda dapat dengan mudah menemukan hotel murah dengan semua fasilitas penting di platform
+                                pemesanan kami.</span></p>
+
+                        <h2><span style="color:#000000;">Mudah Menjangkau Tujuan dari Hotel RedDoorz Indonesia</span>
+                        </h2>
+
+                        <p><span style="color:#000000;">Ada banyak tempat untuk dijelajahi di Indonesia, dengan harga
+                                hotel yang terjangkau! Bagi yang menginginkan petualangan pantai, Denpasar di Bali akan
+                                menjadi surganya. Penggemar belanja dapat menuju ke Jakarta untuk mendapatkan penawaran
+                                terbaik dari pakaian tekstil di Tanah Abang. Wisatawan yang menyukai petualangan akan
+                                menikmati wisata dari Bandung ke daerah pegunungan dan berenang di air terjun! Anda
+                                dapat menemukan hotel Indonesia dengan harga terjangkau di dekat landmark seperti Gunung
+                                Bromo di Surabaya dan Benteng Rotterdam di Makassar atau tempat perbelanjaan terkenal
+                                seperti Mal Grand Indonesia di Jakarta Pusat.</span></p>
+
+                        <p><span style="color:#000000;">Indonesia memiliki banyak kota unggulan yang memiliki
+                                tempat-tempat wisata yang megah. Ke mana pun Anda ingin pergi duluan, memesan harga
+                                kamar hotel yang murah sangatlah mudah berkat platform kami. Berikut beberapa destinasi
+                                yang wajib dikunjungi di Indonesia.</span></p>
+
+                        <h3><span style="color:#000000;">1. </span><a href="https://www.reddoorz.com/en-id/search/hotel/indonesia/surabaya" style="color:#000000;text-decoration:none"><span style="color:#000000;">Surabaya, Jawa
+                                    Timur</span></a></h3>
+
+                        <p><span style="color:#000000;">Jika Anda mendambakan liburan budaya di Indonesia, tidak ada
+                                yang bisa mengalahkan pemesanan hotel di kota pahlawan negara, Surabaya. Ini adalah
+                                tempat yang menarik di sekitar Jawa Timur dan menjadikannya salah satu kota yang
+                                memiliki destinasi wisata populer, termasuk Gunung Bromo, Bali, Yogyakarta, dan
+                                Jakarta.</span></p>
+
+                        <h3><span style="color:#000000;">2. </span><a href="https://www.reddoorz.com/en-id/search/hotel/indonesia/jakarta" style="text-decoration:none"><span style="color:#000000;">Jakarta</span></a></h3>
+
+                        <p><span style="color:#000000;">Jakarta adalah salah satu tempat terbaik untuk dikunjungi jika
+                                Anda menikmati kenyamanan pusat kota. Ini adalah kota megapolitan dengan gedung pencakar
+                                langit dan menaranya yang mengesankan seperti Monas yang terkenal - monumen nasional
+                                Indonesia. Namun, itu hanya satu dari sekian banyak tempat wisata di kota
+                                tersebut.</span></p>
+
+                        <p><span style="color:#000000;">Anda mungkin hanya akan melihat gedung-gedung tinggi di Jakarta,
+                                tetapi ada beberapa situs warisan seperti Jakarta Tua atau Kota Tua dan pelabuhan
+                                bersejarah Sunda Kelapa untuk dijelajahi!</span></p>
+
+                        <h3><span style="color:#000000;">3. </span><a href="https://www.reddoorz.com/en-id/search/hotel/indonesia/bandung" style="text-decoration:none"><span style="color:#000000;">Bandung</span></a></h3>
+
+                        <p><span style="color:#000000;">Bandung hanya berjarak tiga jam lebih sedikit dari Jakarta
+                                dengan kereta atau bus. Di kota ini, ada banyak tempat keren untuk anda jelajahi.</span>
+                        </p>
+
+                        <p><span style="color:#000000;">Bandung adalah tempat terbaik untuk menyejukkan dan melepas
+                                lelah, secara harfiah karena suhunya yang nyaman-sejuk tersedia sepanjang tahun. Selain
+                                iklim yang unik, tempat ini juga menawarkan pemandangan pegunungan dan dataran tinggi
+                                yang indah. Dan jika Anda mencoba menghabiskan uang Anda, pesan hotel Indonesia yang
+                                murah di Bandung dan habiskan satu atau dua hari berbelanja di pusat perbelanjaan outlet
+                                Indonesia.</span></p>
+
+                        <h3><span style="color:#000000;">4. </span><a href="https://www.reddoorz.com/id-id/search/hotel/indonesia/yogyakarta" style="text-decoration:none"><span style="color:#000000;">Yogyakarta</span></a></h3>
+
+                        <p><span style="color:#000000;">Indonesia memiliki budaya dan sejarah yang kaya dan dalam, dan
+                                Anda dapat melihatnya dari bangunan kuno dan tempat-tempat yang berdiri hingga hari ini.
+                                Jika Anda ingin mempelajari budaya Jawa, Yogyakarta merupakan tempat yang wajib Anda
+                                kunjungi.</span></p>
+
+                        <p><span style="color:#000000;">Anda tidak akan kehabisan tempat wisata dan situs pendidikan di
+                                bagian Jawa, Indonesia ini. Anda bisa pesan hotel yang hemat di Yogyakarta dan
+                                mengunjungi kompleks kerajaan abad ke-18 kota, bangunan kolonial era Belanda, Taman Sari
+                                atau Istana Air yang terkenal. Di sini, Anda juga bisa menjelajahi dua situs Warisan
+                                Dunia UNESCO, Prambanan dan Borobudur, dua landmark paling megah di seluruh Asia.</span>
+                        </p>
+
+                        <h3><span style="color:#000000;">5. </span><a href="https://www.reddoorz.com/id-id/search/hotel/indonesia/bali" style="text-decoration:none"><span style="color:#000000;">Pulau Nusa Penida,
+                                    Bali</span></a></h3>
+
+                        <p><span style="color:#000000;">Indonesia terkenal dengan pemandangan pantainya yang indah. Jika
+                                Anda termasuk salah satu orang yang mendambakan liburan di pinggir pantai dengan
+                                pemandangan laut yang luar biasa, Bali adalah pilihan utama. Begitu berada di Bali, Anda
+                                harus mengunjungi Nusa Penida, dan pulau terpencil sangat cocok jika Anda ingin
+                                ketenangan.</span></p>
+
+                        <p><span style="color:#000000;">Nusa Penida merupakan salah satu pulau yang kurang terkenal di
+                                Bali tetapi sama megahnya dengan pulau favorit para turis lainnya seperti Nusa Ceningan
+                                dan Nusa Lembongan di dekatnya.</span></p>
+
+                        <p><span style="color:#000000;">Selain perairan biru dan pasir putih pucat, daya tarik Nusa
+                                Penida adalah garis pantai tebingnya. Jika Anda menginap di sebuah hotel di Bali,
+                                Indonesia, Anda bisa melakukan perjalanan sehari di pulau tersebut yang hanya berjarak
+                                satu jam perjalanan dari daratan dengan menggunakan kapal feri.</span></p>
+
+                        <h3><span style="color:#000000;">6. Pulau Komodo</span></h3>
+
+                        <p><span style="color:#000000;">Jika Anda memimpikan liburan ke pulau terpencil, Indonesia akan
+                                mewujudkan impian Anda. Anda bisa menginap di hotel murah di Pulau Komodo, salah satu
+                                pulau paling terpencil di negara ini.</span></p>
+
+                        <p><span style="color:#000000;">Meskipun tempat ini jauh dari hiruk pikuk pusat kota, Anda tidak
+                                akan kehabisan hal yang bisa dilakukan di Pulau Komodo. Jika Anda pesan hotel di sini,
+                                Anda bisa mendapatkan akses mudah ke Pantai Pink yang langka dan Taman Nasional Komodo,
+                                di mana Anda bisa bertemu dengan Komodo raksasa.</span></p>
+
+                        <h3><span style="color:#000000;">7. Desa Wae Rebo, Pulau Flores</span></h3>
+
+                        <p><span style="color:#000000;">Anda bisa mencari hotel murah di salah satu kota tersibuk di
+                                Indonesia, atau bisa juga memesan hotel untuk liburan pulau di Pulau Flores, khususnya
+                                di sekitar Desa Wae Rebo. Ini adalah desa kecil tapi sangat menawan yang terletak di
+                                pegunungan yang indah.</span></p>
+
+                        <p><span style="color:#000000;">Desa di Indonesia memiliki rumah-rumah khas yang berbentuk
+                                kerucut, dikelilingi oleh alam di dataran tinggi yang terpencil. Pesan hotel Indonesia
+                                di sekitar area ini jika Anda menyukai keindahan pegunungan, tanaman hijau, margasatwa,
+                                dan anggrek yang cantik.</span></p>
+
+                        <h3><span style="color:#000000;">8. Bukittinggi, Sumatera Barat</span></h3>
+
+                        <p><span style="color:#000000;">Jika Anda berada di sekitar Sumatra Barat di Indonesia,
+                                Bukittinggi adalah tempat yang harus dikunjungi, dan Anda dapat menemukan berbagai harga
+                                kamar hotel di sini yang sesuai dengan anggaran Anda. Bukittinggi juga memiliki banyak
+                                daya tarik bagi wisatawan, termasuk Fort de Kock, dan benteng kuno di puncak bukit
+                                Belanda. Anda juga dapat mengunjungi Ngarai Sianok yang menawarkan pemandangan megah dan
+                                pasar tradisional Pasar Atas.</span></p>
+
+                        <h5><span style="color:#000000;">Hemat dengan SafeRoom Indonesia</span></h5>
+
+
+
+                        <p><span style="color:#000000;">Hotel SafeRoom terkenal di kalangan pebisnis dan penyuka
+                                rekreasi di Indonesia karena kami menyediakan hotel murah dan paling mudah diakses di
+                                negara ini. Untuk informasi lebih lanjut tentang hotel kami, Anda dapat mengirim pesan
+                                kepada kami dan kami akan membalas pesan Anda sesegera mungkin!</span></p>
+
+                        <p><span style="color:#000000;">Atau, Anda dapat melihat FAQ kami.</span></p>
+
+                        <h3 style="font-size:0px; display: none;">Daerah populer lainnya:</h3>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="footer mt-4">
+        <div class="footer">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook"></i>
+        </div>
+    </section>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,129 +418,14 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('home/logout') ?>">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            <div class="text-center">
-                                <h2>Login</h2>
-                            </div>
-                            <form method="POST" action="<?= base_url('home/login') ?>">
-                                <div class=" mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Masukkan Email" aria-describedby="emailHelp">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Masukkan Password">
-                                </div>
-                                <div class="col-md-9 mt-4 text-center mx-auto">
-                                    <p>
-                                        Belum Punya Akun? <a href="#" data-bs-toggle="modal"
-                                            data-bs-target="#register">Daftar Disini</a>
-                                    </p>
-                                </div>
-                                <div class="text-center mb-4 mt-4">
-                                    <button type="submit" class="btn btn-primary col-12">Masuk</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            <div class="text-center">
-                                <h2>Register</h2>
-                            </div>
-                            <form method="POST" action="<?= base_url('home/registrasi') ?>">
-                                <div class=" mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="nama"
-                                        placeholder="Nama Lengkap" aria-describedby="emailHelp">
-                                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <div class=" mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email"
-                                        placeholder="Alamat Surat Elektronik" aria-describedby="emailHelp">
-                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <div class=" mb-3">
-                                    <label for="phone" class="form-label col-12">Nomot Telpon</label>
-                                    <input type="tel" name="phone" id="phone" class="form-control"
-                                        placeholder="Nomor Telpon" style="width: 100% !important;">
-                                    <?= form_error('phone', '<small class="text-danger pl-3">', '</small>') ?>
-                                </div>
-                                <div class=" mb-3">
-                                    <label for="password1" class="form-label">Kata Sandi</label>
-                                    <input type="password" class="form-control" name="password1" id="password1"
-                                        placeholder="Kata Sandi" aria-describedby="pw">
-                                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
-                                    <div id="pw" class="form-text">At least 8 char, use at least 1 upper and 1 lower
-                                        case, 1 number, and 1
-                                        symbol(!@?#$%^&*-+=_)</div>
-                                </div>
-                                <div class=" mb-3">
-                                    <label for="password2" class="form-label">Konfirmasi Kata Sandi</label>
-                                    <input type="password" class="form-control" name="password2" id="password2"
-                                        placeholder="Konfirmasi Kata Sandi" aria-describedby="pw">
-                                    <?= form_error('password2', '<small class="text-danger pl-3">', '</small>') ?>
-
-
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-9 mt-4 text-center mx-auto">
-                                        <p>Dengan masuk atau membuat akun, Anda setuju dengan kami <a href="#"> Syarat &
-                                                Ketentuan</a>
-                                            Dan <a href="#">Kebijakan Privasi</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="text-center mb-4">
-                                    <button type="submit" class="btn btn-primary col-12">Daftar Sekarang</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
-    <script src="<?= base_url() ?>assets/build/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    < script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js">
-        </script>
-
-        <script src="<?= base_url() ?>assets/build/js/intlTelInput.js"></script>
-        <script>
-        $("#phone").intlTelInput({
-            utilsScript: "<?= base_url() ?>assets/build/js/utils.js"
-        });
-        </script>
+    <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>
+    <script src="<?= base_url() ?>assets/build/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

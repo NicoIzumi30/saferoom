@@ -8,7 +8,8 @@ class Type extends CI_Controller
         parent::__construct();
         is_logged_in();
     }
-    public function index(){
+    public function index()
+    {
         $data['title'] = 'Room Type';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -19,27 +20,22 @@ class Type extends CI_Controller
             $this->load->view('template/footer');
         } else {
             $this->db->insert('room_type', ['name' => $this->input->post('name')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            New room type added!
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Tambahkan');
             redirect('type');
         }
     }
-    public function update($id){
+    public function update($id)
+    {
         $this->form_validation->set_rules('name', 'Name', 'required');
         if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Update Failed!
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
             redirect('type');
         } else {
             $name = $this->input->post('name');
             $this->db->set('name', $name);
             $this->db->where('id', $id);
             $this->db->update('room_type');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Update Success
-          </div>');
+            $this->session->set_flashdata('flash', 'Di Update');
             redirect('type');
         }
     }
@@ -50,9 +46,7 @@ class Type extends CI_Controller
         );
         $this->db->where($where);
         $this->db->delete('room_type');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Room type has been deleted!
-                 </div>');
+        $this->session->set_flashdata('flash', 'Di Hapus');
         redirect('type');
     }
 }

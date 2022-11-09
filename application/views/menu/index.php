@@ -5,8 +5,8 @@
         <?php endif; ?>
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
                 <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '
           </div>') ?>
                 <div class="row justify-content-end mb-3 mr-3">
