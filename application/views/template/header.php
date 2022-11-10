@@ -53,7 +53,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="<?= base_url() ?>assets/image/profile/<?= $user['image'] ?>" alt="..." class="img-circle profile_img">
+                            <img src="<?= base_url() ?>assets/image/profile/<?= $user['image'] ?>" alt="..." class="img-circle profile_img" style="width:60px;height:60px">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>

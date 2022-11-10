@@ -35,10 +35,10 @@ class Profile extends CI_Controller
             $upload_image = $_FILES['image']['name'];
             if ($upload_image) {
                 $config['upload_path'] = './assets/image/profile/';
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|png|jpeg|jpg';
                 $config['max_size']     = '2000';
-                $config['max_width'] = '2000';
-                $config['max_height'] = '1000';
+                $config['max_width'] = '3000';
+                $config['max_height'] = '3000';
 
                 $this->load->library('upload', $config);
 
@@ -59,8 +59,8 @@ class Profile extends CI_Controller
             $this->db->where('email', $email);
             $this->db->update('user');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-			Your profile has been updated!
-			 </div>');
+            Your profile has been updated!
+             </div>');
             redirect('profile');
         }
     }

@@ -10,10 +10,14 @@ class Room extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Room  ';
+        $data['title'] = 'Room ';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules('name', 'Name', 'required');
-
+        $this->form_validation->set_rules('type', 'Type', 'required');
+        $this->form_validation->set_rules('room_name', 'Room_name', 'required');
+        $this->form_validation->set_rules('address', 'Address', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
+        $this->form_validation->set_rules('about', 'About', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
 
@@ -26,24 +30,23 @@ class Room extends CI_Controller
             $this->load->view('room/index', $data);
             $this->load->view('template/footer');
         } else {
-
+            $fasilitas = implode(',', $this->input->post('fasilitas'));
             $data = [
-                'nama_hotel' => $this->input->post('name'),
-                'id_city' => $this->input->post('city'),
-                'id_user' => $this->input->post('user'),
-                'pemilik' => $this->input->post('pemilik'),
-                'kebijakan' => $this->input->post('kebijakan'),
+                'user_id' => $this->input->post('user_id'),
+                'hotel_id' => $this->input->post('hotel_id'),
+                'type_id' => $this->input->post('type'),
+                'room_name' => $this->input->post('room_name'),
+                'address' => $this->input->post('address'),
+                'facility' => $fasilitas,
+                'price' => $this->input->post('price'),
+                'about' => $this->input->post('about'),
                 'status' => $this->input->post('status')
-
             ];
-            $this->db->insert('hotel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                New Hotel added!
-              </div>');
-            redirect('hotel');
+            $this->db->insert('room', $data);
+            $this->session->set_flashdata('flash', 'Di Tambahkan');
+            redirect('room');
         }
     }
-
     public function update($id)
     {
         $this->form_validation->set_rules('name', 'Name', 'required');
