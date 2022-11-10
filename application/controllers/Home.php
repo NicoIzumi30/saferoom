@@ -5,7 +5,32 @@ class Home extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('home/index');
+        $data['city'] = $this->db->get('city')->result();
+        $this->load->view('home/index', $data);
+    }
+    public function coba()
+    {
+        $this->load->view('home/coba');
+    }
+    public function coba21()
+    {
+        $data['fasilitas'] = $this->db->get('coba')->result_array();
+        $this->load->view('home/coba21', $data);
+    }
+    public function coba_insert()
+    {
+        $fasilitas = implode(',', $this->input->post('fasilitas'));
+        $form_data = array(
+            'full_name' => $this->input->post('full_name'),
+            'coment' => $this->input->post('coment'),
+            'fasilitas' => $fasilitas
+        );
+        $query = $this->db->insert('coba', $form_data);
+        if ($query) {
+            var_dump($form_data);
+        } else {
+            echo 'Gagal cok';
+        }
     }
     public function list()
     {
