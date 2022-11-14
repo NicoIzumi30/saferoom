@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 05:41 PM
+-- Generation Time: Nov 14, 2022 at 09:21 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,7 +38,39 @@ CREATE TABLE `city` (
 --
 
 INSERT INTO `city` (`id`, `city`, `image`) VALUES
-(2, 'Jakarta', 'beragam-nama-jakarta-sejak-tahun-397-sampai-sekarang-txm1.jpg');
+(4, 'Jakarta', 'jakarta.png'),
+(5, 'Bali', 'bali.png'),
+(6, 'Yogyakarta', 'yogyakarta.png'),
+(7, 'Bandung', 'bandung.png'),
+(8, 'Malang', 'malang.png'),
+(9, 'Medan', 'medan.png'),
+(10, 'Solo', 'solo.png'),
+(11, 'Bogor', 'bogor.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coba`
+--
+
+CREATE TABLE `coba` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(128) NOT NULL,
+  `coment` text NOT NULL,
+  `fasilitas` text NOT NULL,
+  `image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coba`
+--
+
+INSERT INTO `coba` (`id`, `full_name`, `coment`, `fasilitas`, `image`) VALUES
+(8, 'Heru', 'Hahaha', 'Resepsionis,AC,Televisi', ''),
+(9, 'Heru', 'random bang', 'Resepsionis,AC,wifi Gratis', 'Array,Array,Array,Array,Array,Array'),
+(10, 'Heru', 'bismillah', 'Resepsionis,AC,Televisi', 'thumb1.png,twitter.png,download (4) 1.png,download (5) 1.png,download (6) 1.png'),
+(11, 'Heru', 'asdcfwesdacvfeaw', 'Resepsionis,AC,Televisi', 'close-icon-13591.png,email-icon-121.png,img1.png'),
+(12, 'sdc vfdr', 'aszxc sadz', 'Resepsionis,AC', 'close-icon-13591.png,email-icon-121.png,img1.png');
 
 -- --------------------------------------------------------
 
@@ -52,7 +84,9 @@ CREATE TABLE `hotel` (
   `id_city` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `pemilik` varchar(256) NOT NULL,
-  `kebijakan` text NOT NULL,
+  `alamat` varchar(256) NOT NULL,
+  `jumlah_kamar` varchar(10) NOT NULL,
+  `about` text NOT NULL,
   `status` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,10 +94,13 @@ CREATE TABLE `hotel` (
 -- Dumping data for table `hotel`
 --
 
-INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `kebijakan`, `status`) VALUES
-(1, 'Purnama Hotel', 2, 8, 'Sukardi', 'Check in from 2 pm to 4 am on the next day\r\nCheck out before 12 pm', 1),
-(2, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', 'Check in from 2 pm to 4 am on the next day Check out before 12 pm', 1),
-(3, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', '', 1);
+INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `alamat`, `jumlah_kamar`, `about`, `status`) VALUES
+(1, 'Purnama Hotel', 2, 8, 'Sukardi', '', '', 'Check in from 2 pm to 4 am on the next day\r\nCheck out before 12 pm', 1),
+(2, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', '', '', 'Check in from 2 pm to 4 am on the next day Check out before 12 pm', 1),
+(6, 'Jiuaa', 2, 1, 'aasdx', '', '', 'ewqfdrew4', 1),
+(7, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', '', '', 'asdw', 1),
+(10, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', 'Jl. Imam Bonjol No.45, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80112, Jalan Imam Bonjol, No 45, Pemecutan Klod, Kecamatan Denpasar Barat, Denpasar Barat, Indonesia, 80112', '12', 'yangPunyaYGY', 1),
+(14, 'Nico', 2, 1, 'Suharto', 'Jl. Imam Bonjol No.45, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80112, Jalan Imam Bonjol, No 45, Pemecutan Klod, Kecamatan Denpasar Barat, Denpasar Barat, Indonesia, 80112', '11', 'Hotel yang berada di tanah hijau', 1);
 
 -- --------------------------------------------------------
 
@@ -76,15 +113,21 @@ CREATE TABLE `room` (
   `user_id` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
-  `hotel_name` varchar(128) NOT NULL,
+  `room_name` varchar(128) NOT NULL,
+  `image` varchar(256) NOT NULL,
   `address` text NOT NULL,
   `facility` varchar(256) NOT NULL,
-  `room_type` varchar(128) NOT NULL,
   `price` varchar(20) NOT NULL,
   `about` text NOT NULL,
-  `policy` text NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`id`, `user_id`, `hotel_id`, `type_id`, `room_name`, `image`, `address`, `facility`, `price`, `about`, `status`) VALUES
+(1, 1, 2, 1, 'Heru', 'img1.png,keripik-bawang-pangsit-crispy-fried-260nw-1897975168-removebg-preview.png,logo.png,tugu-pancakarsa-sentul 1.png', 'Jl lagi gabut km 12', 'Resepsionis,AC,wifi Gratis', '210000', 'Cape bang?', '1');
 
 -- --------------------------------------------------------
 
@@ -113,6 +156,8 @@ INSERT INTO `room_type` (`id`, `name`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `date_of_birth` varchar(256) NOT NULL,
+  `gender` varchar(20) NOT NULL,
   `email` varchar(128) NOT NULL,
   `telp` varchar(20) NOT NULL,
   `image` varchar(128) NOT NULL,
@@ -126,9 +171,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `telp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 'Nico Izumi', 'izumi@mail.com', '', 'default.jpg', '$2y$10$wR4tHLYloJ1gtSRO1edJyuqjh.bQe77/JBY9e7TObN4anVV/63kX.', 1, 1, 1664092535),
-(8, 'Rafi', 'jal@admin.com', '', 'default.jpg', '$2y$10$PiQVnpM8Bmm3eBDST3oNx./mxUJs7kTs0skpRQIBgiTVRWMUp.iui', 2, 1, 1665026453);
+INSERT INTO `user` (`id`, `name`, `date_of_birth`, `gender`, `email`, `telp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(1, 'Nico Izumi', '', '', 'izumi@mail.com', '', 'default.jpg', '$2y$10$eZ1zsN22l6Epwl.umfdGQO0.zx0CK1R2Zh5BQPonX11Irmclk/tfW', 1, 1, 1664092535),
+(8, 'Rafi', '', '', 'jal@admin.com', '', 'default.jpg', '$2y$10$PiQVnpM8Bmm3eBDST3oNx./mxUJs7kTs0skpRQIBgiTVRWMUp.iui', 1, 1, 1665026453);
 
 -- --------------------------------------------------------
 
@@ -161,10 +206,12 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (28, 1, 6),
 (29, 2, 2),
 (31, 1, 15),
-(32, 1, 2),
-(35, 1, 14),
 (36, 1, 16),
-(37, 1, 17);
+(37, 1, 17),
+(38, 1, 18),
+(39, 1, 19),
+(41, 1, 2),
+(42, 1, 14);
 
 -- --------------------------------------------------------
 
@@ -190,7 +237,8 @@ CREATE TABLE `user_client` (
 
 INSERT INTO `user_client` (`id`, `full_name`, `email`, `telp`, `password`, `image`, `is_active`, `role`, `date_created`) VALUES
 (1, 'Izumii', 'xzumi3@gmail.com', '859126462972', '$2y$10$K4d.D3Lg4JVeoyktkh/0SuwTMhoUPijfXvwfs17QjQJpSDdaiWx7.', 'default.jpg', '1', 'member', '1667233868'),
-(2, 'Izumii', 'xzumi31@gmail.com', '859126462972', '$2y$10$i5pQ6AfTeS3ycdkQIXdhle9SDkVQEIU2pOMxhFZEvc2XoUEHRF3la', 'default.jpg', '1', 'member', '1667234340');
+(2, 'Izumii', 'xzumi31@gmail.com', '859126462972', '$2y$10$i5pQ6AfTeS3ycdkQIXdhle9SDkVQEIU2pOMxhFZEvc2XoUEHRF3la', 'default.jpg', '1', 'partner', '1667234340'),
+(3, 'Izumii', 'xzumi311@gmail.com', '234242', '$2y$10$62AhBpxB2anpgrsWYj5Kt.PKXhOJiDEihogUgkZFNB3eNDk4nCmZC', 'default.jpg', '1', 'member', '1668325799');
 
 -- --------------------------------------------------------
 
@@ -212,10 +260,11 @@ INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
 (1, 'Dashboard', 'fas fa-fw fa-tachometer-alt'),
 (2, 'Profile', 'fas fa-fw fa-user'),
 (6, 'Menu', 'fas fa-fw fa-folder'),
-(14, 'City', 'fas fa-fw fa-city'),
+(14, 'Users', 'fas fa-fw fa-users'),
 (15, 'Type', 'fas fa-fw fa-list'),
 (16, 'Hotel', 'fas fa-fw fa-hotel'),
-(17, 'Room', 'fas fa-fw fa-bed');
+(17, 'Room', 'fas fa-fw fa-bed'),
+(19, 'City', 'fas fa-fw fa-city');
 
 -- --------------------------------------------------------
 
@@ -270,10 +319,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 (16, 11, 'Upload Image', 'pr/upload_image', 1),
 (17, 6, 'Role', 'menu/role', 1),
 (18, 2, 'Change Password', 'profile/changepassword', 1),
-(19, 14, 'List City', 'city', 1),
+(19, 19, 'List City', 'city', 1),
 (20, 15, 'List Type', 'type', 1),
 (21, 16, 'Data Hotel', 'hotel', 1),
-(22, 17, 'Data room', 'room', 1);
+(22, 17, 'Data room', 'room', 1),
+(23, 14, 'User Admin', 'users/user_admin', 1),
+(24, 14, 'User Client', 'users/user_client', 1);
 
 --
 -- Indexes for dumped tables
@@ -283,6 +334,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 -- Indexes for table `city`
 --
 ALTER TABLE `city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coba`
+--
+ALTER TABLE `coba`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -347,25 +404,31 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `coba`
+--
+ALTER TABLE `coba`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -377,31 +440,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user_client`
 --
 ALTER TABLE `user_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
