@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    margin: 0;
+    padding: 0;
+    background-color:
+        #E9E9E9;
+}
+
+.dropdown-menu[data-bs-popper] {
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.dropdown-item {
+    font-size: 20px;
+
+
+}
+
+.wadahYGY {
+    border-radius: 10px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+}
+
+input[type=tel] {
+    width: 140% !important;
+}
+
+.wadahYGY input[type=tel],
+.wadahYGY input[type=text],
+.wadahYGY input[type=email] {
+    background: transparent;
+    border-radius: 8px;
+    padding: 22px;
+    border: 1px solid rgba(120, 120, 120, 0.8);
+}
+
+.shYGY {
+    box-shadow: 0px 0px 10px 0px #00000040;
+    border-radius: 10px;
+}
+
+.footer {
+    border-top: 1px solid grey;
+    height: 60px;
+    bottom: 0;
+    width: 100%;
+    line-height: 1.6;
+    font-size: 30px;
+    text-align: center;
+}
+
+.tbl3 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+    border-bottom: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.tbl2 {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+
+}
+
+.tbl1 {
+    border-radius: 15px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+
+}
+
+.payYGY {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid rgba(162, 162, 162, 0.61);
+
+}
+
+.payYGY table tr td {
+    user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+}
+
+.tbl1 table tr td {
+
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.tbl1 table tr th {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+}
+
+
+
+.accordion {
+    --bs-accordion-color: #212529;
+    --bs-accordion-bg: transparent;
+    --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+    --bs-accordion-border-color: rgba(162, 162, 162, 0.61);
+    --bs-accordion-border-width: 2px;
+    --bs-accordion-border-radius: 0.5rem;
+    --bs-accordion-inner-border-radius: calc(0.375rem - 1px);
+    --bs-accordion-btn-padding-x: 1.25rem;
+    --bs-accordion-btn-padding-y: 1rem;
+    --bs-accordion-btn-color: #212529;
+    --bs-accordion-btn-bg: var(--bs-accordion-bg);
+    --bs-accordion-btn-icon: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
+    --bs-accordion-btn-icon-width: 1.25rem;
+    --bs-accordion-btn-icon-transform: rotate(-180deg);
+    --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+    --bs-accordion-btn-active-icon: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
+    --bs-accordion-btn-focus-border-color: #86b7fe;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25remrgba(13, 110, 253, 0.25);
+    --bs-accordion-body-padding-x: 1.25rem;
+    --bs-accordion-body-padding-y: 1rem;
+    --bs-accordion-active-color: #0c63e4;
+    --bs-accordion-active-bg: #e7f1ff;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #333;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.capee td {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@media (min-width:992px) {
+    .coba123 {
+        padding-right: 45px;
+    }
+
+    input[type=tel] {
+        width: 170% !important;
+
+    }
+}
+
+@media (min-width:1200px) {
+    input[type=tel] {
+        width: 200% !important;
+    }
+}

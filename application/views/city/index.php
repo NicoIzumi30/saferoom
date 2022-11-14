@@ -44,7 +44,7 @@
                                                     <tr>
                                                         <td><?= $no++ ?></td>
                                                         <td><?= $c->city ?></td>
-                                                        <td><img class="image-responsive" src="<?= base_url() ?>assets/image/city/<?= $c->image ?>" width="100px" height="75px"></td>
+                                                        <td><img class="image-responsive" src="<?= base_url() ?>assets/image/city/<?= $c->image ?>" width="75px" height="75px"></td>
                                                         <td>
                                                             <a href="<?= base_url('city/delete/'); ?><?= $c->id; ?>" class="tombol-hapus btn btn-danger btn-sm">
                                                                 <i class="fas fa-trash"></i>

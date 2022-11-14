@@ -32,6 +32,7 @@
                                     <th>Room Name</th>
                                     <th>Hotel</th>
                                     <th>Type Room</th>
+                                    <th>Image</th>
                                     <th>Account</th>
                                     <th>Address</th>
                                     <th>Price</th>
@@ -50,6 +51,13 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $t->room_name ?></td>
                                         <td><?= $t->nama_hotel ?></td>
+                                        <td> <?php
+                                                $img = explode(',', $t->image);
+                                                foreach ($img as $foto) :
+                                                ?>
+                                                <img src="<?= base_url('assets/image/room/') ?><?= $foto ?>" width="15px">
+                                            <?php endforeach ?>
+                                        </td>
                                         <td><?= $t->name ?></td>
                                         <td><?= $t->email ?></td>
                                         <td><?= $t->address ?></td>
@@ -156,7 +164,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= base_url() ?>room/index/" method="post">
+                        <form action="<?= base_url() ?>room/index/" method="post" enctype="multipart/form-data">
                             <?php
                             $getData = $this->db->get_where('hotel', ['id' => '2'])->row_array();
                             ?>
@@ -180,6 +188,10 @@
                             <div class="form-group">
                                 <label for="account">Account</label>
                                 <input type="text" class="form-control" id="account" name="account" value="<?= $this->session->userdata('email') ?>" disabled>
+                            </div>
+                            <div class="form-group3">
+                                <label for="image">Image</label>
+                                <input type="file" class="form-control" name="image[]" id="image" multiple required>
                             </div>
                             <div class="form-group">
                                 <label for="address" class="form-label">Address</label>

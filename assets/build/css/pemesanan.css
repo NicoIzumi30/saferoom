@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    margin: 0;
+    padding: 0;
+    background-color:
+        #E9E9E9;
+}
+
+.dropdown-menu[data-bs-popper] {
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.dropdown-item {
+    font-size: 20px;
+
+
+}
+
+.wadahYGY {
+    border-radius: 10px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+}
+
+input[type=tel] {
+    width: 140% !important;
+}
+
+.wadahYGY input[type=tel],
+.wadahYGY input[type=text],
+.wadahYGY input[type=email] {
+    background: transparent;
+    border-radius: 8px;
+    padding: 22px;
+    border: 1px solid rgba(120, 120, 120, 0.8);
+}
+
+.shYGY {
+    box-shadow: 0px 0px 10px 0px #00000040;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.footer {
+    border-top: 1px solid grey;
+    height: 60px;
+    bottom: 0;
+    width: 100%;
+    line-height: 1.6;
+    font-size: 30px;
+    text-align: center;
+}
+
+.tbl3 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+    border-bottom: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.tbl2 {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid rgba(120, 120, 120, 0.8);
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+
+}
+
+.tbl1 table tr td {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.tbl1 table tr .cikula {
+    text-align: end;
+    font-weight: 600;
+}
+
+@media (min-width:992px) {
+    .coba123 {
+        padding-right: 45px;
+    }
+
+    input[type=tel] {
+        width: 170% !important;
+
+    }
+}
+
+@media (min-width:1200px) {
+    input[type=tel] {
+        width: 200% !important;
+    }
+}

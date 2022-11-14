@@ -1,0 +1,402 @@
+.imgHome {
+  width: 100%;
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 12px;
+  position: relative;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+.img1 {
+  width: 50%;
+}
+
+.imgHome .img1 img {
+  width: 100%;
+  height: 403px;
+  border-radius: 16px 0 0 16px;
+  object-fit: cover;
+}
+
+.img2 {
+  width: 50%;
+  position: relative;
+  /* padding: 0;
+  background-color: red; */
+}
+
+.imgHome .img2 img {
+  object-fit: cover;
+  width: 49%;
+  height: 204px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.igTop {
+  border-radius: 0 16px 0 0;
+}
+
+.igBottom {
+  border-radius: 0 0 16px 0;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+.fotter {
+  border-top: 1px solid grey;
+  height: 60px;
+  bottom: 0;
+  width: 100%;
+  line-height: 1.6;
+  font-size: 30px;
+  text-align: center;
+}
+.fotter a {
+  text-decoration: none;
+  color: #555;
+  padding: 10px;
+}
+
+.conHome {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  font-family: Roboto-Regular;
+  padding: 0 60px;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+  margin-bottom: 46px;
+}
+
+.con1 .conLeft {
+  width: 64%;
+}
+
+.conHome .conLeft {
+  width: 776px;
+  float: left;
+}
+
+.conHome .conLeft h1 {
+  font-size: 28px;
+  color: #1b1c1f;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  font-family: Roboto-Bold !important;
+  border-top: none;
+}
+
+.conDet h1 {
+  font-size: 28px;
+  color: #303030;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  font-family: Roboto-Regular;
+}
+
+.conDet h2 {
+  color: #606060;
+  font-size: 16px;
+  padding-bottom: 16px;
+  font-family: Roboto-Regular;
+}
+
+.conFac {
+  width: 100%;
+  display: inline-block;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-top: 24px;
+}
+
+.conFac h2.conText {
+  font-size: 20px;
+  font-family: Roboto-Bold;
+  margin-top: 18px;
+}
+
+.conFac h2 {
+  color: #1b1c1f;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  border-top: none;
+}
+
+.conFac .conFac1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.conFac .conFac1 .conFac2 {
+  width: 33%;
+  vertical-align: middle;
+  align-items: center;
+  display: inherit;
+  padding-bottom: 26px;
+}
+
+.conFac .conFac1 .conFac2 img {
+  padding: 1px;
+}
+
+.MapView h2 {
+  color: #000;
+  font-size: 16px;
+  font-family: Roboto-Medium;
+  padding: 24px 0 16px;
+}
+
+.MapView_mapList {
+  font-size: 20px !important;
+}
+
+.MapView_map {
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0 0px 20px #0000004d;
+}
+
+.MapView .MapView_map img {
+  width: 100%;
+}
+
+.aboutHotel h2 {
+  color: #1b1c1f;
+  font-size: 20px !important;
+  padding: 25px 0 20px !important;
+  font-family: Roboto-Bold;
+}
+
+.conHome .conLeft p {
+  color: #1b1c1f;
+  font-size: 16px;
+  padding-bottom: 16px;
+  font-family: Roboto-Regular;
+}
+
+.aboutHotel p {
+  font-size: 16px;
+  color: #1b1c1f;
+  line-height: 24px;
+  padding-bottom: 0 !important;
+}
+
+.Policies {
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-family: Roboto-Regular;
+  padding: 16px;
+  margin-top: 8px;
+  box-shadow: 0 4px 10px #0000004d;
+}
+
+.Policies h2 {
+  color: #1b1c1f;
+  font-size: 16px !important;
+  padding: 0;
+  padding-bottom: 16px !important;
+  font-weight: 700;
+  font-family: Roboto-Bold;
+  padding-top: 0 !important;
+}
+
+.conHome .conLeft p {
+  color: #1b1c1f;
+  font-size: 16px;
+  padding-bottom: 16px;
+  font-family: Roboto-Regular;
+}
+
+.Policies .Policies_policyList li {
+  line-height: 14px;
+  list-style-type: disc;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.conHome .conLeft p {
+  color: #1b1c1f;
+  font-size: 16px;
+  padding-bottom: 16px;
+  font-family: Roboto-Regular;
+}
+
+.BookingPanel {
+  border-radius: 16px;
+  min-height: 300px;
+  width: 290px;
+  padding: 20px;
+  position: sticky;
+  top: 24px;
+  right: 36px;
+  box-shadow: 0 4px 10px #0000004d;
+  font-family: Roboto-Regular;
+  float: right;
+  margin-top: 33px;
+}
+
+.BookingPanel .BookingPanel_1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.BookingPanel .BookingPanel_1 .BookingPanel_2 h3 {
+  color: #303030;
+  font-family: Roboto-Bold;
+  font-size: 24px;
+  padding-top: 8px;
+}
+
+.BookingPanel .BookingPanel_checkValue {
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTime {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  padding: 16px;
+  vertical-align: middle;
+  align-items: center;
+  font-family: popies;
+  position: relative;
+}
+
+.BookingPanel
+  .BookingPanel_checkValue
+  .BookingPanel_checkTime
+  .BookingPanel_checkIn {
+  position: relative;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTime h3 {
+  font-size: 12px;
+  color: #303030;
+  padding-bottom: 2px;
+  font-family: Roboto-Bold;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTime h4 {
+  color: #303030;
+  font-size: 16px;
+  padding-top: 4px;
+  font-family: Roboto-Regular;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_roomCount {
+  padding: 16px;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_roomCount h3 {
+  font-size: 12px;
+  color: #303030;
+  font-family: Roboto-Bold;
+  padding-bottom: 2px;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_roomCount h4 {
+  color: #303030;
+  font-size: 16px;
+  padding-top: 4px;
+}
+
+.BookingPanel .BookingPanel_checkValue {
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}
+
+.BookingPanel_checkValueOverride {
+  margin-top: 14px !important;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTimeIn {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTimeIn h3 {
+  font-size: 12px;
+  color: #303030;
+  font-family: Roboto-Bold;
+}
+
+.BookingPanel .BookingPanel_checkValue .BookingPanel_checkTimeIn h4 {
+  color: #303030;
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+.BookingPanel .BookingPanel_totalSaving {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.BookingPanel .BookingPanel_totalSaving h3 {
+  font-size: 14px;
+  color: #303030;
+  font-family: Roboto-Regular;
+}
+
+.BookingPanel .BookingPanel_totalSaving h2 {
+  font-size: 14px;
+  font-family: Roboto-Bold;
+  color: #303030;
+}
+
+.BookingPanel .BookingPanel_bookNowBtn {
+  background: #ec2224;
+  border: 1px solid #ec2224;
+  border-radius: 4px;
+  padding: 12px 40px;
+  color: #fff;
+  font-family: Roboto-Bold;
+  font-size: 14px;
+  text-decoration: none;
+  display: inherit;
+  text-align: center;
+  margin-top: 36px;
+  cursor: pointer;
+}
+
+/* .Footerr {
+  padding: 23px 16px;
+}
+
+.Footerr {
+  padding: 23px 60px;
+  border-top: 1px solid #d3d3d3;
+  text-align: center;
+  background-color: #f3fbfd;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.Footerr .Footerr1 {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.Footerr .Footerr2 {
+  padding: 0 1%;
+  position: relative;
+  left: 20px;
+} */

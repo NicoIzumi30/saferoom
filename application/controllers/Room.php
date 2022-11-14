@@ -30,12 +30,41 @@ class Room extends CI_Controller
             $this->load->view('room/index', $data);
             $this->load->view('template/footer');
         } else {
+            $jumlahData = count($_FILES['image']['name']);
+
+            // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+            for ($i = 0; $i < $jumlahData; $i++) :
+
+                // Inisialisasi Nama,Tipe,Dll.
+                $_FILES['file']['name']     = $_FILES['image']['name'][$i];
+                $_FILES['file']['type']     = $_FILES['image']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
+                $_FILES['file']['size']     = $_FILES['image']['size'][$i];
+
+                // Konfigurasi Upload
+                $config['upload_path']          = './assets/image/room/';
+                $config['overwrite'] = TRUE;
+                $config['allowed_types']        = 'gif|jpg|png';
+
+                // Memanggil Library Upload dan Setting Konfigurasi
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
+
+                    $fileData = $this->upload->data(); // Lakukan Upload Data
+
+                }
+
+            endfor;
             $fasilitas = implode(',', $this->input->post('fasilitas'));
+            $image = implode(',', $_FILES['image']['name']);
             $data = [
                 'user_id' => $this->input->post('user_id'),
                 'hotel_id' => $this->input->post('hotel_id'),
                 'type_id' => $this->input->post('type'),
                 'room_name' => $this->input->post('room_name'),
+                'image' => $image,
                 'address' => $this->input->post('address'),
                 'facility' => $fasilitas,
                 'price' => $this->input->post('price'),

@@ -6,17 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coba Insert Array</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid mx-5">
             <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,8 +25,7 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,28 +52,45 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-6">
-
-
+                <a href="<?= base_url('home/coba') ?>">
+                    <button class="btn btn-primary">Tambah Data</button>
+                </a>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Fasilitas</th>
+                            <th scope="col">Image</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
                         foreach ($fasilitas as $fas) :
-                            $all_tags = explode(',', $fas['fasilitas']);
-                            foreach ($all_tags as $key) :
                         ?>
-                        <tr>
-                            <th scope="row"><?= $no++; ?></th>
-                            <td><?= $key ?></td>
-                        </tr>
+                            <tr>
+                                <th scope="row"><?= $no++; ?></th>
+                                <td>
+                                    <?php
+                                    $all_tags = explode(',', $fas['fasilitas']);
+                                    foreach ($all_tags as $key) :
+                                    ?>
+                                        <ul>
+                                            <li style="margin-bottom: 0;"> <?= $key ?></li>
+                                        </ul>
+
+                                    <?php endforeach ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    $img = explode(',', $fas['image']);
+                                    foreach ($img as $foto) :
+                                    ?>
+                                        <img src="<?= base_url('assets/image/coba/') ?><?= $foto ?>" width="15px">
+                                    <?php endforeach ?>
+                                </td>
+                            </tr>
                         <?php
-                            endforeach;
                         endforeach;
                         ?>
                     </tbody>
@@ -89,8 +102,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 </body>
 

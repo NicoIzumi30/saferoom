@@ -1,8 +1,14 @@
-body {
-    padding: 0;
-    margin: 0;
+::-webkit-scrollbar {
+    display: none;
 }
 
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
 
 .sc1 {
     background-image: url(../images/bg.png);
@@ -14,12 +20,10 @@ body {
     background-size: cover;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .dropdown-menu[data-bs-popper] {
-    margin-top: 1.2rem;
+    top: 100%;
+    left: -20px;
+    margin-top: 1rem;
 }
 
 .dropdown-item {
@@ -75,4 +79,45 @@ body {
     line-height: 1.6;
     font-size: 30px;
     text-align: center;
+}
+
+.city-detail a {
+    text-decoration: none;
+    color: #333;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide a {
+    text-decoration: none;
+    color: #333;
+
 }

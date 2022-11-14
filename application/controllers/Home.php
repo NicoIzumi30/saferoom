@@ -19,15 +19,44 @@ class Home extends CI_Controller
     }
     public function coba_insert()
     {
+        $jumlahData = count($_FILES['image']['name']);
+
+        // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+        for ($i = 0; $i < $jumlahData; $i++) :
+
+            // Inisialisasi Nama,Tipe,Dll.
+            $_FILES['file']['name']     = $_FILES['image']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['image']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
+            $_FILES['file']['size']     = $_FILES['image']['size'][$i];
+
+            // Konfigurasi Upload
+            $config['upload_path']          = './assets/image/coba/';
+            $config['overwrite'] = TRUE;
+            $config['allowed_types']        = 'gif|jpg|png|pdf';
+
+            // Memanggil Library Upload dan Setting Konfigurasi
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
+
+                $fileData = $this->upload->data(); // Lakukan Upload Data
+
+            }
+
+        endfor; // Penutup For
         $fasilitas = implode(',', $this->input->post('fasilitas'));
+        $image = implode(',', $_FILES['image']['name']);
         $form_data = array(
             'full_name' => $this->input->post('full_name'),
             'coment' => $this->input->post('coment'),
-            'fasilitas' => $fasilitas
+            'fasilitas' => $fasilitas,
+            'image' => $image
         );
         $query = $this->db->insert('coba', $form_data);
         if ($query) {
-            var_dump($form_data);
+            redirect('home/coba21');
         } else {
             echo 'Gagal cok';
         }
@@ -35,6 +64,26 @@ class Home extends CI_Controller
     public function list()
     {
         $this->load->view('home/list_room');
+    }
+    public function pemesanan()
+    {
+        $this->load->view('home/pemesanan');
+    }
+    public function booking()
+    {
+        $this->load->view('home/booking');
+    }
+    public function halaman3()
+    {
+        $this->load->view('home/halaman3');
+    }
+    public function hal3YGY()
+    {
+        $this->load->view('home/hal3');
+    }
+    public function payment()
+    {
+        $this->load->view('home/payment');
     }
     public function register()
     {
