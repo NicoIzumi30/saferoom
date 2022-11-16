@@ -104,7 +104,7 @@
                             foreach ($city as $kota) :
                             ?>
                                 <div class="city-detail text-center mx-2">
-                                    <a href="halaman3.html">
+                                    <a href="<?=base_url('home/list')?>">
                                         <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
                                         <p style="font-weight:500"><?= $kota->city ?></p>
                                     </a>
@@ -124,7 +124,7 @@
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -136,7 +136,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -149,7 +149,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -161,7 +161,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -173,7 +173,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -186,7 +186,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="halaman3.html">
+                                                    <a href="<?=base_url('home/halaman3')?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
                                                             <div class="card-body">

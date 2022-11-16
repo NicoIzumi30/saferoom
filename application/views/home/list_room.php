@@ -181,12 +181,12 @@
                         </div>
                         <div class="row my-3 bunkusKamar">
                             <div class="col-6">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <img class="w-100" src="<?= base_url() ?>assets/build/images/bedroom-ga8e74d337_1920 1.png" alt="">
                                 </a>
                             </div>
                             <div class="col-6 mt-2 bTitle">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <h5 style="color:#222222;font-size: 24px;">Sans Hotel Puri Indah Jakarta</h5>
                                 </a>
                                 <p style="font-size:15px">Kembangan</p>
@@ -210,12 +210,12 @@
                         </div>
                         <div class="row my-3 bunkusKamar">
                             <div class="col-6">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <img class="w-100" src="<?= base_url() ?>assets/build/images/hotel-g6515fe641_1920 2.png" alt="">
                                 </a>
                             </div>
                             <div class="col-6 mt-2 bTitle">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <h5 style="color:#222222;font-size: 24px;">Wisma Bintang Red</h5>
                                 </a>
                                 <p style="font-size:15px">Kembangan</p>
@@ -238,12 +238,12 @@
                         </div>
                         <div class="row my-3 bunkusKamar">
                             <div class="col-6">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <img class="w-100" src="<?= base_url() ?>assets/build/images/72828-kamar-hotel.jpg" alt="" style="border-radius: 20px;">
                                 </a>
                             </div>
                             <div class="col-6 mt-2 bTitle">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <h5 style="color:#222222;font-size: 24px;">Kapuk Businees Park</h5>
                                 </a>
                                 <p style="font-size:15px">Kembangan</p>
@@ -267,12 +267,12 @@
                         </div>
                         <div class="row my-3 bunkusKamar">
                             <div class="col-6">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <img class="w-100" src="<?= base_url() ?>assets/build/images/bedroom-gf651aa221_1920 2.png" alt="">
                                 </a>
                             </div>
                             <div class="col-6 mt-2 bTitle">
-                                <a href="halaman3.html">
+                                <a href="<?=base_url('home/halaman3')?>">
                                     <h5 style="color:#222222;font-size: 24px;">Stasiun Poris Tangerang</h5>
                                 </a>
                                 <p style="font-size:15px">Kembangan</p>

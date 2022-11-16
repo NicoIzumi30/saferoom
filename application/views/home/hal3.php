@@ -192,8 +192,8 @@
                         </a>
 
                         <ul class="dropdown-menu" style="padding-bottom: 0.5px">
-                            <li><a class="dropdown-item" href="#">Profile Saya</a></li>
-                            <li><a class="dropdown-item" href="#">Saya Booking</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('home/profile')?>">Profile Saya</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('home/pesanansaya')?>">Saya Booking</a></li>
                             <li>
                                 <a class="dropdown-item" href="#" style="border-bottom: none">Keluar</a>
                             </li>
@@ -317,9 +317,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <form action="<?= base_url('home/pemesanan') ?>" method="post">
                         <div class="col-11 mx-auto mt-4">
                             <button type="submit" class="btn btn-danger text-center w-100">Pesan Sekarang</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -331,6 +333,11 @@
         </div>
     </section>
 
+    
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -69,15 +69,19 @@ class Home extends CI_Controller
     {
         $this->load->view('home/pemesanan');
     }
+    public function pesanansaya()
+    {
+        $this->load->view('home/pesanan');
+    }
     public function booking()
     {
         $this->load->view('home/booking');
     }
-    public function halaman3()
+    public function halaman31()
     {
         $this->load->view('home/halaman3');
     }
-    public function hal3YGY()
+    public function halaman3()
     {
         $this->load->view('home/hal3');
     }

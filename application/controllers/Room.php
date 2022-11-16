@@ -25,7 +25,11 @@ class Room extends CI_Controller
             $data['usere'] = $this->db->get('user')->result_array();
             $data['type'] = $this->db->get('room_type')->result_array();
             $data['hotel'] = $this->db->get('hotel')->result_array();
-            $data['room'] = $this->M_room->getRoom();
+            if($this->session->userdata('role_id') == '7'){
+                $data['room'] = $this->M_room->getRoomW($this->session->userdata('id'));
+            }else{
+                $data['room'] = $this->M_room->getRoom();
+            }
             $this->load->view('template/header', $data);
             $this->load->view('room/index', $data);
             $this->load->view('template/footer');

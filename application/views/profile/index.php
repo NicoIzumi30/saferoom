@@ -10,7 +10,7 @@
         </div>
         <div class="row p-3">
             <div class="card mb-3 col-lg-5">
-                <div class="row g-0">
+                <div class="row g-0 p-3">
                     <div class="col-md-4 my-auto text-center">
                         <img src="<?= base_url() ?>assets/image/profile/<?= $user['image'] ?>" class="img-fluid rounded-start" style="height: 130px;" alt="...">
                     </div>

@@ -53,7 +53,7 @@
     <section id="content">
         <div class="container mt-4 mb-5" style="min-height: 80vh;">
             <div class="teh2">
-                <h3 style="color:rgba(0, 0, 0, 0.8)"><span><a href="halaman3.html" class="text-black"> <i class="fa-solid fa-arrow-left mr-3"></i></a></span> Ringkasan
+                <h3 style="color:rgba(0, 0, 0, 0.8)"><span><a href="<?=base_url('home/halaman3')?>" class="text-black"> <i class="fa-solid fa-arrow-left mr-3"></i></a></span> Ringkasan
                     Pemesanan</h3>
             </div>
             <form action="<?= base_url('home/payment') ?>" method="post">

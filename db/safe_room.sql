@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 09:21 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Nov 16, 2022 at 08:05 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -87,7 +88,7 @@ CREATE TABLE `hotel` (
   `alamat` varchar(256) NOT NULL,
   `jumlah_kamar` varchar(10) NOT NULL,
   `about` text NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 0
+  `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -101,6 +102,27 @@ INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `alama
 (7, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', '', '', 'asdw', 1),
 (10, 'Hotel Mangkubumi', 2, 1, 'Cahyaningrat', 'Jl. Imam Bonjol No.45, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80112, Jalan Imam Bonjol, No 45, Pemecutan Klod, Kecamatan Denpasar Barat, Denpasar Barat, Indonesia, 80112', '12', 'yangPunyaYGY', 1),
 (14, 'Nico', 2, 1, 'Suharto', 'Jl. Imam Bonjol No.45, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80112, Jalan Imam Bonjol, No 45, Pemecutan Klod, Kecamatan Denpasar Barat, Denpasar Barat, Indonesia, 80112', '11', 'Hotel yang berada di tanah hijau', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengajuan`
+--
+
+CREATE TABLE `pengajuan` (
+  `id` int(11) NOT NULL,
+  `nama` int(11) NOT NULL,
+  `tanggal_lahir` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `telp` int(11) NOT NULL,
+  `gender` int(11) NOT NULL,
+  `hotel` int(11) NOT NULL,
+  `city` int(11) NOT NULL,
+  `room` int(11) NOT NULL,
+  `image` int(11) NOT NULL,
+  `address` int(11) NOT NULL,
+  `about` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -127,7 +149,8 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`id`, `user_id`, `hotel_id`, `type_id`, `room_name`, `image`, `address`, `facility`, `price`, `about`, `status`) VALUES
-(1, 1, 2, 1, 'Heru', 'img1.png,keripik-bawang-pangsit-crispy-fried-260nw-1897975168-removebg-preview.png,logo.png,tugu-pancakarsa-sentul 1.png', 'Jl lagi gabut km 12', 'Resepsionis,AC,wifi Gratis', '210000', 'Cape bang?', '1');
+(1, 1, 2, 1, 'Heru', 'img1.png,keripik-bawang-pangsit-crispy-fried-260nw-1897975168-removebg-preview.png,logo.png,tugu-pancakarsa-sentul 1.png', 'Jl lagi gabut km 12', 'Resepsionis,AC,wifi Gratis', '210000', 'Cape bang?', '1'),
+(2, 9, 2, 1, 'Coba123', 'rsz_11rsz_2christina-wocintechchat-com-faefwcdokig-unsplash_1.jpg,rsz_2christina-wocintechchat-com-faefwcdokig-unsplash_1.jpg,christina-wocintechchat-com-faEfWCdOKIg-unsplash (1).jpg,christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg', 'Bakungan,Plumutan,Bambanglipuro,Bantul', 'Resepsionis,AC', '99999', 'Hotel Uji Coba', '1');
 
 -- --------------------------------------------------------
 
@@ -173,7 +196,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `date_of_birth`, `gender`, `email`, `telp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'Nico Izumi', '', '', 'izumi@mail.com', '', 'default.jpg', '$2y$10$eZ1zsN22l6Epwl.umfdGQO0.zx0CK1R2Zh5BQPonX11Irmclk/tfW', 1, 1, 1664092535),
-(8, 'Rafi', '', '', 'jal@admin.com', '', 'default.jpg', '$2y$10$PiQVnpM8Bmm3eBDST3oNx./mxUJs7kTs0skpRQIBgiTVRWMUp.iui', 1, 1, 1665026453);
+(8, 'Rafi', '', '', 'jal@admin.com', '', 'default.jpg', '$2y$10$PiQVnpM8Bmm3eBDST3oNx./mxUJs7kTs0skpRQIBgiTVRWMUp.iui', 1, 0, 1665026453),
+(9, 'Bella', '', '', 'bela@mail.com', '', 'default.jpg', '$2y$10$kw3RdQwa.rY.miSDS/tRkeWA6ZJwDA.HZihdZ9CgLnh6u4B/JdHZC', 7, 1, 1668475090),
+(10, 'Bella', '', '', 'izumi123@mail.com', '', 'default.jpg', '$2y$10$5WXClpm84pgo0221cx/26Ol8CUFD6gvJR4W6VEyrFztbgcIck98eC', 2, 1, 1668484918);
 
 -- --------------------------------------------------------
 
@@ -211,7 +236,10 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (38, 1, 18),
 (39, 1, 19),
 (41, 1, 2),
-(42, 1, 14);
+(42, 1, 14),
+(45, 7, 2),
+(46, 7, 17),
+(47, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -284,7 +312,7 @@ CREATE TABLE `user_role` (
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'administrator'),
 (2, 'member\r\n'),
-(4, 'Intership');
+(7, 'Partner');
 
 -- --------------------------------------------------------
 
@@ -422,25 +450,25 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user_client`
@@ -452,19 +480,19 @@ ALTER TABLE `user_client`
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

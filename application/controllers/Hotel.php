@@ -53,12 +53,6 @@ class Hotel extends CI_Controller
         $this->form_validation->set_rules('city', 'City', 'required');
         $this->form_validation->set_rules('user', 'User', 'required');
         if ($this->form_validation->run() == false) {
-
-            $a = $this->form_validation->set_rules('name', 'Name', 'required');
-            $b = $this->form_validation->set_rules('city', 'City', 'required');
-            $c =  $this->form_validation->set_rules('user', 'User', 'required');
-            $d = $this->form_validation->set_rules('pemilik', 'Pemilik', 'required');
-            $ck = $this->form_validation->run();
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Update Failed!
               </div>');
