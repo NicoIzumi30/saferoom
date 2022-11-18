@@ -87,60 +87,87 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="<?= base_url() ?>hotel/update/<?= $t->id ?>" method="post">
-                                                        <?php $getData = $this->db->get_where('hotel', ['id' => $t->id])->row_array(); ?>
+                                                    <form action="<?= base_url() ?>room/index/" method="post" enctype="multipart/form-data">
+                                                        <?php
+                                                        $getData = $this->db->get_where('hotel', ['id' => '2'])->row_array();
+                                                        ?>
                                                         <div class="form-group">
-                                                            <label for="name">Hotel Name </label>
-                                                            <input type="text" class="form-control" id="name" name="name" value="<?= $t->room_name ?>">
+                                                            <label for="name">Room Name</label>
+                                                            <input type="text" class="form-control" id="room_name" name="room_name" value="<?= $t->room_name ?>">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="city">City </label>
-                                                            <select name="city" id="city" class="form-control">
-                                                                <option value="<?= $t->id_city ?>"><?= $t->city ?></option>
-                                                                <?php foreach ($city as $c) : ?>
-                                                                    <option value="<?= $c['id'] ?>"><?= $c['city']; ?></option>
+                                                            <label for="hotel">Hotel</label>
+                                                            <input type="text" class="form-control" id="hotel" name="hotel" value="<?= $getData['nama_hotel'] ?>" disabled>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="type">Type Room </label>
+                                                            <select name="type" id="type" class="form-control">
+                                                                <option value="<?= $t->name ?>"><?= $t->name ?></option>
+                                                                <?php foreach ($type as $u) : ?>
+                                                                    <option value="<?= $u['id'] ?>"><?= $u['name']; ?></option>
                                                                 <?php endforeach; ?>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="user">Account </label>
-                                                            <select name="user" id="user" class="form-control">
-                                                                <option value="<?= $t->id_user ?>"><?= $t->email ?></option>
-                                                                <?php foreach ($usere as $u) : ?>
-                                                                    <option value="<?= $u['id'] ?>"><?= $u['email']; ?></option>
-                                                                <?php endforeach; ?>
-                                                            </select>
+                                                            <label for="account">Account</label>
+                                                            <input type="text" class="form-control" id="account" name="account" value="<?= $this->session->userdata('email') ?>" disabled>
+                                                        </div>
+                                                        <div class="form-group3">
+                                                            <label for="image">Image</label>
+                                                            <input type="file" class="form-control" name="image[]" id="image" multiple required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="pemilik">Pemilik</label>
-                                                            <input type="text" class="form-control" id="pemilik" name="pemilik" value="<?= $t->pemilik ?>">
+                                                            <label for="address" class="form-label">Address</label>
+                                                            <textarea class="form-control" name="address" id="address" rows="3"><?= $t->address ?></textarea>
                                                         </div>
-                                                        <div class="form-group ">
-                                                            <label for="kebijakan">Kebijakan</label>
-                                                            <textarea id="kebijakan" name="kebijakan" class="form-control" rows="5" cols="80"><?= $t->kebijakan ?></textarea>
-
+                                                        <div class="form-group">
+                                                            <label for="price">Price</label>
+                                                            <input type="number" value="<?= $t->price ?>" class="form-control" id="price" name="price">
                                                         </div>
-                                                        <?php if ($t->status) { ?>
-                                                            <div class="form-group">
-                                                                <label for="status">Status </label>
-                                                                <select name="status" id="status" class="form-control">
-                                                                    <option value="1">Activate </option>
-                                                                    <option value="0">Deactivate</option>
-                                                                </select>
-                                                            </div>
-                                                        <?php } else { ?>
-                                                            <div class="form-group">
-                                                                <label for="status">Status </label>
-                                                                <select name="status" id="status" class="form-control">
-                                                                    <option value="0">Deactivate</option>
-                                                                    <option value="1">Activate </option>
-                                                                </select>
-                                                            </div>
-                                                        <?php } ?>
+                                                        <p style="margin-bottom:0">Fasilitas</p>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="Resepsionis" name="fasilitas[]" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="fasilitas">
+                                                                Resepsionis
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="AC" name="fasilitas[]" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="fasilitas">
+                                                                AC
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="Televisi" name="fasilitas[]" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="fasilitas">
+                                                                Televisi
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="wifi Gratis" name="fasilitas[]" id="flexCheckDefault">
+                                                            <label class="form-check-label" for="fasilita   s">
+                                                                wifi Gratis
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group  mt-3">
+                                                            <label for="about" class="form-label">About</label>
+                                                            <textarea class="form-control" name="about" id="about" rows="3"><?= $t->about ?></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="status">Status </label>
+                                                            <select name="status" id="status" class="form-control">
+                                                                <option value="">Select Status</option>
+                                                                <option value="1">Activate </option>
+                                                                <option value="0">Deactivate</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="modal-footer">
                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                             <input class="btn btn-primary" type="submit" value="Add">
                                                         </div>
+                                                        <input type="hidden" name="hotel_id" value="<?= $getData['id'] ?>">
+                                                        <input type="hidden" name="user_id" value="<?= $this->session->userdata('id') ?>">
+
                                                     </form>
                                                 </div>
 

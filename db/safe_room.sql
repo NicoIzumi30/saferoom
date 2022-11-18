@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 08:05 AM
+-- Generation Time: Nov 18, 2022 at 07:06 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -111,17 +111,17 @@ INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `alama
 
 CREATE TABLE `pengajuan` (
   `id` int(11) NOT NULL,
-  `nama` int(11) NOT NULL,
-  `tanggal_lahir` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
-  `telp` int(11) NOT NULL,
-  `gender` int(11) NOT NULL,
-  `hotel` int(11) NOT NULL,
-  `city` int(11) NOT NULL,
-  `room` int(11) NOT NULL,
-  `image` int(11) NOT NULL,
-  `address` int(11) NOT NULL,
-  `about` int(11) NOT NULL
+  `nama` varchar(256) NOT NULL,
+  `tanggal_lahir` varchar(32) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `telp` varchar(16) NOT NULL,
+  `gender` varchar(8) NOT NULL,
+  `hotel` varchar(256) NOT NULL,
+  `city` varchar(64) NOT NULL,
+  `room` varchar(256) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `address` text NOT NULL,
+  `about` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -292,7 +292,8 @@ INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
 (15, 'Type', 'fas fa-fw fa-list'),
 (16, 'Hotel', 'fas fa-fw fa-hotel'),
 (17, 'Room', 'fas fa-fw fa-bed'),
-(19, 'City', 'fas fa-fw fa-city');
+(19, 'City', 'fas fa-fw fa-city'),
+(20, 'Pengajuan', 'fas fa-fw fa-inbox');
 
 -- --------------------------------------------------------
 
@@ -377,6 +378,12 @@ ALTER TABLE `hotel`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `room`
 --
 ALTER TABLE `room`
@@ -447,6 +454,12 @@ ALTER TABLE `hotel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
@@ -480,7 +493,7 @@ ALTER TABLE `user_client`
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user_role`

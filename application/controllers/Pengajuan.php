@@ -2,7 +2,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class RegisterHotel extends CI_Controller
+class Pengajuan extends CI_Controller
 {
     public function index()
     {
@@ -27,7 +27,7 @@ class RegisterHotel extends CI_Controller
                 $data['city'] = $this->db->get('city')->result();
                 $this->load->view('home/register', $data);
             } else {
-                redirect('registerHotel');
+                redirect('pengajuan');
             }
         } else {
             $this->_pengajuan();
@@ -36,5 +36,21 @@ class RegisterHotel extends CI_Controller
 
     public function _pengajuan()
     {
+        $data = [
+            'nama' => $this->input->post('name'),
+            'tanggal_lahir' => $this->input->post('lahir'),
+            'email' => $this->input->post('email'),
+            'telp' => $this->input->post('telp'),
+            'gender' => $this->input->post('gender'),
+            'hotel' => $this->input->post('hotel'),
+            'city' => $this->input->post('city'),
+            'room' => $this->input->post('room'),
+            'image' => $this->input->post('image'),
+            'address' => $this->input->post('address'),
+            'about' => $this->input->post('about'),
+        ];
+
+        $this->db->insert('pengajuan', $data);
+        redirect('registerHotel');
     }
 }

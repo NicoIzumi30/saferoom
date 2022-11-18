@@ -20,7 +20,7 @@
     <div class="container">
         <header>Registration</header>
 
-        <form action="<?= base_url('registerHotel/register') ?>" method="post">
+        <form action="<?= base_url('pengajuan/register') ?>" method="post">
             <div class="form first">
                 <h2>Syarat kerjasama SafeRoom</h2>
                 <p style="line-height: 35px; margin-bottom:10px">1. Foto Surat Hak Milik, Ijin Usaha Penginapan di lingkungan setempat<br>
