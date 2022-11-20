@@ -51,8 +51,9 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('status', 'status', 'required');
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-               Failed update user
-              </div>');
+               Failed update user   
+               
+               </div>');
             redirect('users/user_client');
         } else {
 

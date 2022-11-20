@@ -60,7 +60,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form action="<?= base_url() ?>payment/update_category/<?= $cat['id'] ?>" method="post">
+                                                                    <form action="<?= base_url() ?>payment/update_category  /<?= $cat['id'] ?>" method="post">
                                                                         <div class="form-group">
                                                                             <input type="text" class="form-control" id="name" name="name" placeholder="Category Name" value="<?= $cat['name'] ?>">
                                                                         </div>
