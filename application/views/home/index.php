@@ -53,19 +53,30 @@
                             <h1 class="p-3 text-white" style="font-size: 32px;">SafeRoom</h1>
                         </div>
                         <div class="col-md-2 text-end">
-                            <div class="dropdown">
-                                <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
-                                    <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
-                                    </span>
-                                </a>
+                            <?php
+                            if ($this->session->userdata('email')) {
+                            ?>
+                                <div class="dropdown">
+                                    <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
+                                        <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                                        </span>
+                                    </a>
 
-                                <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
-                                    <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
-                                    <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
-                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" style="border-bottom: none;">Keluar</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                    <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
+                                        <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
+                                        <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" style="border-bottom: none;">Keluar</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php } else { ?>
+                                <a href="<?= base_url('home/login') ?>">
+                                    <button type="button" class="btn btn-lg" style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
+                                        Gabung | Daftar
+                                    </button>
+                                </a>
+                            <?php } ?>
+
                         </div>
                     </nav>
 
@@ -104,7 +115,7 @@
                             foreach ($city as $kota) :
                             ?>
                                 <div class="city-detail text-center mx-2">
-                                    <a href="<?=base_url('home/list')?>">
+                                    <a href="<?= base_url('home/list/') . $kota->id ?>">
                                         <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
                                         <p style="font-weight:500"><?= $kota->city ?></p>
                                     </a>
@@ -124,7 +135,7 @@
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -136,7 +147,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -149,7 +160,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -161,7 +172,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -173,7 +184,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -186,7 +197,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <a href="<?=base_url('home/halaman3')?>">
+                                                    <a href="<?= base_url('home/halaman3') ?>">
                                                         <div class="card col-md-12 mt-3">
                                                             <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
                                                             <div class="card-body">

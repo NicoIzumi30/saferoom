@@ -137,26 +137,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $("form").submit(function(event) {
+        // $("form").submit(function(event) {
 
-            //     Swal.fire({
-            //   title: 'Pendaftaran Berhasil',
-            //   text: "Tunggu kami akan memprosesnya!",
-            //   icon: 'success',
-            //   confirmButtonColor: 'blue',
-            //   confirmButtonText: 'OK'
-            // }).then((result) => {
-            //   if (result.isConfirmed) {
-            //     window.location.href = "../auth";
-            //   }
-            // })
-            Swal.fire(
-                'Pendaftaran Berhasil',
-                'Tunggu kami akan memprosesnya!',
-                'success'
-            )
-            event.preventDefault();
-        });
+        //     //     Swal.fire({
+        //     //   title: 'Pendaftaran Berhasil',
+        //     //   text: "Tunggu kami akan memprosesnya!",
+        //     //   icon: 'success',
+        //     //   confirmButtonColor: 'blue',
+        //     //   confirmButtonText: 'OK'
+        //     // }).then((result) => {
+        //     //   if (result.isConfirmed) {
+        //     //     window.location.href = "../auth";
+        //     //   }
+        //     // })
+        //     Swal.fire(
+        //         'Pendaftaran Berhasil',
+        //         'Tunggu kami akan memprosesnya!',
+        //         'success'
+        //     )
+        //     event.preventDefault();
+        // });
     </script>
 </body>
 

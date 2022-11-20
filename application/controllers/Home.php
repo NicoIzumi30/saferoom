@@ -21,49 +21,56 @@ class Home extends CI_Controller
     {
         $jumlahData = count($_FILES['image']['name']);
 
-        // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
-        for ($i = 0; $i < $jumlahData; $i++) :
+        // // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+        // for ($i = 0; $i < $jumlahData; $i++) :
 
-            // Inisialisasi Nama,Tipe,Dll.
-            $_FILES['file']['name']     = $_FILES['image']['name'][$i];
-            $_FILES['file']['type']     = $_FILES['image']['type'][$i];
-            $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
-            $_FILES['file']['size']     = $_FILES['image']['size'][$i];
+        //     // Inisialisasi Nama,Tipe,Dll.
+        //     $_FILES['file']['name']     = $_FILES['image']['name'][$i];
+        //     $_FILES['file']['type']     = $_FILES['image']['type'][$i];
+        //     $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
+        //     $_FILES['file']['size']     = $_FILES['image']['size'][$i];
 
-            // Konfigurasi Upload
-            $config['upload_path']          = './assets/image/coba/';
-            $config['overwrite'] = TRUE;
-            $config['allowed_types']        = 'gif|jpg|png|pdf';
+        //     // Konfigurasi Upload
+        //     $config['upload_path']          = './assets/image/coba/';
+        //     $config['overwrite'] = TRUE;
+        //     $config['allowed_types']        = 'gif|jpg|png|pdf';
 
-            // Memanggil Library Upload dan Setting Konfigurasi
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
+        //     // Memanggil Library Upload dan Setting Konfigurasi
+        //     $this->load->library('upload', $config);
+        //     $this->upload->initialize($config);
 
-            if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
+        //     if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
 
-                $fileData = $this->upload->data(); // Lakukan Upload Data
+        //         $fileData = $this->upload->data(); // Lakukan Upload Data
 
-            }
+        //     }
 
-        endfor; // Penutup For
-        $fasilitas = implode(',', $this->input->post('fasilitas'));
-        $image = implode(',', $_FILES['image']['name']);
+        // endfor; // Penutup For
+        // $fasilitas = implode(',', $this->input->post('fasilitas'));
+        // $image = implode(',', $_FILES['image']['name']);
         $form_data = array(
             'full_name' => $this->input->post('full_name'),
             'coment' => $this->input->post('coment'),
-            'fasilitas' => $fasilitas,
-            'image' => $image
+            // 'fasilitas' => $fasilitas,
+            // 'image' => $image
         );
-        $query = $this->db->insert('coba', $form_data);
-        if ($query) {
-            redirect('home/coba21');
-        } else {
-            echo 'Gagal cok';
-        }
+        $this->db->insert('coba', $form_data);
+        // if ($query) {
+        //     redirect('home/coba21');
+        // } else {
+        //     echo 'Gagal cok';
+        // }
     }
     public function list()
     {
-        $this->load->view('home/list_room');
+        if ($this->uri->segment(3) === NULL) {
+            $data['room'] = $this->db->get('room')->result();
+            $this->load->view('home/list_room', $data);
+        } else {
+            $id = $this->uri->segment(3);
+            $data['room'] = $this->db->get_where('room', ['city_id' => $id])->result();
+            $this->load->view('home/list_room', $data);
+        }
     }
     public function pemesanan()
     {
@@ -83,7 +90,13 @@ class Home extends CI_Controller
     }
     public function halaman3()
     {
-        $this->load->view('home/hal3');
+        if ($this->uri->segment(3) === NULL) {
+            redirect('home/list');
+        } else {
+            $id = $this->uri->segment(3);
+            $data['room'] = $this->db->get_where('room', ['id' => $id])->result();
+            $this->load->view('home/hal3', $data);
+        }
     }
     public function payment()
     {

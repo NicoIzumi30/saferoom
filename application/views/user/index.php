@@ -12,17 +12,11 @@
         <div class="card shadow mb-4 ">
 
             <div class="col-lg-12 mt-4">
-                <div class="row d-flex justify-content-end">
-                    <div class="col-md-3 mt-3 mr-4 text-right">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#add_room_types">Add
-                            Hotel</button>
-                    </div>
-                </div>
                 <div class="card-body ">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Data Hotel</h2>
+                                <h2>Data User Admin</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

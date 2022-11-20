@@ -14,11 +14,11 @@
 <body>
     <section id="header">
         <nav class="navbar navbar-expand-sm" style="background-color: #C6C6C6;display:block">
-            <div class="row">
-                <div class="col-3 text-center">
+            <div class="row px-2">
+                <div class="col-3 col-sm-3 text-center">
                     <h1 class="navbar-brand text-white" style="font-size: 32px;">SafeRoom</h1>
                 </div>
-                <div class="col-6">
+                <div class="col-5 col-sm-0 d-sm-none d-md-none d-lg-block">
                     <div class="row justify-content-center">
                         <div class="col-10">
                             <div class="input-group mt-2">
@@ -38,25 +38,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3 text-center">
+                <div class="col-3 col-sm-9 col-md-9 col-lg-3 text-end">
                     <!-- Button trigger modal -->
+                    <?php
+                    if ($this->session->userdata('email')) {
+                    ?>
+                        <div class="dropdown mt-2">
+                            <a class="text-dark dropdown-toggle" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px;text-decoration: none;font-size: 19px;">
+                                <i class="fa-solid fa-user"></i><span> Hallo, User
+                                </span>
+                            </a>
 
+                            <ul class="dropdown-menu" id="profile">
+                                <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
+                                        Profile</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i> Pesanan
+                                        Saya</a></li>
+                                <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i class="fa-solid fa-right-from-bracket"></i>Log
+                                        out</a></li>
+                            </ul>
+                        </div>
 
-                    <div class="dropdown mt-2">
-                        <a class="text-dark dropdown-toggle" href=" #" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px;text-decoration: none;font-size: 19px;">
-                            <i class="fa-solid fa-user"></i><span> Hallo, User
-                            </span>
+                    <?php } else { ?>
+                        <a href="<?= base_url('home/login') ?>">
+                            <button type="button" class="btn btn-lg" style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
+                                Gabung | Daftar
+                            </button>
                         </a>
+                    <?php } ?>
 
-                        <ul class="dropdown-menu" id="profile">
-                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
-                                    Profile</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i> Pesanan
-                                    Saya</a></li>
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i class="fa-solid fa-right-from-bracket"></i>Log
-                                    out</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -66,7 +76,7 @@
         <div class="row justify-content-center">
             <div class="col-11 mt-3">
                 <div class="row">
-                    <div class="col-md-4 d-sm-none d-lg-block  my-3" id="filter-hotel">
+                    <div class="col-md-4 d-sm-none d-md-none d-lg-block  my-3" id="filter-hotel">
                         <form action="">
                             <div class="filter-hotel p-3 px-4">
                                 <div class="row">
@@ -176,124 +186,39 @@
                     </div>
                     <div class="col-lg-8 col-md-12">
                         <div class="text-end">
+
                             <a href="#" class="text-decoration-none text-dark d-lg-none d-sm-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="modal-filter"><i class="fa-solid fa-list"></i>
                                 Filter</a>
                         </div>
-                        <div class="row my-3 bunkusKamar">
-                            <div class="col-6">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <img class="w-100" src="<?= base_url() ?>assets/build/images/bedroom-ga8e74d337_1920 1.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-6 mt-2 bTitle">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <h5 style="color:#222222;font-size: 24px;">Sans Hotel Puri Indah Jakarta</h5>
-                                </a>
-                                <p style="font-size:15px">Kembangan</p>
-                                <table style="font-size: 12px;">
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Reception_New 1.png" alt="" class="mr-2"></td>
-                                        <td>Receptionists</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="https://dgov63yz6bnpt.cloudfront.net/uploads/facility_configuration/image/50/keyboard_New.png" style="width:24px" alt="" class="mr-2"></td>
-                                        <td>AC</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Vector (1).png" alt="" class="mr-2"></td>
-                                        <td>Televisi</td>
-                                    </tr>
-                                </table>
-                                <p class="text-danger fs-5 mt-4">Rp 430.000</p>
+                        <?php foreach ($room as $kamar) : ?>
+                            <div class="row my-3 bunkusKamar">
+                                <div class="col-6">
+                                    <?php $img = explode(',', $kamar->image); ?>
+                                    <a href="<?= base_url('home/halaman3/' . $kamar->id) ?>">
+                                        <img class="w-100" src="<?= base_url() ?>assets/image/room/<?= $img[0] ?>" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-6 mt-2 bTitle">
+                                    <a href="<?= base_url('home/halaman3') ?>">
+                                        <h5 style="color:#222222;font-size: 24px;"><?= $kamar->room_name; ?></h5>
+                                    </a>
+                                    <p style="font-size:15px"><?= $this->M_room->shorten($kamar->address, 25); ?></p>
+                                    <table style="font-size: 12px;">
+                                        <?php
+                                        $all_tags = explode(',', $kamar->facility);
+                                        foreach ($all_tags as $key) :
+                                        ?>
+                                            <tr>
+                                                <td><img src="<?= base_url() ?>assets/build/images/fasilitas/<?= $key ?>.png" alt="" width="20px" class="mr-2"></td>
+                                                <td><?= $key ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </table>
+                                    <p class="text-danger fs-5 mt-4">Rp. <?= number_format($kamar->price) ?></p>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="row my-3 bunkusKamar">
-                            <div class="col-6">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <img class="w-100" src="<?= base_url() ?>assets/build/images/hotel-g6515fe641_1920 2.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-6 mt-2 bTitle">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <h5 style="color:#222222;font-size: 24px;">Wisma Bintang Red</h5>
-                                </a>
-                                <p style="font-size:15px">Kembangan</p>
-                                <table style="font-size: 12px;">
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Reception_New 1.png" alt="" class="mr-2"></td>
-                                        <td>Receptionists</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="https://dgov63yz6bnpt.cloudfront.net/uploads/facility_configuration/image/50/keyboard_New.png" style="width:24px" alt="" class="mr-2"></td>
-                                        <td>AC</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Vector (1).png" alt="" class="mr-2"></td>
-                                        <td>Televisi</td>
-                                    </tr>
-                                </table>
-                                <p class="text-danger fs-5 mt-4">Rp 500.000</p>
-                            </div>
-                        </div>
-                        <div class="row my-3 bunkusKamar">
-                            <div class="col-6">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <img class="w-100" src="<?= base_url() ?>assets/build/images/72828-kamar-hotel.jpg" alt="" style="border-radius: 20px;">
-                                </a>
-                            </div>
-                            <div class="col-6 mt-2 bTitle">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <h5 style="color:#222222;font-size: 24px;">Kapuk Businees Park</h5>
-                                </a>
-                                <p style="font-size:15px">Kembangan</p>
-                                <table style="font-size: 12px;">
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Reception_New 1.png" alt="" class="mr-2"></td>
-                                        <td>Receptionists</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="https://dgov63yz6bnpt.cloudfront.net/uploads/facility_configuration/image/50/keyboard_New.png" style="width:24px" alt="" class="mr-2"></td>
-                                        <td>AC</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Vector (1).png" alt="" class="mr-2"></td>
-                                        <td>Televisi</td>
-                                    </tr>
-                                </table>
-                                <p class="text-danger fs-5 mt-4">Rp 290.000</p>
-
-                            </div>
-                        </div>
-                        <div class="row my-3 bunkusKamar">
-                            <div class="col-6">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <img class="w-100" src="<?= base_url() ?>assets/build/images/bedroom-gf651aa221_1920 2.png" alt="">
-                                </a>
-                            </div>
-                            <div class="col-6 mt-2 bTitle">
-                                <a href="<?=base_url('home/halaman3')?>">
-                                    <h5 style="color:#222222;font-size: 24px;">Stasiun Poris Tangerang</h5>
-                                </a>
-                                <p style="font-size:15px">Kembangan</p>
-                                <table style="font-size: 12px;">
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Reception_New 1.png" alt="" class="mr-2"></td>
-                                        <td>Receptionists</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="https://dgov63yz6bnpt.cloudfront.net/uploads/facility_configuration/image/50/keyboard_New.png" style="width:24px" alt="" class="mr-2"></td>
-                                        <td>AC</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="<?= base_url() ?>assets/build/images/Vector (1).png" alt="" class="mr-2"></td>
-                                        <td>Televisi</td>
-                                    </tr>
-                                </table>
-                                <p class="text-danger fs-5 mt-4">Rp 330.000</p>
-
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

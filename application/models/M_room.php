@@ -19,7 +19,7 @@ class M_room extends CI_Model
 
     public function getRoomW($id)
     {
-        $query = "SELECT `room`.*,`hotel`.`nama_hotel`,`user`.`email`,`room_type`.`name`
+        $query = "SELECT `room`.*,`hotel`.`nama_hotel`,`hotel`.`id_city`,`user`.`email`,`room_type`.`name`
                     FROM `room` JOIN `hotel`
                     ON `room`.`hotel_id` = `hotel`.`id`
                     JOIN `user` ON `room`.`user_id` = `user`.`id`
@@ -27,5 +27,15 @@ class M_room extends CI_Model
                     WHERE `room`.`user_id` = $id
         ";
         return $this->db->query($query)->result();
+    }
+    public function shorten($string, $length, $end = '…')
+    {
+        if (strlen($string) > $length) {
+            $length -= strlen($end);
+            $string  = substr($string, 0, $length);
+            $string .= $end;
+        }
+
+        return $string;
     }
 }

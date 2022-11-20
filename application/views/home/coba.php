@@ -53,7 +53,7 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-6">
-                <form action="<?= base_url('home/coba_insert') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('home/coba_insert') ?>" method="post" id="contactForm1" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="full_name" class="form-label">Nama Lengkap</label>
                         <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name">
@@ -62,7 +62,7 @@
                         <label for="coment" class="form-label">Coment</label>
                         <textarea class="form-control" id="coment" name="coment" rows="3"></textarea>
                     </div>
-                    <div class="form-check">
+                    <!-- <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Resepsionis" name="fasilitas[]" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             Resepsionis
@@ -85,11 +85,11 @@
                         <label class="form-check-label" for="flexCheckDefault">
                             wifi Gratis
                         </label>
-                    </div>
-                    <div class="input-group mb-3">
+                    </div> -->
+                    <!-- <div class="input-group mb-3">
                         <input type="file" class="form-control" name="image[]" id="image" multiple required>
                         <label class="input-group-text" for="image">Upload</label>
-                    </div>
+                    </div> -->
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
@@ -103,6 +103,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        var frm = $('#contactForm1');
+
+        frm.submit(function(e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                type: frm.attr('method'),
+                url: frm.attr('action'),
+                data: frm.serialize(),
+                success: function(data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                },
+                error: function(data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+    </script>
+    <!-- <script>
+        Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+        )
+    </script> -->
 </body>
 
 </html>
