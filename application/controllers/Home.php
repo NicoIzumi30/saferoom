@@ -100,7 +100,7 @@ class Home extends CI_Controller
     }
     public function payment()
     {
-        $data['category'] = $this->db->get('category_payment_method');
+        $data['category'] = $this->db->get('category_payment_method')->result();
         $this->load->view('home/payment', $data);
     }
     public function register()

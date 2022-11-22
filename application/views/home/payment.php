@@ -71,7 +71,7 @@
                 <div class="col-lg-2 mt-3">
                     <div class="alert alert-danger text-center text-black" role="alert"
                         style="border-radius: 15px;padding: .7rem 1rem;font-size: 12px;">
-                        Bank / ATM Transfer
+                        <?= $cat->name ?>
                     </div>
                 </div>
                 <div class="col-lg-5 mt-3">
@@ -80,20 +80,23 @@
                                 249.330</span> </p>
                     </div>
                     <?php
-                        $this->db->get_where('payment_method', ['']);
+                        $id = 1;
+                        $payment = $this->db->get_where('payment_method', ['id_category' => $cat->id])->result();
                         ?>
-                    <div class="accordion" id="accordionExample">
+                    <?php foreach ($payment as $pay) : ?>
+                    <div class="accordion mt-3" id="<?= $pay->id_class ?>">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button collapsed collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#BCA" aria-expanded="false"
-                                    aria-controls="BCA" style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/BCA_new-1n 1.png" width="48px"
-                                        alt=""> Bank Central Asia (BCA)
+                                    data-bs-toggle="collapse" data-bs-target="#<?= $pay->id_class ?>"
+                                    aria-expanded="false" aria-controls="<?= $pay->id_class ?>"
+                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
+                                    <img src="<?= base_url('assets/image/payment/') . $pay->icon ?>" width="48px"
+                                        alt=""> <?= $pay->method ?>
                                 </button>
                             </h2>
-                            <div id="BCA" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
+                            <div id="<?= $pay->id_class ?>" class="accordion-collapse collapse"
+                                aria-labelledby="headingOne" data-bs-parent="<?= $pay->id_class ?>">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <p> How it works?</p>
                                     <ul>
@@ -110,150 +113,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php endforeach ?>
 
-
-                    <div class="accordion mt-3" id="two">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#Mandiri" aria-expanded="true" aria-controls="Mandiri"
-                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/1-removebg-preview 1.png"
-                                        width="48px" alt=""> Bank Mandiri
-                                </button>
-                            </h2>
-                            <div id="Mandiri" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#two">
-                                <div class="accordion-body" style="font-weight: 400;">
-                                    <p> How it works?</p>
-                                    <ul>
-                                        <li>Anda akan diberi nomor rekening untuk pembayaran</li>
-                                        <li>Pemesanan kamar akan dilakukan di langkah berikutnya</li>
-                                        <li>Anda dapat menemukan semua petunjuk terkait untuk pembayaran bank Anda</li>
-                                    </ul>
-                                    <div class="order text-end">
-                                        <a href="<?= base_url('home/booking') ?>">
-                                            <button class="btn btn-danger">Pay Now</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion mt-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#BRI" aria-expanded="true" aria-controls="BRI"
-                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/bank-bri-1n 2.png" width="48px"
-                                        alt=""> Bank BRI
-                                </button>
-                            </h2>
-                            <div id="BRI" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="font-weight: 400;">
-                                    <p> How it works?</p>
-                                    <ul>
-                                        <li>Anda akan diberi nomor rekening untuk pembayaran</li>
-                                        <li>Pemesanan kamar akan dilakukan di langkah berikutnya</li>
-                                        <li>Anda dapat menemukan semua petunjuk terkait untuk pembayaran bank Anda</li>
-                                    </ul>
-                                    <div class="order text-end">
-                                        <a href="<?= base_url('home/booking') ?>">
-                                            <button class="btn btn-danger">Pay Now</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion mt-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#BNI" aria-expanded="true" aria-controls="BNI"
-                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/bni-1n 1.png" width="48px" alt="">
-                                    BNI
-                                </button>
-                            </h2>
-                            <div id="BNI" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="font-weight: 400;">
-                                    <p> How it works?</p>
-                                    <ul>
-                                        <li>Anda akan diberi nomor rekening untuk pembayaran</li>
-                                        <li>Pemesanan kamar akan dilakukan di langkah berikutnya</li>
-                                        <li>Anda dapat menemukan semua petunjuk terkait untuk pembayaran bank Anda</li>
-                                    </ul>
-                                    <div class="order text-end">
-                                        <a href="<?= base_url('home/booking') ?>">
-                                            <button class="btn btn-danger">Pay Now</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion mt-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#MyBank" aria-expanded="true" aria-controls="MyBank"
-                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/may-bank_1n 1.png" width="48px"
-                                        alt=""> Maybank
-                                </button>
-                            </h2>
-                            <div id="MyBank" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="font-weight: 400;">
-                                    <p> How it works?</p>
-                                    <ul>
-                                        <li>Anda akan diberi nomor rekening untuk pembayaran</li>
-                                        <li>Pemesanan kamar akan dilakukan di langkah berikutnya</li>
-                                        <li>Anda dapat menemukan semua petunjuk terkait untuk pembayaran bank Anda</li>
-                                    </ul>
-                                    <div class="order text-end">
-                                        <a href="<?= base_url('home/booking') ?>">
-                                            <button class="btn btn-danger">Pay Now</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion mt-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#Permata" aria-expanded="true" aria-controls="Permata"
-                                    style="padding: 25px;font-weight: 500;font-size: 17px;">
-                                    <img src="<?= base_url('assets/build/') ?>images/permata_new-1n 1.png" width="48px"
-                                        alt=""> Permata
-                                </button>
-                            </h2>
-                            <div id="Permata" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body" style="font-weight: 400;">
-                                    <p> How it works?</p>
-                                    <ul>
-                                        <li>Anda akan diberi nomor rekening untuk pembayaran</li>
-                                        <li>Pemesanan kamar akan dilakukan di langkah berikutnya</li>
-                                        <li>Anda dapat menemukan semua petunjuk terkait untuk pembayaran bank Anda</li>
-                                    </ul>
-                                    <div class="order text-end">
-                                        <a href="<?= base_url('home/booking') ?>">
-                                            <button class="btn btn-danger">Pay Now</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-5 mt-3">
                     <div class="shYGY p-4">
@@ -311,8 +172,8 @@
                                 </thead>
                                 <tbody style="font-weight:500;font-size: 17px;">
                                     <tr>
-                                        <td>Mrs Jalu Erlangga</td>
-                                        <td>jaluerlangga123@gmail.com</td>
+                                        <td>Mr <?= $this->session->userdata('name'); ?></td>
+                                        <td> <?= $this->session->userdata('email'); ?></td>
                                     </tr>
                                 </tbody>
                             </table>

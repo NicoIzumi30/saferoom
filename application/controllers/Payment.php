@@ -12,6 +12,7 @@ class Payment extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['payment'] = $this->db->get('payment_method')->result();
+            $data['category'] = $this->db->get('category_payment_method')->result_array();
             $this->load->view('template/header', $data);
             $this->load->view('payment/index', $data);
             $this->load->view('template/footer');
@@ -34,7 +35,9 @@ class Payment extends CI_Controller
                 $dataa = array(
                     'method' => $this->input->post('method', TRUE),
                     'icon' => $image,
-                    'norek' => $this->input->post('norek', TRUE)
+                    'norek' => $this->input->post('norek', TRUE),
+                    'id_category' => $this->input->post('category', TRUE),
+                    'id_class' => $this->input->post('idc', TRUE)
                 );
                 $acc = $this->db->insert('payment_method', $dataa);
                 $this->session->set_flashdata('flash', 'Di Tambahkan');
@@ -95,6 +98,8 @@ class Payment extends CI_Controller
 
             $this->db->set('method', $method);
             $this->db->set('norek', $norek);
+            $this->db->set('id_class', $this->input->post('idc'));
+            $this->db->set('id_category', $this->input->post('category'));
             $this->db->where('id', $id);
             $this->db->update('payment_method');
             $this->session->set_flashdata('flash', 'Di Update');

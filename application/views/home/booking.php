@@ -3,13 +3,15 @@
 
 <head>
     <title>Halaman 2</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <script type='text/javascript' src=''></script>
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'>
+    </script>
     <link rel="stylesheet" href="<?= base_url('assets/build/') ?>css/booking.css">
 
 </head>
@@ -31,18 +33,25 @@
 
 
                     <div class="dropdown mt-2">
-                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
+                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
                             border: none;">
-                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
+                                width="20px" height="auto" title loading="auto"
+                                style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
                             </span>
                         </a>
 
                         <ul class="dropdown-menu" id="profile">
-                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
+                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>"
+                                    style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
                                     Profile</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i> Pesanan
+                            <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>"
+                                    style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i>
+                                    Pesanan
                                     Saya</a></li>
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i class="fa-solid fa-right-from-bracket"></i>Log
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i
+                                        class="fa-solid fa-right-from-bracket"></i>Log
                                     out</a></li>
                         </ul>
                     </div>
@@ -61,8 +70,7 @@
                 <div class="col-lg-7 mt-3">
                     <div class="alert alert-danger text-dark" role="alert">
                         <p style="margin-bottom: 0; font-size: 14;font-weight: 500;">Please complete payment within
-                            <span class="text-danger">30 min :
-                                00 sec</span> to avoid
+                            <span class="text-danger" id="count"></span> to avoid
                             cancellation
                         </p>
                         <p style="margin-bottom: 0;">
@@ -72,7 +80,8 @@
                         </p>
                     </div>
                     <div class="payYGY p-4">
-                        <h6><img src="<?= base_url('assets/build/') ?>images/BCA_new-1n 1.png" width="48px" alt=""> Bank Central Asia (BCA)</h6>
+                        <h6><img src="<?= base_url('assets/build/') ?>images/BCA_new-1n 1.png" width="48px" alt=""> Bank
+                            Central Asia (BCA)</h6>
                         <hr style="padding: 1px;">
                         <table width="100%">
                             <tr>
@@ -101,11 +110,14 @@
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ATM" aria-expanded="false" aria-controls="ATM" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ATM" aria-expanded="false" aria-controls="ATM"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     ATM
                                 </button>
                             </h2>
-                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li>Pilih Transaksi Lainnya > Transfer > Ke Rek BCA Virtual Account</li>
@@ -117,18 +129,25 @@
                             </div>
                         </div>
                     </div>
+
+                    <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#InternetBanking" aria-expanded="false" aria-controls="InternetBanking" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#InternetBanking" aria-expanded="false"
+                                    aria-controls="InternetBanking"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Internet Banking
                                 </button>
                             </h2>
-                            <div id="InternetBanking" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div id="InternetBanking" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li> Log in BCA Internet Banking :
-                                            <a target="_blank" href="https://ibank.klikbca.com/" style="text-decoration: none;">https://ibank.klikbca.com/</a>
+                                            <a target="_blank" href="https://ibank.klikbca.com/"
+                                                style="text-decoration: none;">https://ibank.klikbca.com/</a>
                                         </li>
                                         <li>Pilih Transaksi Dana > Ke Rek BCA Virtual Account</li>
                                         <li>Centang Nomor Virtual Account dan masukkan Nomor Virtual Account. Klik
@@ -144,11 +163,14 @@
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#MobileBanking" aria-expanded="false" aria-controls="MobileBanking" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#MobileBanking" aria-expanded="false" aria-controls="MobileBanking"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Mobile Banking
                                 </button>
                             </h2>
-                            <div id="MobileBanking" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="MobileBanking" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li>Log in BCA Mobile Banking</li>
@@ -165,16 +187,22 @@
                     </div>
 
                     <h4 class="mt-3">Lihat di dalam peta</h4>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.053212309761!2d110.3534053143275!3d-7.88950208066683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7b00889ad8f84d%3A0x2e0009ca7815eaf0!2sSMK%20Negeri%201%20Bantul!5e0!3m2!1sid!2sid!4v1668356664084!5m2!1sid!2sid" width="100%" height="280" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.053212309761!2d110.3534053143275!3d-7.88950208066683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7b00889ad8f84d%3A0x2e0009ca7815eaf0!2sSMK%20Negeri%201%20Bantul!5e0!3m2!1sid!2sid!4v1668356664084!5m2!1sid!2sid"
+                        width="100%" height="280" style="border:0; border-radius: 15px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <div class="accordion mt-5" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Cancellation" aria-expanded="false" aria-controls="Cancellation" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#Cancellation" aria-expanded="false" aria-controls="Cancellation"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Cancellation Policy
                                 </button>
                             </h2>
-                            <div id="Cancellation" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="Cancellation" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <p>Safe Room adalah agen komisi yang bertindak atas nama hotel yang dimiliki dan
                                         dioperasikan secara independen di seluruh Indonesia.</p>
@@ -211,10 +239,12 @@
 
                 </div>
                 <div class="col-lg-5 mt-3">
+                    <div id="liveAlertPlaceholder"></div>
                     <div class="shYGY p-4">
                         <div class="row">
                             <div class="col-4">
-                                <img src="<?= base_url('assets/build/') ?>images/hotel-room-gbadde5f29_1920 2.png" width="100%" alt="">
+                                <img src="<?= base_url('assets/build/') ?>images/hotel-room-gbadde5f29_1920 2.png"
+                                    width="100%" alt="">
                             </div>
                             <div class="col-8">
                                 <h5>Sans Hotel Yogyakarta</h5>
@@ -265,8 +295,8 @@
                                 </thead>
                                 <tbody style="font-weight:500;font-size: 17px;">
                                     <tr>
-                                        <td>Mrs Jalu Erlangga</td>
-                                        <td>jaluerlangga123@gmail.com</td>
+                                        <td>Mrs <?= $this->session->userdata('name'); ?></td>
+                                        <td><?= $this->session->userdata('email'); ?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -286,7 +316,8 @@
 
 
     </div>
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -305,6 +336,82 @@
     </div>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    let now = new Date()
+    let today = now.format('D')
+    let today2 = now.format('d M')
+    let tomorrow = new Date()
+    tomorrow.setDate(now.getDate() + 1)
+    let besok = tomorrow.format('D')
+    let besok2 = tomorrow.format('d M')
+    document.getElementById("today").innerHTML = today + ', ' + today2
+    document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2
+    </script>
+    <script>
+    function startTimer(duration, display) {
+        var timer = duration,
+            minutes, seconds;
+        setInterval(function() {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 'Expired';
+            }
+        }, 1000);
+    }
+
+    window.onload = function() {
+        var fiveMinutes = 60 * 30,
+            display = document.querySelector('#count');
+        startTimer(fiveMinutes, display);
+    };
+    </script>
+    <script>
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+    const alert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+    }
+
+    const alertTrigger = document.getElementById('liveAlertBtn')
+    if (alertTrigger) {
+        alertTrigger.addEventListener('click', () => {
+            alert('Nice, you triggered this alert message!', 'success')
+        })
+    }
+
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
+    </script>
+
 </body>

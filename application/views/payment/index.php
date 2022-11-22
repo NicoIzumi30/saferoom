@@ -16,7 +16,6 @@
                 </div>
             </div>
             <div class="card-body">
-
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
@@ -37,6 +36,8 @@
                                                     <th>Method</th>
                                                     <th>Icon</th>
                                                     <th>Norek</th>
+                                                    <th>Category</th>
+                                                    <th>id & class</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -52,6 +53,8 @@
                                                             src="<?= base_url() ?>assets/image/payment/<?= $pay->icon ?>"
                                                             width="50px" height="20px"></td>
                                                     <td><?= $pay->norek ?></td>
+                                                    <td><?= $pay->id_category ?></td>
+                                                    <td><?= $pay->id_class ?></td>
                                                     <td>
                                                         <a href="<?= base_url('payment/delete/'); ?><?= $pay->id; ?>"
                                                             class="tombol-hapus btn btn-danger btn-sm">
@@ -91,6 +94,28 @@
                                                                         <input type="text" class="form-control"
                                                                             id="norek" value="<?= $pay->norek ?>"
                                                                             name="norek">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="idc">id & class</label>
+                                                                        <input type="text" class="form-control" id="idc"
+                                                                            value="<?= $pay->id_class ?>" name="idc">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="category">Category</label>
+                                                                        <select name="category" id="category"
+                                                                            class="form-control">
+                                                                            <?php
+                                                                                $dataC = $this->db->get_where('category_payment_method', ['id' => $pay->id_category])->row_array();
+                                                                                ?>
+                                                                            <option value="<?= $dataC['id'] ?>">
+                                                                                <?= $dataC['name'] ?>y</option>
+                                                                            <?php
+                                                                                foreach ($category as $m) :
+                                                                                ?>
+                                                                            <option value="<?= $m['id'] ?>">
+                                                                                <?= $m['name']; ?></option>
+                                                                            <?php endforeach; ?>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Image</label>
@@ -147,6 +172,19 @@
                             <label for="norek">Nomer Rekening</label>
                             <input type="text" class="form-control" id="norek" name="norek"
                                 placeholder="Nomer Rekening">
+                        </div>
+                        <div class="form-group">
+                            <label for="idc">id & class</label>
+                            <input type="text" class="form-control" id="idc" name="idc">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select name="category" id="category" class="form-control">
+                                <option value="">Select Category</option>
+                                <?php foreach ($category as $m) : ?>
+                                <option value="<?= $m['id'] ?>"><?= $m['name']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Image</label>
