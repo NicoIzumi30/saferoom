@@ -44,6 +44,7 @@ $('.tombol-hapus').on('click', function (e) {
 
 });
 
+
 // Data table
 // $(function () {
 //     $("#dataBerita").DataTable({

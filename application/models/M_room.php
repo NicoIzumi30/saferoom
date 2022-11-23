@@ -16,10 +16,11 @@ class M_room extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
-    public function room()
+    public function room($id)
     {
         $query = "SELECT `room`.*,`city`.`city`
                     FROM `room` JOIN `city` ON `room`.`city_id` = `city`.`id`
+                    WHERE `room`.`city_id` = $id
         ";
         return $this->db->query($query)->result();
     }
@@ -42,6 +43,14 @@ class M_room extends CI_Model
         ";
         return $this->db->query($query)->row_array();
     }
+    public function getRoomWHO($id)
+    {
+        $query = "SELECT `room`.*,`room_type`.`name`
+                    FROM `room` JOIN `room_type` ON `room`.`type_id` = `room_type`.`id`
+                    WHERE `room`.`id` = $id
+        ";
+        return $this->db->query($query)->result();
+    }
     public function shorten($string, $length, $end = '…')
     {
         if (strlen($string) > $length) {
@@ -51,5 +60,15 @@ class M_room extends CI_Model
         }
 
         return $string;
+    }
+    public function pesanan()
+    {
+        $query = "SELECT `pesanan`.*,`hotel`.`nama_hotel`,`user_client`.`full_name`,`payment_method`.`method`,`room`.`room_name`
+        FROM `pesanan` JOIN `hotel`
+        ON `pesanan`.`hotel_id` = `hotel`.`id`
+        JOIN `user_client` ON `pesanan`.`user_id` = `user_client`.`id`
+        JOIN `payment_method` ON `pesanan`.`payment_method` = `payment_method`.`id`JOIN `room` ON `pesanan`.`room_id` = `room`.`id`
+";
+        return $this->db->query($query)->result();
     }
 }

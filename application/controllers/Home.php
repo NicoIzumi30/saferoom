@@ -7,12 +7,44 @@ class Home extends CI_Controller
     {
 
         $data['city'] = $this->db->get('city')->result();
-        $data['room'] = $this->M_room->room();
         $this->load->view('home/index', $data);
     }
 
     public function filter()
     {
+        $id = $this->input->get('kota');
+        $room = $this->M_room->room($id);
+        $countWisata = count($room);
+        $output = "";
+        if ($id) {
+            foreach ($room as $kamar) {
+                $img = explode(',', $kamar->image);
+                $add = explode(' ', $kamar->address);
+                $output .=  '<div class="swiper-slide">
+                <a href="' . base_url('home/halaman3/') . $kamar->id . '">
+                <div class="card col-md-12 mt-3">
+                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">' . $add[0] . $add[1] . $add[2] . $add[3] . '</p>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i>
+                            ' . $kamar->city . '</p>
+                    <p class="card-text text-danger">Rp
+                    ' . number_format($kamar->price) . '</p>
+                    </div>
+                    </div>
+                </a>
+                    </div>';
+            }
+            if ($countWisata == 0) {
+                $output .= '<div class="col-lg-12 text-black p-3 mx-5 text-center">
+                <h4>Tidak ada data</h4>
+                        </div>';
+            }
+        }
+
+        // $dataaa =   $this->response = $output;
+        // var_dump($output);
+        $this->output->set_output($output);
     }
 
 
@@ -82,16 +114,29 @@ class Home extends CI_Controller
     }
     public function pemesanan($id)
     {
-        $data['room'] = $this->M_room->getRoomWH($id);
-        $this->load->view('home/pemesanan', $data);
+        if ($this->session->userdata('email')) {
+            $data['room'] = $this->M_room->getRoomWH($id);
+            $this->load->view('home/pemesanan', $data);
+        } else {
+            redirect('home/login');
+        }
     }
     public function pesanansaya()
     {
-        $this->load->view('home/pesanan');
+
+        if ($this->session->userdata('email')) {
+            $this->load->view('home/pesanan');
+        } else {
+            redirect('home/login');
+        }
     }
     public function booking()
     {
-        $this->load->view('home/booking');
+        if ($this->session->userdata('email')) {
+            $this->load->view('home/booking');
+        } else {
+            redirect('home/login');
+        }
     }
     public function halaman31()
     {
@@ -103,25 +148,29 @@ class Home extends CI_Controller
             redirect('home/list');
         } else {
             $id = $this->uri->segment(3);
-            $data['room'] = $this->db->get_where('room', ['id' => $id])->result();
+            $data['room'] = $this->M_room->getRoomWHO($id);
             $this->load->view('home/hal3', $data);
         }
     }
     public function payment()
     {
-        $data_ = [
-            'email' => $this->input->post('email'),
-            'name' => $this->input->post('name'),
-            'room' => $this->input->post('room'),
-            'address' => $this->input->post('address'),
-            'type' => $this->input->post('type'),
-            'harga' => $this->input->post('harga'),
-            'layanan' => $this->input->post('layanan'),
-            'total' => $this->input->post('total'),
-        ];
-        $data['category'] = $this->db->get('category_payment_method')->result();
-        $data['post'] = $data_;
-        $this->load->view('home/payment', $data);
+        if ($this->session->userdata('email')) {
+            $data_ = [
+                'email' => $this->input->post('email'),
+                'name' => $this->input->post('name'),
+                'room' => $this->input->post('room'),
+                'address' => $this->input->post('address'),
+                'type' => $this->input->post('type'),
+                'harga' => $this->input->post('harga'),
+                'layanan' => $this->input->post('layanan'),
+                'total' => $this->input->post('total'),
+            ];
+            $data['category'] = $this->db->get('category_payment_method')->result();
+            $data['post'] = $data_;
+            $this->load->view('home/payment', $data);
+        } else {
+            redirect('home/login');
+        }
     }
     public function register()
     {

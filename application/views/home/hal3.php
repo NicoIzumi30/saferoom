@@ -236,7 +236,7 @@
                                 $all_tags = explode(',', $kamar->facility);
                                 foreach ($all_tags as $key) :
                                 ?>
-                                    <td><img src="<?= base_url('assets/build/images/fasilitas/') . $key ?>.png" width="37px" height="auto" /> Televisi</td>
+                                    <td><img src="<?= base_url('assets/build/images/fasilitas/') . $key ?>.png" width="37px" height="auto" /> <?= $key; ?></td>
                                 <?php endforeach ?>
 
                             </tr>
@@ -305,7 +305,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                Sale Room
+                                                <?= $kamar->name; ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -314,7 +314,11 @@
                             <form action="<?= base_url('home/pemesanan/' . $kamar->id) ?>" method="post">
                                 <input type="hidden">
                                 <div class="col-11 mx-auto mt-4">
-                                    <button type="submit" class="btn btn-danger text-center w-100">Pesan Sekarang</button>
+                                    <?php if ($this->session->userdata('email')) { ?>
+                                        <button type="submit" class="btn btn-danger text-center w-100">Pesan Sekarang</button>
+                                    <?php } else { ?>
+                                        <a href="<?= base_url('home/login') ?>" class="btn btn-primary text-center w-100">Login</a>
+                                    <?php } ?>
                                 </div>
                             </form>
                         </div>
@@ -326,6 +330,23 @@
             <i class="fa-brands fa-instagram"></i>
             <i class="fa-brands fa-twitter"></i>
             <i class="fa-brands fa-facebook"></i>
+        </div>
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="<?= base_url('home/logout') ?>">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -348,6 +369,14 @@
         document.getElementById("today").innerHTML = today + ', ' + today2
         document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2
     </script>
+    <!-- <script>
+        $(document).ready(function() {
+            $("form").submit(function() {
+                window.location.replace("niczumi.my.id")
+                // alert('coba')
+            });
+        });
+    </script> -->
 </body>
 
 </html>
