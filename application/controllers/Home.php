@@ -6,6 +6,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['city'] = $this->db->get('city')->result();
+        $data['room'] = $this->db->get('room')->result();
         $this->load->view('home/index', $data);
     }
     public function coba()
@@ -72,9 +73,10 @@ class Home extends CI_Controller
             $this->load->view('home/list_room', $data);
         }
     }
-    public function pemesanan()
+    public function pemesanan($id)
     {
-        $this->load->view('home/pemesanan');
+        $data['room'] = $this->M_room->getRoomWH($id);
+        $this->load->view('home/pemesanan', $data);
     }
     public function pesanansaya()
     {
@@ -100,13 +102,29 @@ class Home extends CI_Controller
     }
     public function payment()
     {
+        $data_ = [
+            'email' => $this->input->post('email'),
+            'name' => $this->input->post('name'),
+            'room' => $this->input->post('room'),
+            'address' => $this->input->post('address'),
+            'type' => $this->input->post('type'),
+            'harga' => $this->input->post('harga'),
+            'layanan' => $this->input->post('layanan'),
+            'total' => $this->input->post('total'),
+        ];
         $data['category'] = $this->db->get('category_payment_method')->result();
+        $data['post'] = $data_;
         $this->load->view('home/payment', $data);
     }
     public function register()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user_client.email]', ['is_unique' => 'This email has already registered!']);
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email|is_unique[user_client.email]',
+            ['is_unique' => 'This email has already registered!']
+        );
         $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
             'matches' => 'Password dont matches!',
@@ -129,8 +147,8 @@ class Home extends CI_Controller
             ];
             $this->db->insert('user_client', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Congratulation! your account has been created. Please Login
-          </div>');
+    Congratulation! your account has been created. Please Login
+</div>');
             redirect('home/login');
         }
     }
@@ -174,21 +192,21 @@ class Home extends CI_Controller
                     redirect('home');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Wrong password!
-              </div>');
+    Wrong password!
+</div>');
                     redirect('home/login');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                This email is has not been activated!
-              </div>');
+    This email is has not been activated!
+</div>');
                 redirect('home/login');
             }
         } else {
             // Usernya ga ada
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Email is not regitered!
-          </div>');
+    Email is not regitered!
+</div>');
             redirect('home/login');
         }
     }
@@ -199,8 +217,8 @@ class Home extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        You have been logged out! 
-      </div>');
+    You have been logged out!
+</div>');
         redirect('home/login');
     }
 
@@ -208,8 +226,16 @@ class Home extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user_client', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
-        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]');
-        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[6]|matches[new_password1]');
+        $this->form_validation->set_rules(
+            'new_password1',
+            'New Password',
+            'required|trim|min_length[6]|matches[new_password2]'
+        );
+        $this->form_validation->set_rules(
+            'new_password2',
+            'Confirm New Password',
+            'required|trim|min_length[6]|matches[new_password1]'
+        );
         if ($this->form_validation->run() == false) {
             $this->load->view('home/change_password');
         } else {
@@ -217,14 +243,14 @@ class Home extends CI_Controller
             $new_password = $this->input->post('new_password1');
             if (!password_verify($current_password, $data['user']['password'])) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                Wrong current password!
-                 </div>');
+    Wrong current password!
+</div>');
                 redirect('home/change_password');
             } else {
                 if ($current_password == $new_password) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-                    New Password cannot be the same as current password!
-                 </div>');
+    New Password cannot be the same as current password!
+</div>');
                     redirect('home/change_password');
                 } else {
                     // Password suda oke
@@ -233,8 +259,8 @@ class Home extends CI_Controller
                     $this->db->where('email', $data['user']['email']);
                     $this->db->update('user_client');
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-               Password Change!
-                 </div>');
+    Password Change!
+</div>');
                     redirect('home/change_password');
                 }
             }

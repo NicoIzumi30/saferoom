@@ -18,8 +18,8 @@ body {
 }
 
 .dropdown-menu[data-bs-popper] {
-    border-radius: 10px;
     margin-top: 1rem;
+    border-radius: 10px;
 }
 
 .dropdown-item {

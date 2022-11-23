@@ -49,8 +49,8 @@
                                     style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i>
                                     Pesanan
                                     Saya</a></li>
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i
-                                        class="fa-solid fa-right-from-bracket"></i>Log
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"
+                                    style="border-bottom: none;"><i class="fa-solid fa-right-from-bracket"></i>Log
                                     out</a></li>
                         </ul>
                     </div>
@@ -77,7 +77,7 @@
                 <div class="col-lg-5 mt-3">
                     <div class="alert alert-success text-dark" role="alert">
                         <p style="margin-bottom: 0;">Jumlah total yang harus Dibayar <br><span class="fw-bold">Rp
-                                249.330</span> </p>
+                                <?= number_format($post['total']) ?></span> </p>
                     </div>
                     <?php
                         $id = 1;
@@ -172,7 +172,7 @@
                                 </thead>
                                 <tbody style="font-weight:500;font-size: 17px;">
                                     <tr>
-                                        <td>Mr <?= $this->session->userdata('name'); ?></td>
+                                        <td>Mr <?= $this->session->userdata('full_name'); ?></td>
                                         <td> <?= $this->session->userdata('email'); ?></td>
                                     </tr>
                                 </tbody>
@@ -204,7 +204,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('home/login') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('home/logout') ?>">Logout</a>
                 </div>
             </div>
         </div>

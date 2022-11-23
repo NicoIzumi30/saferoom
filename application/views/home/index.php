@@ -10,35 +10,35 @@
     <script type='text/javascript' src='<?= base_url() ?>assets/build/js/bootstrap.min.js'></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <style>
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
 
-        .swiper-slide {
-            font-size: 18px;
+    .swiper-slide {
+        font-size: 18px;
 
-            /* Center slide text vertically */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
 
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
     </style>
 
 </head>
@@ -56,25 +56,30 @@
                             <?php
                             if ($this->session->userdata('email')) {
                             ?>
-                                <div class="dropdown">
-                                    <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
-                                        <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
-                                        </span>
-                                    </a>
-
-                                    <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
-                                        <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
-                                        <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
-                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" style="border-bottom: none;">Keluar</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <?php } else { ?>
-                                <a href="<?= base_url('home/login') ?>">
-                                    <button type="button" class="btn btn-lg" style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
-                                        Gabung | Daftar
-                                    </button>
+                            <div class="dropdown">
+                                <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="border-radius:9999px">
+                                    <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
+                                        width="20px" height="auto" title loading="auto"
+                                        style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                                    </span>
                                 </a>
+
+                                <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
+                                    <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
+                                    <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
+                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
+                                            style="border-bottom: none;">Keluar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <?php } else { ?>
+                            <a href="<?= base_url('home/login') ?>">
+                                <button type="button" class="btn btn-lg"
+                                    style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
+                                    Gabung | Daftar
+                                </button>
+                            </a>
                             <?php } ?>
 
                         </div>
@@ -83,7 +88,10 @@
                     <div class="row justify-content-center mt-5">
                         <div class="col-sm-5 mt-5">
                             <div class="input-group mb-3 mt-4">
-                                <input type="text" class="form-control" placeholder="&nbsp Enter a City, Locality or Hotel" aria-label="Enter a City, Locality or Hotel" aria-describedby="basic-addon2" style="border: none; border-bottom-left-radius: 9999px;border-top-left-radius: 9999px; background-color: #D6D6D6; box-shadow: none; height: 45px;">
+                                <input type="text" class="form-control"
+                                    placeholder="&nbsp Enter a City, Locality or Hotel"
+                                    aria-label="Enter a City, Locality or Hotel" aria-describedby="basic-addon2"
+                                    style="border: none; border-bottom-left-radius: 9999px;border-top-left-radius: 9999px; background-color: #D6D6D6; box-shadow: none; height: 45px;">
                                 <button type="submit" class="input-group-text" id="basic-addon2" style="border: none; border-bottom-right-radius: 9999px;border-top-right-radius: 9999px; background-color: #b9b9b9;
                         ;">
                                     <table>
@@ -114,12 +122,12 @@
                             <?php
                             foreach ($city as $kota) :
                             ?>
-                                <div class="city-detail text-center mx-2">
-                                    <a href="<?= base_url('home/list/') . $kota->id ?>">
-                                        <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
-                                        <p style="font-weight:500"><?= $kota->city ?></p>
-                                    </a>
-                                </div>
+                            <div class="city-detail text-center mx-2">
+                                <a href="<?= base_url('home/list/') . $kota->id ?>">
+                                    <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
+                                    <p style="font-weight:500"><?= $kota->city ?></p>
+                                </a>
+                            </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -134,81 +142,27 @@
                                     <div class="col-12">
                                         <div class="swiper mySwiper">
                                             <div class="swiper-wrapper">
+                                                <?php foreach ($room as $kamar) : ?>
                                                 <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
+                                                    <a href="<?= base_url('home/halaman3/') . $kamar->id ?>">
                                                         <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
+                                                            <?php $img = explode(',', $kamar->image); ?>git
+                                                            <img src="<?= base_url('assets/image/room/') . $img[0] ?>"
+                                                                class="card-img-top" alt="...">
                                                             <div class="card-body">
-                                                                <p class="card-text">Galaxy Bekasi</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bekasi</p>
-                                                                <p class="card-text text-danger">Rp390.000</p>
+                                                                <?php $add = explode(' ', $kamar->address); ?>
+                                                                <p class="card-text"><?= $add[0] ?> <?= $add[1] ?>
+                                                                    <?= $add[2] ?> <?= $add[3] ?></p>
+                                                                <p class="card-text"><i
+                                                                        class="fa-solid fa-location-dot"></i>
+                                                                    Jakarta</p>
+                                                                <p class="card-text text-danger">Rp
+                                                                    <?= number_format($kamar->price) ?></p>
                                                             </div>
                                                         </div>
                                                     </a>
                                                 </div>
-                                                <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
-                                                        <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <p class="card-text">Hayam Wuruk</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Jakarta
-                                                                </p>
-                                                                <p class="card-text text-danger">Rp445.000</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
-                                                        <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <p class="card-text">Wisma Bintang RedPartner</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bogor</p>
-                                                                <p class="card-text text-danger">Rp245.000</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
-                                                        <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (1).png" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <p class="card-text">Galaxy Bekasi</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Bekasi</p>
-                                                                <p class="card-text text-danger">Rp390.000</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
-                                                        <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (2).png" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <p class="card-text">Hayam Wuruk</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i> Jakarta
-                                                                </p>
-                                                                <p class="card-text text-danger">Rp445.000</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="<?= base_url('home/halaman3') ?>">
-                                                        <div class="card col-md-12 mt-3">
-                                                            <img src="<?= base_url('assets/build/') ?>images/1 (3).png" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <p class="card-text">Wisma Bintang RedPartner</p>
-                                                                <p class="card-text"><i class="fa-solid fa-location-dot"></i>
-                                                                    Bogor</p>
-                                                                <p class="card-text text-danger">Rp245.000</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                <?php endforeach ?>
                                             </div>
                                             <div class="swiper-pagination"></div>
                                         </div>
@@ -275,7 +229,9 @@
                                 kamar hotel yang murah sangatlah mudah berkat platform kami. Berikut beberapa destinasi
                                 yang wajib dikunjungi di Indonesia.</span></p>
 
-                        <h3><span style="color:#000000;">1. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/surabaya" style="color:#000000;text-decoration:none"><span style="color:#000000;">Surabaya, Jawa
+                        <h3><span style="color:#000000;">1. </span><a
+                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/surabaya"
+                                style="color:#000000;text-decoration:none"><span style="color:#000000;">Surabaya, Jawa
                                     Timur</span></a></h3>
 
                         <p><span style="color:#000000;">Jika Anda mendambakan liburan budaya di Indonesia, tidak ada
@@ -284,7 +240,9 @@
                                 memiliki destinasi wisata populer, termasuk Gunung Bromo, Bali, Yogyakarta, dan
                                 Jakarta.</span></p>
 
-                        <h3><span style="color:#000000;">2. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/jakarta" style="text-decoration:none"><span style="color:#000000;">Jakarta</span></a></h3>
+                        <h3><span style="color:#000000;">2. </span><a
+                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/jakarta"
+                                style="text-decoration:none"><span style="color:#000000;">Jakarta</span></a></h3>
 
                         <p><span style="color:#000000;">Jakarta adalah salah satu tempat terbaik untuk dikunjungi jika
                                 Anda menikmati kenyamanan pusat kota. Ini adalah kota megapolitan dengan gedung pencakar
@@ -296,7 +254,9 @@
                                 tetapi ada beberapa situs warisan seperti Jakarta Tua atau Kota Tua dan pelabuhan
                                 bersejarah Sunda Kelapa untuk dijelajahi!</span></p>
 
-                        <h3><span style="color:#000000;">3. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/bandung" style="text-decoration:none"><span style="color:#000000;">Bandung</span></a></h3>
+                        <h3><span style="color:#000000;">3. </span><a
+                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/bandung"
+                                style="text-decoration:none"><span style="color:#000000;">Bandung</span></a></h3>
 
                         <p><span style="color:#000000;">Bandung hanya berjarak tiga jam lebih sedikit dari Jakarta
                                 dengan kereta atau bus. Di kota ini, ada banyak tempat keren untuk anda jelajahi.</span>
@@ -309,7 +269,9 @@
                                 murah di Bandung dan habiskan satu atau dua hari berbelanja di pusat perbelanjaan outlet
                                 Indonesia.</span></p>
 
-                        <h3><span style="color:#000000;">4. </span><a href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/yogyakarta" style="text-decoration:none"><span style="color:#000000;">Yogyakarta</span></a></h3>
+                        <h3><span style="color:#000000;">4. </span><a
+                                href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/yogyakarta"
+                                style="text-decoration:none"><span style="color:#000000;">Yogyakarta</span></a></h3>
 
                         <p><span style="color:#000000;">Indonesia memiliki budaya dan sejarah yang kaya dan dalam, dan
                                 Anda dapat melihatnya dari bangunan kuno dan tempat-tempat yang berdiri hingga hari ini.
@@ -323,7 +285,9 @@
                                 Dunia UNESCO, Prambanan dan Borobudur, dua landmark paling megah di seluruh Asia.</span>
                         </p>
 
-                        <h3><span style="color:#000000;">5. </span><a href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/bali" style="text-decoration:none"><span style="color:#000000;">Pulau Nusa Penida,
+                        <h3><span style="color:#000000;">5. </span><a
+                                href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/bali"
+                                style="text-decoration:none"><span style="color:#000000;">Pulau Nusa Penida,
                                     Bali</span></a></h3>
 
                         <p><span style="color:#000000;">Indonesia terkenal dengan pemandangan pantainya yang indah. Jika
@@ -403,7 +367,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -424,14 +389,14 @@
 
     <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
     </script>
     <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>
