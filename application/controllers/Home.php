@@ -5,10 +5,17 @@ class Home extends CI_Controller
 {
     public function index()
     {
+
         $data['city'] = $this->db->get('city')->result();
-        $data['room'] = $this->db->get('room')->result();
+        $data['room'] = $this->M_room->room();
         $this->load->view('home/index', $data);
     }
+
+    public function filter()
+    {
+    }
+
+
     public function coba()
     {
         $this->load->view('home/coba');

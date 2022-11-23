@@ -40,6 +40,7 @@
         object-fit: cover;
     }
     </style>
+    <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
 
 </head>
 
@@ -120,14 +121,33 @@
                         </div>
                         <div class="img-city mt-3 " style="overflow-x: scroll; display: flex;">
                             <?php
+                            $no = 1;
                             foreach ($city as $kota) :
+                                $no1 = $no++;
                             ?>
-                            <div class="city-detail text-center mx-2">
-                                <a href="<?= base_url('home/list/') . $kota->id ?>">
-                                    <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
-                                    <p style="font-weight:500"><?= $kota->city ?></p>
-                                </a>
+                            <div class="city-detail text-center mx-2" id="kota<?= $no1 ?>">
+                                <!-- <a href="<?= base_url('home/list/') . $kota->id ?>" id="kota"> -->
+                                <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
+                                <p style="font-weight:500"><?= $kota->city ?></p>
+                                <!-- </a> -->
                             </div>
+                            <script>
+                            $(document).ready(function() {
+                                $("#kota<?= $no1 ?>").click(function() {
+                                    const value = $(this).val();
+                                    $.ajax({
+                                        type: 'get',
+                                        url: '/<?= base_url('home/filter') ?>',
+                                        data: {
+                                            'wisata': value
+                                        },
+                                        success: function(data) {
+                                            $('#result').html(data);
+                                        }
+                                    });
+                                });
+                            });
+                            </script>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -146,7 +166,7 @@
                                                 <div class="swiper-slide">
                                                     <a href="<?= base_url('home/halaman3/') . $kamar->id ?>">
                                                         <div class="card col-md-12 mt-3">
-                                                            <?php $img = explode(',', $kamar->image); ?>git
+                                                            <?php $img = explode(',', $kamar->image); ?>
                                                             <img src="<?= base_url('assets/image/room/') . $img[0] ?>"
                                                                 class="card-img-top" alt="...">
                                                             <div class="card-body">
@@ -155,7 +175,7 @@
                                                                     <?= $add[2] ?> <?= $add[3] ?></p>
                                                                 <p class="card-text"><i
                                                                         class="fa-solid fa-location-dot"></i>
-                                                                    Jakarta</p>
+                                                                    <?= $kamar->city; ?></p>
                                                                 <p class="card-text text-danger">Rp
                                                                     <?= number_format($kamar->price) ?></p>
                                                             </div>
@@ -380,7 +400,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('home/login') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= base_url('home/logout') ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -398,9 +418,9 @@
         },
     });
     </script>
-    <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>
     <script src="<?= base_url() ?>assets/build/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

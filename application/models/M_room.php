@@ -16,7 +16,13 @@ class M_room extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
-
+    public function room()
+    {
+        $query = "SELECT `room`.*,`city`.`city`
+                    FROM `room` JOIN `city` ON `room`.`city_id` = `city`.`id`
+        ";
+        return $this->db->query($query)->result();
+    }
     public function getRoomW($id)
     {
         $query = "SELECT `room`.*,`hotel`.`nama_hotel`,`hotel`.`id_city`,`user`.`email`,`room_type`.`name`
@@ -31,8 +37,7 @@ class M_room extends CI_Model
     public function getRoomWH($id)
     {
         $query = "SELECT `room`.*,`room_type`.`name`
-                    FROM `room` JOIN `hotel`
-                    JOIN `room_type` ON `room`.`type_id` = `room_type`.`id`
+                    FROM `room` JOIN `room_type` ON `room`.`type_id` = `room_type`.`id`
                     WHERE `room`.`id` = $id
         ";
         return $this->db->query($query)->row_array();

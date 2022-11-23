@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2022 pada 16.19
+-- Waktu pembuatan: 23 Nov 2022 pada 10.31
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.2
 
@@ -207,9 +207,6 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`id`, `user_id`, `hotel_id`, `type_id`, `city_id`, `room_name`, `image`, `address`, `facility`, `price`, `about`, `status`) VALUES
-(1, 1, 2, 1, 0, 'Heru', 'img1.png,keripik-bawang-pangsit-crispy-fried-260nw-1897975168-removebg-preview.png,logo.png,tugu-pancakarsa-sentul 1.png', 'Jl lagi gabut km 12', 'Resepsionis,AC,wifi Gratis', '210000', 'Cape bang?', '1'),
-(2, 9, 2, 1, 0, 'Coba123', 'rsz_11rsz_2christina-wocintechchat-com-faefwcdokig-unsplash_1.jpg,rsz_2christina-wocintechchat-com-faefwcdokig-unsplash_1.jpg,christina-wocintechchat-com-faEfWCdOKIg-unsplash (1).jpg,christina-wocintechchat-com-faEfWCdOKIg-unsplash.jpg', 'Bakungan,Plumutan,Bambanglipuro,Bantul', 'Resepsionis,AC', '99999', 'Hotel Uji Coba', '1'),
-(3, 9, 2, 1, 2, 'Sans Hotel Puri Indah Jakarta', 'bedroom-ga8e74d337_1920 1.png', 'Jalan Kembangan Raya, No.2, Kembangan, Indonesia, 11610', 'Resepsionis,AC,Televisi', '430000', 'Popular Leisure, Shopping and Entertainment experiences near the Guest House are;  CBD Puri Indah (700 m), Puri Indah Mall (800 m), Hypermart Puri Indah (850 m), Lippo Mall Puri (950 m), Lotte Mart (3,8 km), Ranch Market Pesanggrahan (2,9 km), Lokbin Meruya Ilir (4,2 km), and The FoodHall (4,2 km).', '1'),
 (4, 9, 21, 1, 4, 'Sans Hotel Puri Indah Jakarta', 'bedroom-ga8e74d337_1920_1.png,bedroom-ga8e74d337_1920_1.png,bedroom-gf651aa221_1920_2.png,hotel-g6515fe641_1920_2.png,hotel-room-gbadde5f29_1920_2.png', 'Jalan Kembangan Raya, No.2, Kembangan, Indonesia, 11610', 'Resepsionis,AC,Televisi', '430000', 'Popular Leisure, Shopping and Entertainment experiences near the Guest House are;  CBD Puri Indah (700 m), Puri Indah Mall (800 m), Hypermart Puri Indah (850 m), Lippo Mall Puri (950 m), Lotte Mart (3,8 km), Ranch Market Pesanggrahan (2,9 km), Lokbin Meruya Ilir (4,2 km), and The FoodHall (4,2 km).', '1'),
 (5, 9, 21, 1, 4, 'Wisma Bintang Red', 'hotel-g6515fe641_1920_2.png,bedroom-ga8e74d337_1920_1.png,bedroom-gf651aa221_1920_2.png,hotel-g6515fe641_1920_2.png,hotel-room-gbadde5f29_1920_2.png', 'Jl. Narada No.0011, RT.11/RW.5, Tanah Tinggi, Kec. Johar Baru, Kota Jakarta Pusat, Daerah Istimewa Yogyakarta 10450', 'Resepsionis,AC,Televisi', '500000', 'Wisma Bintang RedPartner merupakan salah satu hotel di Jakarta Pusat yang dilengkapi dengan berbagai fasilitas penunjang kenyamanan seperti; kamar smoking dan non-smoking, Wifi, LED-TV, resepsionis 24 jam, air mineral kemasan, perlengkapan mandi, lemari, sofa, meja samping, serta area parkir.\r\n\r\n \r\n\r\nBerada di lokasi strategis, dekat dengan Lapangan Banteng (3,6 km), Plaza Atrium (2,6 km), Ps. Senen (1,8 km), Masjid Istiqlal (4,5 km), Monas (4,4 km), dan Jakarta International Expo (4,7 km), Anda dapat mengakses Wisma Bintang RedPartner dengan berbagai pilihan transportasi publik seperti bus, taksi, maupun transportasi online.', '1'),
 (6, 9, 21, 1, 4, 'Kapuk Businees Park', 'hotel-room-gbadde5f29_1920_2.png,bedroom-ga8e74d337_1920_1.png,bedroom-gf651aa221_1920_2.png,hotel-g6515fe641_1920_2.png,hotel-room-gbadde5f29_1920_2.png', 'Jl. Kapuk Kamal Raya, RT.3/RW.3, Kamal Muara, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14470', 'Resepsionis,AC,Televisi', '290000', 'Kapuk Business Park is budget hotel located on outskirts of Jakarta. There are various restaurants and shopping centers located close to Penjaringan.  recommends this hotel for business travelers and backpackers. The hotel is within close proximity of Pantai Indah Kapuk, Pluit, and Muara Karang.\r\n\r\nThe best way to get to @Kapuk Business Park hotel is to take a local taxi from the airport or nearest train station. The property gives complimentary wireless Internet access that keeps you connected, and cable programming is available for your entertainment. Book this Hotel in Penjaringan & enjoy facilities at an affordable price.\r\n\r\nPopular Leisure, Shopping, and Entertainment experiences near the Guest House are:\r\n\r\nTea Garden (1.5 km)\r\nMall Taman Palem (2.7 km)\r\nPanties Pizza (1.4 km)\r\nWaterbom PIK (4.3 km)\r\nPvblic Bistro\r\nBar (1.1 km)\r\nHajime Ramen (1.2 km)\r\nFuwa-Fuwa (1.1 km)', '1'),
@@ -357,7 +354,8 @@ CREATE TABLE `user_client` (
 INSERT INTO `user_client` (`id`, `full_name`, `email`, `telp`, `password`, `image`, `is_active`, `role`, `date_created`) VALUES
 (1, 'Izumii', 'xzumi3@gmail.com', '859126462972', '$2y$10$K4d.D3Lg4JVeoyktkh/0SuwTMhoUPijfXvwfs17QjQJpSDdaiWx7.', 'default.jpg', '1', 'member', '1667233868'),
 (2, 'Izumii', 'xzumi31@gmail.com', '859126462972', '$2y$10$i5pQ6AfTeS3ycdkQIXdhle9SDkVQEIU2pOMxhFZEvc2XoUEHRF3la', 'default.jpg', '1', 'partner', '1667234340'),
-(3, 'Izumii', 'xzumi311@gmail.com', '234242', '$2y$10$62AhBpxB2anpgrsWYj5Kt.PKXhOJiDEihogUgkZFNB3eNDk4nCmZC', 'default.jpg', '1', 'member', '1668325799');
+(3, 'Izumii', 'xzumi311@gmail.com', '234242', '$2y$10$62AhBpxB2anpgrsWYj5Kt.PKXhOJiDEihogUgkZFNB3eNDk4nCmZC', 'default.jpg', '1', 'member', '1668325799'),
+(4, 'Heru Kristanto', 'heru@mail.com', '12345678', '$2y$10$kE9EGuckpp/TBjuo1yrQ1.8M6sa2psU3XZGW8eMD4XhHRr/LTU01u', 'default.jpg', '1', 'member', '1669168996');
 
 -- --------------------------------------------------------
 
@@ -619,7 +617,7 @@ ALTER TABLE `user_access_menu`
 -- AUTO_INCREMENT untuk tabel `user_client`
 --
 ALTER TABLE `user_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
