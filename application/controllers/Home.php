@@ -104,11 +104,16 @@ class Home extends CI_Controller
             $this->load->view('home/list_room', $data);
         }
     }
-    public function pemesanan($id)
+    public function pemesanan()
     {
         if ($this->session->userdata('full_name')) {
-            $data['room'] = $this->M_room->getRoomWH($id);
-            $this->load->view('home/pemesanan', $data);
+            if ($this->uri->segment(3) === NULL) {
+                redirect('home');
+            } else {
+                $id = $this->uri->segment(3);
+                $data['room'] = $this->M_room->getRoomWH($id);
+                $this->load->view('home/pemesanan', $data);
+            }
         } else {
             redirect('home/login');
         }
@@ -117,15 +122,61 @@ class Home extends CI_Controller
     {
 
         if ($this->session->userdata('full_name')) {
-            $this->load->view('home/pesanan');
+            $data['pesanan'] = $this->db->get_where('pesanan', ['user_id' => $this->session->userdata('id')])->result();
+            $this->load->view('home/pesanan', $data);
         } else {
             redirect('home/login');
+        }
+    }
+
+    public function _booking()
+    {
+        function generateRandomString($length = 10)
+        {
+            return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
+        }
+        $token = generateRandomString(6);
+        $data_ = [
+            'user_id' => $this->session->userdata('id'),
+            'room_id' => $this->input->post('id'),
+            'hotel_id' => $this->input->post('hotel'),
+            'check_in' => $this->input->post('checkin'),
+            'check_out' => $this->input->post('checkout'),
+            'payment_method' => $this->input->post('payment'),
+            'total' => $this->input->post('total'),
+            'expired' => $this->input->post('expired'),
+            'kode' => $token,
+            'status' => 'Menunggu'
+        ];
+        // var_dump($data_);
+        $query = $this->db->insert('pesanan', $data_);
+        if ($query) {
+            redirect('home/booking/' . $token);
         }
     }
     public function booking()
     {
         if ($this->session->userdata('full_name')) {
-            $this->load->view('home/booking');
+            $this->form_validation->set_rules('id', 'ID', 'required|trim');
+            $this->form_validation->set_rules('hotel', 'Hotel', 'required|trim');
+            $this->form_validation->set_rules('payment', 'Payment', 'required|trim');
+            if ($this->form_validation->run() == false) {
+                // redirect('home');
+                // $this->load->view('home/booking');
+                if ($this->uri->segment(3) === NULL) {
+                    redirect('home');
+                } else {
+                    $token =  $this->uri->segment(3);
+                    $data['trx'] = $this->db->get_where('pesanan', ['kode' => $token])->row_array();
+                    $room_id = $data['trx']['room_id'];
+                    $pay_id = $data['trx']['payment_method'];
+                    $data['room'] = $this->db->get_where('room', ['id' => $room_id])->row_array();
+                    $data['pay'] = $this->db->get_where('payment_method', ['id' => $pay_id])->row_array();
+                    $this->load->view('home/booking', $data);
+                }
+            } else {
+                $this->_booking();
+            }
         } else {
             redirect('home/login');
         }
@@ -147,19 +198,28 @@ class Home extends CI_Controller
     public function payment()
     {
         if ($this->session->userdata('full_name')) {
-            $data_ = [
-                'email' => $this->input->post('email'),
-                'name' => $this->input->post('name'),
-                'room' => $this->input->post('room'),
-                'address' => $this->input->post('address'),
-                'type' => $this->input->post('type'),
-                'harga' => $this->input->post('harga'),
-                'layanan' => $this->input->post('layanan'),
-                'total' => $this->input->post('total'),
-            ];
-            $data['category'] = $this->db->get('category_payment_method')->result();
-            $data['post'] = $data_;
-            $this->load->view('home/payment', $data);
+            $this->form_validation->set_rules('email', 'Email', 'required|trim');
+            $this->form_validation->set_rules('name', 'Name', 'required|trim');
+            $this->form_validation->set_rules('room', 'Room', 'required|trim');
+            if ($this->form_validation->run() == false) {
+                redirect('home');
+            } else {
+                $data_ = [
+                    'id' => $this->input->post('id'),
+                    'email' => $this->input->post('email'),
+                    'name' => $this->input->post('name'),
+                    'room' => $this->input->post('room'),
+                    'address' => $this->input->post('address'),
+                    'type' => $this->input->post('type'),
+                    'harga' => $this->input->post('harga'),
+                    'layanan' => $this->input->post('layanan'),
+                    'hotel' => $this->input->post('hotel'),
+                    'total' => $this->input->post('total'),
+                ];
+                $data['category'] = $this->db->get('category_payment_method')->result();
+                $data['post'] = $data_;
+                $this->load->view('home/payment', $data);
+            }
         } else {
             redirect('home/login');
         }
@@ -233,6 +293,7 @@ class Home extends CI_Controller
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'full_name' => $user['full_name'],
+                        'id' => $user['id'],
                         'email' => $user['email'],
                         'role' => $user['role']
                     ];
@@ -269,7 +330,17 @@ class Home extends CI_Controller
 </div>');
         redirect('home/login');
     }
-
+    public function update_status($kode)
+    {
+        if ($this->session->userdata('full_name')) {
+            $this->db->set('status', 'Expired');
+            $this->db->where('kode', $kode);
+            $this->db->update('pesanan');
+            redirect('home/booking/' . $kode);
+        } else {
+            redirect('home/login');
+        }
+    }
     public function change_password()
     {
         $data['user'] = $this->db->get_where('user_client', ['email' => $this->session->userdata('email')])->row_array();

@@ -61,7 +61,7 @@
             </div>
             <div class="row mt-1">
                 <div class="col-lg-7 mt-3">
-                    <div class="alert alert-danger text-dark" role="alert">
+                    <div class="alert alert-danger text-dark" role="alert" id="alert-danger">
                         <p style="margin-bottom: 0; font-size: 14;font-weight: 500;">Please complete payment within
                             <span class="text-danger" id="count"></span> to avoid
                             cancellation
@@ -69,12 +69,10 @@
                         <p style="margin-bottom: 0;">
                             Thanks for your booking! Please proceed ahead with the payment using the Bank Account
                             details as mentioned below.
-
                         </p>
                     </div>
                     <div class="payYGY p-4">
-                        <h6><img src="<?= base_url('assets/build/') ?>images/BCA_new-1n 1.png" width="48px" alt=""> Bank
-                            Central Asia (BCA)</h6>
+                        <h6><img src="<?= base_url('assets/image/payment/') . $pay['icon'] ?>" width="48px" alt=""> <?= $pay['method']; ?></h6>
                         <hr style="padding: 1px;">
                         <table width="100%">
                             <tr>
@@ -83,9 +81,9 @@
                                 <td>Reference Number</td>
                             </tr>
                             <tr class="capee">
-                                <td>781110100**7**** <span style="font-size: 13px;user-select: none;cursor: pointer;" class="text-danger" id="liveToastBtn">copy</span></td>
-                                <td>Rp249.330</td>
-                                <td>6830****</td>
+                                <td><span id="norek"><?= $pay['norek']; ?></span><span style="font-size: 13px;user-select: none;cursor: pointer;" class="text-danger" onclick="myFunction()" id="liveToastBtn"> copy</span></td>
+                                <td>Rp. <?= number_format($trx['total']) ?></td>
+                                <td><?= $trx['kode']; ?></td>
                             </tr>
 
                         </table>
@@ -111,7 +109,7 @@
                                     ATM
                                 </button>
                             </h2>
-                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li>Pilih Transaksi Lainnya > Transfer > Ke Rek BCA Virtual Account</li>
@@ -236,13 +234,12 @@
                     <div class="shYGY p-4">
                         <div class="row">
                             <div class="col-4">
-                                <img src="<?= base_url('assets/build/') ?>images/hotel-room-gbadde5f29_1920 2.png" width="100%" alt="">
+                                <?php $img = explode(',', $room['image']); ?>
+                                <img src="<?= base_url('assets/image/room/') . $img[0] ?>" width="100%" alt="">
                             </div>
                             <div class="col-8">
-                                <h5>Sans Hotel Yogyakarta</h5>
-                                <p style="font-size:12px;">Sans Hotel Ekkon Yogyakarta, Jalan HOS Cokroaminoto, Cokro
-                                    Square, Jalan HOS
-                                    Cokroaminoto, Tegalrejo, Tegalrejo, 55244, Yogyakarta, INDONESIA</p>
+                                <h5><?= $room['room_name']; ?></h5>
+                                <p style="font-size:12px;"><?= $room['address']; ?></p>
                             </div>
                         </div>
                         <div class="tbl3 p-2">
@@ -256,8 +253,8 @@
                                 </thead>
                                 <tbody style="font-weight:500;font-size: 17px;">
                                     <tr>
-                                        <td>Sunday, 13 Nov</td>
-                                        <td>Monday, 14 Nov</td>
+                                        <td><?= $trx['check_in']; ?></td>
+                                        <td><?= $trx['check_out']; ?></td>
                                         <td>1</td>
                                     </tr>
                                 </tbody>
@@ -272,7 +269,7 @@
                                 </thead>
                                 <tbody style="font-weight:500;font-size: 17px;">
                                     <tr>
-                                        <td>Superior Twin Room</td>
+                                        <td>Standar</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -353,31 +350,6 @@
         document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2
     </script>
     <script>
-        function startTimer(duration, display) {
-            var timer = duration,
-                minutes, seconds;
-            setInterval(function() {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    timer = 'Expired';
-                }
-            }, 1000);
-        }
-
-        window.onload = function() {
-            var fiveMinutes = 60 * 30,
-                display = document.querySelector('#count');
-            startTimer(fiveMinutes, display);
-        };
-    </script>
-    <script>
         const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
         const alert = (message, type) => {
@@ -400,19 +372,46 @@
         }
 
         function myFunction() {
-            // Get the text field
-            var copyText = document.getElementById("myInput");
-
-            // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
-
-            // Copy the text inside the text field
-            navigator.clipboard.writeText(copyText.value);
-
-            // Alert the copied text
-            alert("Copied the text: " + copyText.value);
+            // const el = document.createElement("textarea");
+            // el.value = event.target.innerHTML;
+            // document.body.appendChild(el);
+            // el.select();
+            // document.execCommand("copy");
+            // document.body.removeChild(el);
+            var copyText = document.getElementById('norek').innerHTML;
+            navigator.clipboard.writeText(copyText);
         }
     </script>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = <?= $trx['expired'] ?>;
 
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("count").innerHTML = minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("alert-danger").innerHTML = '<h6>Order failed due to late payment</h6>';
+                <?php if ($trx['status'] == 'Menunggu') { ?>
+                    window.location.href = 'http://localhost:8080/safe_room/home/update_status/<?= $trx['kode'] ?>'
+                <?php } ?>
+            }
+        }, 1000);
+    </script>
 </body>

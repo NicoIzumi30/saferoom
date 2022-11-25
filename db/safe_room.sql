@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Nov 2022 pada 06.55
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Generation Time: Nov 25, 2022 at 06:08 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_payment_method`
+-- Table structure for table `category_payment_method`
 --
 
 CREATE TABLE `category_payment_method` (
@@ -34,7 +33,7 @@ CREATE TABLE `category_payment_method` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `category_payment_method`
+-- Dumping data for table `category_payment_method`
 --
 
 INSERT INTO `category_payment_method` (`id`, `name`) VALUES
@@ -43,7 +42,7 @@ INSERT INTO `category_payment_method` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `city`
+-- Table structure for table `city`
 --
 
 CREATE TABLE `city` (
@@ -53,7 +52,7 @@ CREATE TABLE `city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `city`
+-- Dumping data for table `city`
 --
 
 INSERT INTO `city` (`id`, `city`, `image`) VALUES
@@ -69,7 +68,7 @@ INSERT INTO `city` (`id`, `city`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `coba`
+-- Table structure for table `coba`
 --
 
 CREATE TABLE `coba` (
@@ -79,7 +78,7 @@ CREATE TABLE `coba` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `coba`
+-- Dumping data for table `coba`
 --
 
 INSERT INTO `coba` (`id`, `expired`, `status`) VALUES
@@ -105,7 +104,7 @@ INSERT INTO `coba` (`id`, `expired`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hotel`
+-- Table structure for table `hotel`
 --
 
 CREATE TABLE `hotel` (
@@ -117,11 +116,11 @@ CREATE TABLE `hotel` (
   `alamat` varchar(256) NOT NULL,
   `jumlah_kamar` varchar(10) NOT NULL,
   `about` text NOT NULL,
-  `status` int(1) NOT NULL DEFAULT '0'
+  `status` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `hotel`
+-- Dumping data for table `hotel`
 --
 
 INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `alamat`, `jumlah_kamar`, `about`, `status`) VALUES
@@ -131,7 +130,7 @@ INSERT INTO `hotel` (`id`, `nama_hotel`, `id_city`, `id_user`, `pemilik`, `alama
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `payment_method`
+-- Table structure for table `payment_method`
 --
 
 CREATE TABLE `payment_method` (
@@ -144,7 +143,7 @@ CREATE TABLE `payment_method` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `payment_method`
+-- Dumping data for table `payment_method`
 --
 
 INSERT INTO `payment_method` (`id`, `method`, `id_class`, `id_category`, `icon`, `norek`) VALUES
@@ -158,7 +157,7 @@ INSERT INTO `payment_method` (`id`, `method`, `id_class`, `id_category`, `icon`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan`
+-- Table structure for table `pengajuan`
 --
 
 CREATE TABLE `pengajuan` (
@@ -175,11 +174,11 @@ CREATE TABLE `pengajuan` (
   `address` text NOT NULL,
   `about` text NOT NULL,
   `status` varchar(64) NOT NULL DEFAULT 'Pengajuan',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengajuan`
+-- Dumping data for table `pengajuan`
 --
 
 INSERT INTO `pengajuan` (`id`, `nama`, `tanggal_lahir`, `email`, `telp`, `gender`, `hotel`, `city`, `room`, `image`, `address`, `about`, `status`, `created`) VALUES
@@ -194,7 +193,7 @@ INSERT INTO `pengajuan` (`id`, `nama`, `tanggal_lahir`, `email`, `telp`, `gender
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pesanan`
+-- Table structure for table `pesanan`
 --
 
 CREATE TABLE `pesanan` (
@@ -205,23 +204,26 @@ CREATE TABLE `pesanan` (
   `check_in` varchar(64) NOT NULL,
   `check_out` varchar(64) NOT NULL,
   `payment_method` int(11) NOT NULL,
+  `expired` varchar(128) NOT NULL,
   `total` varchar(32) NOT NULL,
   `kode` varchar(8) NOT NULL,
   `status` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pesanan`
+-- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id`, `user_id`, `hotel_id`, `room_id`, `check_in`, `check_out`, `payment_method`, `total`, `kode`, `status`) VALUES
-(1, 4, 21, 5, 'Thu, 24 Nov', 'Fri, 25 Nov', 1, '540000', 'jdscax', 'Menunggu'),
-(2, 3, 21, 4, 'Thu, 24 Nov', 'Fri, 25 Nov', 1, '540000', 'dsdbfs', 'Menunggu');
+INSERT INTO `pesanan` (`id`, `user_id`, `hotel_id`, `room_id`, `check_in`, `check_out`, `payment_method`, `expired`, `total`, `kode`, `status`) VALUES
+(1, 4, 21, 5, 'Thu, 24 Nov', 'Fri, 25 Nov', 1, '', '540000', 'jdscax', 'Menunggu'),
+(2, 3, 21, 4, 'Thu, 24 Nov', 'Fri, 25 Nov', 1, '', '540000', 'dsdbfs', 'Menunggu'),
+(3, 3, 21, 7, 'Fri, 25 Nov', 'Sat, 26 Nov', 1, '', '343300', 'YoQqdC', 'Menunggu'),
+(4, 3, 21, 5, 'Fri, 25 Nov', 'Sat, 26 Nov', 1, '1669383765597', '515000', 'YDXVGa', 'Expired');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `room`
+-- Table structure for table `room`
 --
 
 CREATE TABLE `room` (
@@ -240,7 +242,7 @@ CREATE TABLE `room` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `room`
+-- Dumping data for table `room`
 --
 
 INSERT INTO `room` (`id`, `user_id`, `hotel_id`, `type_id`, `city_id`, `room_name`, `image`, `address`, `facility`, `price`, `about`, `status`) VALUES
@@ -252,7 +254,7 @@ INSERT INTO `room` (`id`, `user_id`, `hotel_id`, `type_id`, `city_id`, `room_nam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `room_type`
+-- Table structure for table `room_type`
 --
 
 CREATE TABLE `room_type` (
@@ -261,7 +263,7 @@ CREATE TABLE `room_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `room_type`
+-- Dumping data for table `room_type`
 --
 
 INSERT INTO `room_type` (`id`, `name`) VALUES
@@ -270,7 +272,7 @@ INSERT INTO `room_type` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tampungan`
+-- Table structure for table `tampungan`
 --
 
 CREATE TABLE `tampungan` (
@@ -279,7 +281,7 @@ CREATE TABLE `tampungan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tampungan`
+-- Dumping data for table `tampungan`
 --
 
 INSERT INTO `tampungan` (`id`, `text`) VALUES
@@ -294,7 +296,7 @@ INSERT INTO `tampungan` (`id`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -312,7 +314,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `date_of_birth`, `gender`, `email`, `telp`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -326,7 +328,7 @@ INSERT INTO `user` (`id`, `name`, `date_of_birth`, `gender`, `email`, `telp`, `i
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -336,7 +338,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -370,7 +372,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_client`
+-- Table structure for table `user_client`
 --
 
 CREATE TABLE `user_client` (
@@ -386,7 +388,7 @@ CREATE TABLE `user_client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_client`
+-- Dumping data for table `user_client`
 --
 
 INSERT INTO `user_client` (`id`, `full_name`, `email`, `telp`, `password`, `image`, `is_active`, `role`, `date_created`) VALUES
@@ -398,7 +400,7 @@ INSERT INTO `user_client` (`id`, `full_name`, `email`, `telp`, `password`, `imag
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -408,7 +410,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
@@ -427,7 +429,7 @@ INSERT INTO `user_menu` (`id`, `menu`, `icon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -436,7 +438,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -447,7 +449,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -459,7 +461,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUES
@@ -494,197 +496,197 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 --
 
 --
--- Indeks untuk tabel `category_payment_method`
+-- Indexes for table `category_payment_method`
 --
 ALTER TABLE `category_payment_method`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `city`
+-- Indexes for table `city`
 --
 ALTER TABLE `city`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `coba`
+-- Indexes for table `coba`
 --
 ALTER TABLE `coba`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `hotel`
+-- Indexes for table `hotel`
 --
 ALTER TABLE `hotel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `payment_method`
+-- Indexes for table `payment_method`
 --
 ALTER TABLE `payment_method`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pengajuan`
+-- Indexes for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pesanan`
+-- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `room`
+-- Indexes for table `room`
 --
 ALTER TABLE `room`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `room_type`
+-- Indexes for table `room_type`
 --
 ALTER TABLE `room_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tampungan`
+-- Indexes for table `tampungan`
 --
 ALTER TABLE `tampungan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_access_menu`
+-- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_client`
+-- Indexes for table `user_client`
 --
 ALTER TABLE `user_client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_menu`
+-- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_sub_menu`
+-- Indexes for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `category_payment_method`
+-- AUTO_INCREMENT for table `category_payment_method`
 --
 ALTER TABLE `category_payment_method`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `city`
+-- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `coba`
+-- AUTO_INCREMENT for table `coba`
 --
 ALTER TABLE `coba`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `hotel`
+-- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `payment_method`
+-- AUTO_INCREMENT for table `payment_method`
 --
 ALTER TABLE `payment_method`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan`
+-- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `pesanan`
+-- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `room`
+-- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `room_type`
+-- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tampungan`
+-- AUTO_INCREMENT for table `tampungan`
 --
 ALTER TABLE `tampungan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `user_access_menu`
+-- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `user_client`
+-- AUTO_INCREMENT for table `user_client`
 --
 ALTER TABLE `user_client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `user_menu`
+-- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `user_sub_menu`
+-- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
