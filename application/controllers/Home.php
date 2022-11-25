@@ -48,9 +48,22 @@ class Home extends CI_Controller
     }
 
 
-    public function coba()
+    public function coba($id)
     {
-        $this->load->view('home/coba');
+        date_default_timezone_set("Asia/Jakarta");
+        $data['cobaan'] =  $this->db->get_where('coba', ['id' => $id])->row_array();
+        $now = date("H:i:sa");
+        $after = $data['cobaan']['expired'];
+        // var_dump($now);
+        // var_dump($after);
+        if ($now >= $after) {
+            $this->db->set('status', 'Sudah mati');
+            $this->db->where('id', $id);
+            $this->db->update('coba');
+            $this->load->view('home/coba', $data);
+        } else {
+            $this->load->view('home/coba', $data);
+        }
     }
     public function coba21()
     {
@@ -59,47 +72,26 @@ class Home extends CI_Controller
     }
     public function coba_insert()
     {
-        $jumlahData = count($_FILES['image']['name']);
+        date_default_timezone_set("Asia/Jakarta");
+        $now = date("H:i:sa");
+        $after = date('H:i:sa', time() + 60 * 1);
+        $data = [
+            'expired' => $after,
+            'status' => ' Masih Aktif'
+        ];
 
-        // // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
-        // for ($i = 0; $i < $jumlahData; $i++) :
+        $this->db->insert('coba', $data);
+        // var_dump();
 
-        //     // Inisialisasi Nama,Tipe,Dll.
-        //     $_FILES['file']['name']     = $_FILES['image']['name'][$i];
-        //     $_FILES['file']['type']     = $_FILES['image']['type'][$i];
-        //     $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
-        //     $_FILES['file']['size']     = $_FILES['image']['size'][$i];
-
-        //     // Konfigurasi Upload
-        //     $config['upload_path']          = './assets/image/coba/';
-        //     $config['overwrite'] = TRUE;
-        //     $config['allowed_types']        = 'gif|jpg|png|pdf';
-
-        //     // Memanggil Library Upload dan Setting Konfigurasi
-        //     $this->load->library('upload', $config);
-        //     $this->upload->initialize($config);
-
-        //     if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
-
-        //         $fileData = $this->upload->data(); // Lakukan Upload Data
-
-        //     }
-
-        // endfor; // Penutup For
-        // $fasilitas = implode(',', $this->input->post('fasilitas'));
-        // $image = implode(',', $_FILES['image']['name']);
-        $form_data = array(
-            'full_name' => $this->input->post('full_name'),
-            'coment' => $this->input->post('coment'),
-            // 'fasilitas' => $fasilitas,
-            // 'image' => $image
-        );
-        $this->db->insert('coba', $form_data);
-        // if ($query) {
-        //     redirect('home/coba21');
+        // $tgl_sekarang = date('Y-m-d');
+        // $tgl_expired = '2015-10-28'; //tanggal expired
+        // if ($tgl_sekarang <= $tgl_expired) {
+        //     echo '<center><h1>data Sudah expired</h1></center>';
         // } else {
-        //     echo 'Gagal cok';
+
+        //     echo '<center><h1>data Sudah expired</h1></center>';
         // }
+
     }
     public function list()
     {
@@ -114,7 +106,7 @@ class Home extends CI_Controller
     }
     public function pemesanan($id)
     {
-        if ($this->session->userdata('email')) {
+        if ($this->session->userdata('full_name')) {
             $data['room'] = $this->M_room->getRoomWH($id);
             $this->load->view('home/pemesanan', $data);
         } else {
@@ -124,7 +116,7 @@ class Home extends CI_Controller
     public function pesanansaya()
     {
 
-        if ($this->session->userdata('email')) {
+        if ($this->session->userdata('full_name')) {
             $this->load->view('home/pesanan');
         } else {
             redirect('home/login');
@@ -132,7 +124,7 @@ class Home extends CI_Controller
     }
     public function booking()
     {
-        if ($this->session->userdata('email')) {
+        if ($this->session->userdata('full_name')) {
             $this->load->view('home/booking');
         } else {
             redirect('home/login');
@@ -154,7 +146,7 @@ class Home extends CI_Controller
     }
     public function payment()
     {
-        if ($this->session->userdata('email')) {
+        if ($this->session->userdata('full_name')) {
             $data_ = [
                 'email' => $this->input->post('email'),
                 'name' => $this->input->post('name'),

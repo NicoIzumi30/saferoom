@@ -14,7 +14,7 @@ class Transaksi extends CI_Controller
     }
     public function cobain()
     {
-        $this->session->set_flashdata('flash-confirm', 'Di Tambahkan');
+        $this->session->set_flashdata('flash', 'Di Konfirmasi');
         redirect('transaksi/pesanan');
     }
 }

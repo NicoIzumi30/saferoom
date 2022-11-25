@@ -79,6 +79,7 @@ class City extends CI_Controller
                 }
             }
 
+
             $this->db->set('city', $city);
             $this->db->where('id', $id);
             $this->db->update('city');

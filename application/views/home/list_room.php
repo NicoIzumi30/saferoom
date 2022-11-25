@@ -43,7 +43,7 @@
                 <div class="col-3 col-sm-9 col-md-9 col-lg-3 text-end">
                     <!-- Button trigger modal -->
                     <?php
-                    if ($this->session->userdata('email')) {
+                    if ($this->session->userdata('full_name')) {
                     ?>
                     <div class="dropdown mt-2">
                         <a class="text-dark dropdown-toggle" href=" #" role="button" data-bs-toggle="dropdown"

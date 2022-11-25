@@ -4,6 +4,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
 
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
@@ -24,7 +25,9 @@
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
 
-                                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <table id="datatable-responsive"
+                                            class="table table-striped table-bordered nowrap" cellspacing="0"
+                                            width="100%">
                                             <thead>
                                                 <tr>
                                                     <th width=10%>No</th>
@@ -33,10 +36,10 @@
                                                     <th>Hotel</th>
                                                     <th>Check In</th>
                                                     <th>Check Out</th>
-                                                    <th>Status</th>
                                                     <th>Payment Method</th>
                                                     <th>Total</th>
                                                     <th>kode</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -45,30 +48,33 @@
                                                 $no = 1;
                                                 foreach ($pesanan as $order) :
                                                 ?>
-                                                    <tr>
-                                                        <td><?= $no++ ?></td>
-                                                        <td><?= $order->full_name ?></td>
-                                                        <td><?= $order->room_name ?></td>
-                                                        <td><?= $order->nama_hotel ?></td>
-                                                        <td><?= $order->check_in ?></td>
-                                                        <td><?= $order->check_out ?></td>
-                                                        <td>
-                                                            <?php if ($order->status == 'Menunggu') { ?>
-                                                                <button class="btn btn-success btn-sm conpirm" href="<?= base_url('transaksi/cobain') ?>">Konfirmasi</button>
-                                                            <?php } ?>
-                                                        </td>
-                                                        <td><?= $order->method ?></td>
-                                                        <td><?= number_format($order->total) ?></td>
-                                                        <td><?= $order->kode ?></td>
+                                                <tr>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $order->full_name ?></td>
+                                                    <td><?= $order->room_name ?></td>
+                                                    <td><?= $order->nama_hotel ?></td>
+                                                    <td><?= $order->check_in ?></td>
+                                                    <td><?= $order->check_out ?></td>
 
-                                                        <td>
-                                                            <a href="<?= base_url('payment/delete/'); ?><?= $order->id; ?>" class="tombol-hapus btn btn-danger btn-sm">
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<?= $order->id ?>"><i class="fa fa-edit"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                    <td><?= $order->method ?></td>
+                                                    <td><?= number_format($order->total) ?></td>
+                                                    <td><?= $order->kode ?></td>
+                                                    <td>
+                                                        <?php if ($order->status == 'Menunggu') { ?>
+                                                        <button class="btn btn-success btn-sm conpirm"
+                                                            href="<?= base_url('transaksi/cobain') ?>">Konfirmasi</button>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="tombol-hapus btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal"
+                                                            data-target="#myModal<?= $order->id ?>"><i
+                                                                class="fa fa-edit"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -134,47 +140,47 @@
 <script src="<?= base_url(); ?>assets/build/js/sweetalert2.all.min.js"></script>
 
 <script>
-    $('.conpirm').on('click', function(e) {
-        e.preventDefault();
-        const href = $(this).attr('href');
-        const flashData1 = $('.flash-data-confirm').data('flashdata');
-        if (flashData1) {
-            Swal.fire(
-                'Sukses',
-                'Data Berhasil ' + flashData,
-                'success'
+$('.conpirm').on('click', function(e) {
+    e.preventDefault();
+    const href = $(this).attr('href');
+    const flashData1 = $('.flash-data-confirm').data('flashdata');
+    if (flashData1) {
+        Swal.fire(
+            'Sukses',
+            'Data Berhasil ' + flashData,
+            'success'
+        )
+    }
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Confirm',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = href;
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                '',
+                'error'
             )
         }
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
+    })
 
-        swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, Confirm',
-            cancelButtonText: 'No, cancel!',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.location.href = href;
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                    'Your imaginary file is safe :)',
-                    'error'
-                )
-            }
-        })
-
-    });
+});
 </script>

@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coba Insert Array</title>
     <link rel="stylesheet" href="css/boots.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid mx-5">
             <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,7 +29,8 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,48 +56,15 @@
 
     <div class="container">
         <div class="row justify-content-center mt-4">
-            <div class="col-6">
-                <form action="<?= base_url('home/coba_insert') ?>" method="post" id="contactForm1" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="full_name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="coment" class="form-label">Coment</label>
-                        <textarea class="form-control" id="coment" name="coment" rows="3"></textarea>
-                    </div>
-                    <!-- <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Resepsionis" name="fasilitas[]" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Resepsionis
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="AC" name="fasilitas[]" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            AC
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Televisi" name="fasilitas[]" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Televisi
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="wifi Gratis" name="fasilitas[]" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            wifi Gratis
-                        </label>
-                    </div> -->
-                    <!-- <div class="input-group mb-3">
-                        <input type="file" class="form-control" name="image[]" id="image" multiple required>
-                        <label class="input-group-text" for="image">Upload</label>
-                    </div> -->
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
+            <div class="col-6 text-center">
+                <h3><?= $cobaan['status']; ?></h3>
+                <p><?= $cobaan['expired']; ?></p>
+                <?php
+                $now = date('H:i:sa');
+                $after = date('H:i:sa', time() + 60 * 30);
+                var_dump($now);
+                var_dump($after);
+                ?>
             </div>
         </div>
 
@@ -101,31 +72,33 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-        var frm = $('#contactForm1');
+    var frm = $('#contactForm1');
 
-        frm.submit(function(e) {
+    frm.submit(function(e) {
 
-            e.preventDefault();
+        e.preventDefault();
 
-            $.ajax({
-                type: frm.attr('method'),
-                url: frm.attr('action'),
-                data: frm.serialize(),
-                success: function(data) {
-                    console.log('Submission was successful.');
-                    console.log(data);
-                },
-                error: function(data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                },
-            });
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function(data) {
+                console.log('Submission was successful.');
+                console.log(data);
+            },
+            error: function(data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
         });
+    });
     </script>
     <!-- <script>
         Swal.fire(
