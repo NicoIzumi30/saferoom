@@ -241,7 +241,7 @@ class Home extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('home/registration');
+            $this->load->view('home/register');
         } else {
             $data = [
                 'full_name' => htmlspecialchars($this->input->post('nama', true)),

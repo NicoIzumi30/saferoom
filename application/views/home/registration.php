@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>assets/vendors/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url() ?>assets/build/css/sb-admin-2.min.css" rel="stylesheet">
@@ -40,28 +38,24 @@
                         <form method="POST" action="<?= base_url('home/register') ?>">
                             <div class=" mb-3">
                                 <label for="nama" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap"
-                                    aria-describedby="emailHelp" value="<?= set_value('nama') ?>">
-                                <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" aria-describedby="emailHelp" value="<?= set_value('nama') ?>">
+                                <div style="text-align: start;">
+                                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
+                                </div>
                             </div>
                             <div class=" mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" name="email" id="email"
-                                    placeholder="Alamat Surat Elektronik" aria-describedby="emailHelp"
-                                    value="<?= set_value('email') ?>">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Alamat Surat Elektronik" aria-describedby="emailHelp" value="<?= set_value('email') ?>">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class=" mb-3">
                                 <label for="phone" class="form-label col-12">Nomot Telpon</label>
-                                <input type="tel" name="phone" id="phone" class="form-control"
-                                    placeholder="Nomor Telpon" style="width: 100% !important;"
-                                    value="<?= set_value('phone') ?>">
+                                <input type="tel" name="phone" id="phone" class="form-control" placeholder="Nomor Telpon" style="width: 100% !important;" value="<?= set_value('phone') ?>">
                                 <?= form_error('phone', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class=" mb-3">
                                 <label for="password1" class="form-label">Kata Sandi</label>
-                                <input type="password" class="form-control" name="password1" id="password1"
-                                    placeholder="Kata Sandi" aria-describedby="pw">
+                                <input type="password" class="form-control" name="password1" id="password1" placeholder="Kata Sandi" aria-describedby="pw">
                                 <?= form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
                                 <!-- <div id="pw" class="form-text">At least 8 char, use at least 1 upper and 1 lower
                                     case, 1 number, and 1
@@ -69,8 +63,7 @@
                             </div>
                             <div class=" mb-3">
                                 <label for="password2" class="form-label">Konfirmasi Kata Sandi</label>
-                                <input type="password" class="form-control" name="password2" id="password2"
-                                    placeholder="Konfirmasi Kata Sandi" aria-describedby="pw">
+                                <input type="password" class="form-control" name="password2" id="password2" placeholder="Konfirmasi Kata Sandi" aria-describedby="pw">
                                 <?= form_error('password2', '<small class="text-danger pl-3">', '</small>') ?>
 
 
@@ -112,9 +105,9 @@
 
     <script src="<?= base_url() ?>assets/build/js/intlTelInput.js"></script>
     <script>
-    $("#phone").intlTelInput({
-        utilsScript: "<?= base_url() ?>assets/build/js/utils.js"
-    });
+        $("#phone").intlTelInput({
+            utilsScript: "<?= base_url() ?>assets/build/js/utils.js"
+        });
     </script>
 
 </body>

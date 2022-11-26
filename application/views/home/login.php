@@ -2,92 +2,90 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/build/css/') ?>style_regis.css" />
     <title>Registration</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url() ?>assets/vendors/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url() ?>assets/build/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/intlTelInput.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/demo.css">
-
-
 </head>
 
-<body class="bg-gradient-dark">
+<body>
     <div class="container">
-
-        <div class="card o-hidden border-0 shadow-lg my-5 col-lg-6 mx-auto">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-11">
-                        <div class="text-center">
-                            <h2 class="mt-4">Login</h2>
-                        </div>
-                        <?= $this->session->flashdata('message'); ?>
-                        <form method="POST" action="<?= base_url('home/login') ?>">
-                            <div class=" mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="Masukkan Email" aria-describedby="emailHelp">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password"
-                                    placeholder="Masukkan Password">
-                            </div>
-                            <div class="col-md-9 mt-4 text-center mx-auto">
-                                <p>
-                                    Belum Punya Akun? <a href="<?=base_url('home/register')?>" >Daftar Disini</a>
-                                </p>
-                            </div>
-                            <div class="text-center mb-5 mt-4">
-                                <button type="submit" class="btn btn-primary col-12">Masuk</button>
-                            </div>
-                        </form>
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="#" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" />
                     </div>
-                </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+
+                </form>
+                <form action="#" class="sign-up-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-address-card"></i>
+                        <input type="text" placeholder="Full Name" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="number" placeholder="Telephone" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Repeat Password" />
+                    </div>
+                    <div style="max-width: 380px;padding: 10px;">
+                        <input type="checkbox" id="s&k" name="s&k" value="s&k">
+                        <label for="s&k"> <small>Dengan masuk atau membuat akun, Anda setuju dengan kami <a href="#" style="text-decoration: none;"> Syarat &
+                                    Ketentuan</a> Dan
+                                <a href="#" style="text-decoration: none;">Kebijakan
+                                    Privasi</a> </small></label>
+
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" />
+                    <div class="social-media">
+
+                    </div>
+                </form>
             </div>
         </div>
 
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here ?</h3>
+                    <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+                        ex ratione. Aliquid!
+                    </p>
+                    <a href="<?= base_url('home/register') ?>">
+                        <button class="btn transparent" id="sign-up-btn">
+                            Sign up
+                        </button>
+                    </a>
+                </div>
+                <img src="<?= base_url('assets/build/images/') ?>Data Protection.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel">
+            </div>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
-    <script src="<?= base_url() ?>assets/build/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url() ?>assets/vendors/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url() ?>assets/build/js/sb-admin-2.min.js"></script>
-
-
-    <script src="<?= base_url() ?>assets/build/js/intlTelInput.js"></script>
-    <script>
-    $("s#phone").intlTelInput({
-        utilsScript: "<?= base_url() ?>assets/build/js/utils.js"
-    });
-    </script>
-
+    <script src="<?= base_url('assets/build/js/') ?>app.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,44 @@
+<style>
+    td .popup-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .9);
+        height: 100%;
+        width: 100%;
+        z-index: 100;
+        display: none;
+
+    }
+
+    td .popup-image span {
+        position: absolute;
+        top: 5;
+        right: 0;
+        font-size: 40px;
+        font-weight: bolder;
+        color: #fff;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    td .popup-image img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 5px solid #fff;
+        border-radius: 5px;
+        width: 750px;
+        object-fit: cover;
+    }
+
+    @media(max-width:768px) {
+        td .popup-image img {
+            width: 95%;
+        }
+    }
+</style>
 <div class="right_col" role="main">
     <div class="container-fluid ">
 
@@ -67,8 +108,15 @@
                                                                 $img = explode(',', $t->image);
                                                                 foreach ($img as $foto) :
                                                                 ?>
-                                                                <img src="<?= base_url('assets/image/room/') ?><?= $foto ?>" width="25px">
+                                                                <div class="image-container">
+                                                                    <img src="<?= base_url('assets/image/room/') ?><?= $foto ?>" width="30px">
+                                                                </div>
                                                             <?php endforeach ?>
+                                                            <div class="popup-image">
+                                                                <span>&times;</span>
+                                                                <img src="<?= base_url('assets/image/room/') ?><?= $img[0] ?>">
+                                                            </div>
+
                                                         </td>
                                                         <td><?= $t->email ?></td>
                                                         <td><?= $t->address ?></td>
@@ -314,3 +362,14 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelectorAll('.image-container img').forEach(image => {
+        image.onclick = () => {
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = image.getAttribute('src');
+        }
+    });
+    document.querySelector('.popup-image span').onclick = () => {
+        document.querySelector('.popup-image').style.display = 'none';
+    }
+</script>
