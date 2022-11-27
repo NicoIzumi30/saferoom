@@ -94,10 +94,10 @@
                                                 <form action="<?= base_url('home/booking') ?>" method="post">
                                                     <input type="hidden" name="hotel" value="<?= $post['hotel'] ?>">
                                                     <input type="hidden" name="id" value="<?= $post['id'] ?>">
-                                                    <input type="hidden" name="checkin" id="checkin" value="">
-                                                    <input type="hidden" name="checkout" id="checkout" value="">
                                                     <input type="hidden" name="expired" id="expired" value="">
                                                     <input type="hidden" name="total" value="<?= $post['total'] ?>">
+                                                    <input type="hidden" name="checkin" value="<?= $post['checkin'] ?>">
+                                                    <input type="hidden" name="checkout" value="<?= $post['checkout'] ?>">
                                                     <input type="hidden" name="payment" value="<?= $pay->id ?>">
                                                     <button type="submit" class="btn btn-danger">Pay Now</button>
                                                 </form>
@@ -126,15 +126,15 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Mendaftar</td>
-                                            <td>Periksa</td>
-                                            <td>Room's</td>
+                                            <td>Check in</td>
+                                            <td>Check out</td>
+                                            <td>Room</td>
                                         </tr>
                                     </thead>
                                     <tbody style="font-weight:500;font-size: 17px;">
                                         <tr>
-                                            <td id="today"></td>
-                                            <td id="tomorrow"></td>
+                                            <td><?= $post['checkin']; ?></td>
+                                            <td><?= $post['checkout']; ?></td>
                                             <td>1</td>
                                         </tr>
                                     </tbody>
@@ -208,18 +208,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/JDMcKinstry/JavaScriptDateFormat@master/Date.format.min.js"></script>
     <script>
-        let now = new Date();
-        let today = now.format('D');
-        let today2 = now.format('d M');
-        let tomorrow = new Date();
-        tomorrow.setDate(now.getDate() + 1);
-        let besok = tomorrow.format('D');
-        let besok2 = tomorrow.format('d M');
         var countDownDate = new Date().getTime() + 30 * 60000;
-        document.getElementById("today").innerHTML = today + ', ' + today2;
-        document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2;
-        document.getElementById("checkin").value = today + ', ' + today2;
-        document.getElementById("checkout").value = besok + ', ' + besok2;
         document.getElementById("expired").value = countDownDate;
     </script>
 </body>

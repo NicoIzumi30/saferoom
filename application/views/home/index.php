@@ -4,41 +4,46 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/style-footer.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/styleU.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/fontawesome/css/all.min.css">
     <script type='text/javascript' src='<?= base_url() ?>assets/build/js/popper.min.js'></script>
     <script type='text/javascript' src='<?= base_url() ?>assets/build/js/bootstrap.min.js'></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/build/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/bootstrap.min.css">
     <style>
-    .swiper {
-        width: 100%;
-        height: 100%;
-    }
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
 
-    .swiper-slide {
-        font-size: 18px;
+        .swiper-slide {
+            font-size: 18px;
 
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
     <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
 
@@ -57,30 +62,25 @@
                             <?php
                             if ($this->session->userdata('full_name')) {
                             ?>
-                            <div class="dropdown">
-                                <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false" style="border-radius:9999px">
-                                    <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
-                                        width="20px" height="auto" title loading="auto"
-                                        style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
-                                    </span>
-                                </a>
+                                <div class="dropdown">
+                                    <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
+                                        <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                                        </span>
+                                    </a>
 
-                                <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
-                                    <li><a class="dropdown-item" href="profile.html">Profile Saya</a></li>
-                                    <li><a class="dropdown-item" href="booking.html">Saya Booking</a></li>
-                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
-                                            style="border-bottom: none;">Keluar</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                    <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
+                                        <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>">Saya Booking</a></li>
+                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" style="border-bottom: none;">Keluar</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             <?php } else { ?>
-                            <a href="<?= base_url('home/login') ?>">
-                                <button type="button" class="btn btn-lg"
-                                    style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
-                                    Gabung | Daftar
-                                </button>
-                            </a>
+                                <a href="<?= base_url('home/login') ?>">
+                                    <button type="button" class="btn btn-lg" style="border-radius:9999px; background-color: #ffffff5c; color: #fff;font-size:15px; height: 50px;">
+                                        Gabung | Daftar
+                                    </button>
+                                </a>
                             <?php } ?>
 
                         </div>
@@ -89,10 +89,7 @@
                     <div class="row justify-content-center mt-5">
                         <div class="col-sm-5 mt-5">
                             <div class="input-group mb-3 mt-4">
-                                <input type="text" class="form-control"
-                                    placeholder="&nbsp Enter a City, Locality or Hotel"
-                                    aria-label="Enter a City, Locality or Hotel" aria-describedby="basic-addon2"
-                                    style="border: none; border-bottom-left-radius: 9999px;border-top-left-radius: 9999px; background-color: #D6D6D6; box-shadow: none; height: 45px;">
+                                <input type="text" class="form-control" placeholder="&nbsp Enter a City, Locality or Hotel" aria-label="Enter a City, Locality or Hotel" aria-describedby="basic-addon2" style="border: none; border-bottom-left-radius: 9999px;border-top-left-radius: 9999px; background-color: #D6D6D6; box-shadow: none; height: 45px;">
                                 <button type="submit" class="input-group-text" id="basic-addon2" style="border: none; border-bottom-right-radius: 9999px;border-top-right-radius: 9999px; background-color: #b9b9b9;
                         ;">
                                     <table>
@@ -125,30 +122,30 @@
                             foreach ($city as $kota) :
                                 $no1 = $no++;
                             ?>
-                            <div class="city-detail text-center mx-2" id="kota<?= $no1 ?>">
-                                <!-- <a href="<?= base_url('home/list/') . $kota->id ?>" id="kota"> -->
-                                <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
-                                <p style="font-weight:500"><?= $kota->city ?></p>
-                                <!-- </a> -->
-                            </div>
-                            <script>
-                            $(document).ready(function() {
-                                $("#kota<?= $no1 ?>").click(function() {
-                                    const value = <?= $kota->id ?>;
-                                    $.ajax({
-                                        type: 'get',
-                                        url: '/safe_room/home/filter',
-                                        data: {
-                                            'kota': value
-                                        },
-                                        success: function(data) {
-                                            $('#roomYGY').html(data);
-                                            // console.info(data)
-                                        }
+                                <div class="city-detail text-center mx-2" id="kota<?= $no1 ?>">
+                                    <!-- <a href="<?= base_url('home/list/') . $kota->id ?>" id="kota"> -->
+                                    <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
+                                    <p style="font-weight:500"><?= $kota->city ?></p>
+                                    <!-- </a> -->
+                                </div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#kota<?= $no1 ?>").click(function() {
+                                            const value = <?= $kota->id ?>;
+                                            $.ajax({
+                                                type: 'get',
+                                                url: '/safe_room/home/filter',
+                                                data: {
+                                                    'kota': value
+                                                },
+                                                success: function(data) {
+                                                    $('#roomYGY').html(data);
+                                                    // console.info(data)
+                                                }
+                                            });
+                                        });
                                     });
-                                });
-                            });
-                            </script>
+                                </script>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -162,9 +159,7 @@
 
                                     </div>
                                     <div class="col-6 text-end mt-3">
-                                        <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" id="modal-filter"><i
-                                                class="fa-solid fa-list"></i>
+                                        <a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="modal-filter"><i class="fa-solid fa-list"></i>
                                             Filter</a>
                                     </div>
                                     <div class="col-12">
@@ -194,7 +189,7 @@
 
     </section>
 
-    <section id="about">
+    <section id="about" class="mb-5">
 
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-11">
@@ -237,9 +232,7 @@
                                 kamar hotel yang murah sangatlah mudah berkat platform kami. Berikut beberapa destinasi
                                 yang wajib dikunjungi di Indonesia.</span></p>
 
-                        <h3><span style="color:#000000;">1. </span><a
-                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/surabaya"
-                                style="color:#000000;text-decoration:none"><span style="color:#000000;">Surabaya, Jawa
+                        <h3><span style="color:#000000;">1. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/surabaya" style="color:#000000;text-decoration:none"><span style="color:#000000;">Surabaya, Jawa
                                     Timur</span></a></h3>
 
                         <p><span style="color:#000000;">Jika Anda mendambakan liburan budaya di Indonesia, tidak ada
@@ -248,9 +241,7 @@
                                 memiliki destinasi wisata populer, termasuk Gunung Bromo, Bali, Yogyakarta, dan
                                 Jakarta.</span></p>
 
-                        <h3><span style="color:#000000;">2. </span><a
-                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/jakarta"
-                                style="text-decoration:none"><span style="color:#000000;">Jakarta</span></a></h3>
+                        <h3><span style="color:#000000;">2. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/jakarta" style="text-decoration:none"><span style="color:#000000;">Jakarta</span></a></h3>
 
                         <p><span style="color:#000000;">Jakarta adalah salah satu tempat terbaik untuk dikunjungi jika
                                 Anda menikmati kenyamanan pusat kota. Ini adalah kota megapolitan dengan gedung pencakar
@@ -262,9 +253,7 @@
                                 tetapi ada beberapa situs warisan seperti Jakarta Tua atau Kota Tua dan pelabuhan
                                 bersejarah Sunda Kelapa untuk dijelajahi!</span></p>
 
-                        <h3><span style="color:#000000;">3. </span><a
-                                href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/bandung"
-                                style="text-decoration:none"><span style="color:#000000;">Bandung</span></a></h3>
+                        <h3><span style="color:#000000;">3. </span><a href="https://www.SafeRoom.com/en-id/search/hotel/indonesia/bandung" style="text-decoration:none"><span style="color:#000000;">Bandung</span></a></h3>
 
                         <p><span style="color:#000000;">Bandung hanya berjarak tiga jam lebih sedikit dari Jakarta
                                 dengan kereta atau bus. Di kota ini, ada banyak tempat keren untuk anda jelajahi.</span>
@@ -277,9 +266,7 @@
                                 murah di Bandung dan habiskan satu atau dua hari berbelanja di pusat perbelanjaan outlet
                                 Indonesia.</span></p>
 
-                        <h3><span style="color:#000000;">4. </span><a
-                                href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/yogyakarta"
-                                style="text-decoration:none"><span style="color:#000000;">Yogyakarta</span></a></h3>
+                        <h3><span style="color:#000000;">4. </span><a href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/yogyakarta" style="text-decoration:none"><span style="color:#000000;">Yogyakarta</span></a></h3>
 
                         <p><span style="color:#000000;">Indonesia memiliki budaya dan sejarah yang kaya dan dalam, dan
                                 Anda dapat melihatnya dari bangunan kuno dan tempat-tempat yang berdiri hingga hari ini.
@@ -293,9 +280,7 @@
                                 Dunia UNESCO, Prambanan dan Borobudur, dua landmark paling megah di seluruh Asia.</span>
                         </p>
 
-                        <h3><span style="color:#000000;">5. </span><a
-                                href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/bali"
-                                style="text-decoration:none"><span style="color:#000000;">Pulau Nusa Penida,
+                        <h3><span style="color:#000000;">5. </span><a href="https://www.SafeRoom.com/id-id/search/hotel/indonesia/bali" style="text-decoration:none"><span style="color:#000000;">Pulau Nusa Penida,
                                     Bali</span></a></h3>
 
                         <p><span style="color:#000000;">Indonesia terkenal dengan pemandangan pantainya yang indah. Jika
@@ -367,16 +352,68 @@
         </div>
     </section>
 
-    <section id="footer mt-4">
-        <div class="footer">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-facebook"></i>
+    <footer class="footer-20192 mt-5">
+        <div class="site-section">
+            <div class="container">
+
+                <div class="cta d-block d-md-flex align-items-center px-5">
+                    <div>
+                        <h2 class="mb-0">Daftarkan Properti Anda</h2>
+                        <h3 class="text-dark">Daftarkan properti anda kepada kami dan dapatkan hingga
+                            IDR 40M / month</h3>
+                    </div>
+                    <div class="ml-auto">
+                        <a href="<?= base_url('pengajuan') ?>" class="btn btn-dark rounded-0 py-3 px-5">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm">
+                        <a href="#" class="footer-logo">SafeRoom</a>
+                        <p class="copyright">
+                            <small>&copy; 2022</small>
+                        </p>
+                    </div>
+                    <!-- <div class="col-sm">
+                        <h3>Customers</h3>
+                        <ul class="list-unstyled links">
+                            <li><a href="#">Buyer</a></li>
+                            <li><a href="#">Supplier</a></li>
+                        </ul>
+                    </div> -->
+                    <div class="col-sm">
+                        <h3>Company</h3>
+                        <ul class="list-unstyled links">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm">
+                        <h3>Further Information</h3>
+                        <ul class="list-unstyled links">
+                            <li><a href="#">Terms &amp; Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Follow us</h3>
+                        <ul class="list-unstyled social">
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                            <li><a href="#"><span class="icon-medium"></span></a></li>
+                            <li><a href="#"><span class="icon-paper-plane"></span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
         </div>
+    </footer>
     </section>
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -393,8 +430,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" style="background-color:#d1d1d1;">
 
@@ -416,29 +452,24 @@
                                 </div>
                                 <hr style="border:.1rem solid black">
                                 <div class="filter-input mb-3 mt-4">
-                                    <label for="customRange2" class="form-label"
-                                        style="color:#4F4F4F;font-size:20px;font-weight: 400;">Harga</label>
+                                    <label for="customRange2" class="form-label" style="color:#4F4F4F;font-size:20px;font-weight: 400;">Harga</label>
                                     <div class="slider mt-3">
                                         <div class="progress"></div>
                                     </div>
                                     <div class="range-input">
-                                        <input type="range" class="range-min" min="0" max="10000" value="2500"
-                                            step="100">
-                                        <input type="range" class="range-max" min="0" max="10000" value="7500"
-                                            step="100">
+                                        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                                        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
                                     </div>
                                     <div class="price-input">
                                         <div class="row">
                                             <div class="col-6 text-start">
                                                 <div class="field ">
-                                                    <input type="number" id="id123" class="input-min inp-min-max"
-                                                        value="2500">
+                                                    <input type="number" id="id123" class="input-min inp-min-max" value="2500">
                                                 </div>
                                             </div>
                                             <div class="col-6 text-end">
                                                 <div class="field">
-                                                    <input type="number" id="id1234" class="input-max inp-min-max"
-                                                        value="7500">
+                                                    <input type="number" id="id1234" class="input-max inp-min-max" value="7500">
                                                 </div>
                                             </div>
                                         </div>
@@ -508,8 +539,7 @@
 
                                 </div>
                                 <div class="baat text-center">
-                                    <button type="submit" class="btn px-5"
-                                        style="border-radius: 9999px; border:1px solid black">Terapkan
+                                    <button type="submit" class="btn px-5" style="border-radius: 9999px; border:1px solid black">Terapkan
                                         Filter</button>
                                 </div>
                             </div>
@@ -521,60 +551,63 @@
 
         </div>
     </div>
+    <script src="<?= base_url() ?>assets/build/js/jquery-3.3.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/build/js/popper.min.js"></script>
+    <!-- <script src="<?= base_url() ?>assets/build/js/bootstrap.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-    });
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
     </script>
     <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>
     <script src="<?= base_url() ?>assets/build/js/bootstrap.bundle.min.js"></script>
     <script>
-    const rangeInput = document.querySelectorAll(".range-input input"),
-        priceInput = document.querySelectorAll(".price-input input"),
-        range = document.querySelector(".slider .progress");
-    let priceGap = 1000;
-    priceInput.forEach(input => {
-        input.addEventListener("input", e => {
-            let minPrice = parseInt(priceInput[0].value),
-                maxPrice = parseInt(priceInput[1].value);
+        const rangeInput = document.querySelectorAll(".range-input input"),
+            priceInput = document.querySelectorAll(".price-input input"),
+            range = document.querySelector(".slider .progress");
+        let priceGap = 1000;
+        priceInput.forEach(input => {
+            input.addEventListener("input", e => {
+                let minPrice = parseInt(priceInput[0].value),
+                    maxPrice = parseInt(priceInput[1].value);
 
-            if ((maxPrice - minPrice >= priceGap) && maxPrice <= rangeInput[1].max) {
-                if (e.target.className === "input-min") {
-                    rangeInput[0].value = minPrice;
-                    range.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
-                } else {
-                    rangeInput[1].value = maxPrice;
-                    range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                if ((maxPrice - minPrice >= priceGap) && maxPrice <= rangeInput[1].max) {
+                    if (e.target.className === "input-min") {
+                        rangeInput[0].value = minPrice;
+                        range.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+                    } else {
+                        rangeInput[1].value = maxPrice;
+                        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                    }
                 }
-            }
+            });
         });
-    });
-    rangeInput.forEach(input => {
-        input.addEventListener("input", e => {
-            let minVal = parseInt(rangeInput[0].value),
-                maxVal = parseInt(rangeInput[1].value);
-            if ((maxVal - minVal) < priceGap) {
-                if (e.target.className === "range-min") {
-                    rangeInput[0].value = maxVal - priceGap
+        rangeInput.forEach(input => {
+            input.addEventListener("input", e => {
+                let minVal = parseInt(rangeInput[0].value),
+                    maxVal = parseInt(rangeInput[1].value);
+                if ((maxVal - minVal) < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap
+                    } else {
+                        rangeInput[1].value = minVal + priceGap;
+                    }
                 } else {
-                    rangeInput[1].value = minVal + priceGap;
+                    priceInput[0].value = minVal;
+                    priceInput[1].value = maxVal;
+                    range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
+                    range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
                 }
-            } else {
-                priceInput[0].value = minVal;
-                priceInput[1].value = maxVal;
-                range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
-                range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-            }
+            });
         });
-    });
     </script>
 
 </body>

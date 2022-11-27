@@ -242,7 +242,7 @@
                                 <p style="font-size:12px;"><?= $room['address']; ?></p>
                             </div>
                         </div>
-                        <div class="tbl3 p-2">
+                        <div class="tbl3 p-2 mt-4">
                             <table width="100%">
                                 <thead>
                                     <tr>

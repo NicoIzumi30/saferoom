@@ -68,6 +68,28 @@ class M_room extends CI_Model
         ON `pesanan`.`hotel_id` = `hotel`.`id`
         JOIN `user_client` ON `pesanan`.`user_id` = `user_client`.`id`
         JOIN `payment_method` ON `pesanan`.`payment_method` = `payment_method`.`id`JOIN `room` ON `pesanan`.`room_id` = `room`.`id`
+        WHERE `pesanan`.`status` = 'Menunggu'
+";
+        return $this->db->query($query)->result();
+    }
+    public function failed()
+    {
+        $query = "SELECT `pesanan`.*,`hotel`.`nama_hotel`,`user_client`.`full_name`,`payment_method`.`method`,`room`.`room_name`
+        FROM `pesanan` JOIN `hotel`
+        ON `pesanan`.`hotel_id` = `hotel`.`id`
+        JOIN `user_client` ON `pesanan`.`user_id` = `user_client`.`id`
+        JOIN `payment_method` ON `pesanan`.`payment_method` = `payment_method`.`id`JOIN `room` ON `pesanan`.`room_id` = `room`.`id`
+        WHERE `pesanan`.`status` = 'Expired'
+";
+        return $this->db->query($query)->result();
+    }
+    public function transaksi()
+    {
+        $query = "SELECT `transaksi`.*,`hotel`.`nama_hotel`,`user_client`.`full_name`,`payment_method`.`method`,`room`.`room_name`
+        FROM `transaksi` JOIN `hotel`
+        ON `transaksi`.`hotel_id` = `hotel`.`id`
+        JOIN `user_client` ON `transaksi`.`user_id` = `user_client`.`id`
+        JOIN `payment_method` ON `transaksi`.`payment_method` = `payment_method`.`id`JOIN `room` ON `transaksi`.`room_id` = `room`.`id`
 ";
         return $this->db->query($query)->result();
     }

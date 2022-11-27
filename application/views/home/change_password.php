@@ -61,7 +61,7 @@
                         </div>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-target="#profile" aria-expanded="false">
-                                <i class="fa-solid fa-user"></i> Hallo, Jalu
+                                <i class="fa-solid fa-user"></i> Hallo, <?= $this->session->userdata('full_name'); ?>
                             </a>
                             <ul class="dropdown-menu" id="profile">
                                 <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>

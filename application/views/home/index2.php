@@ -49,7 +49,7 @@
 
                             <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
                                 <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
-                                <li><a class="dropdown-item" href="#">Saya Booking</a></li>
+                                <li><a class="dropdown-item" href="">Saya Booking</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('home/logout') ?>" style="border-bottom: none;">Keluar</a></li>
                             </ul>
                         </div>

@@ -1,52 +1,22 @@
-<!DOCTYPE HTML>
-<html>
+<table>
+	<tr>
+		<td>Check in </td>
+		<td>Check out </td>
+	</tr>
+	<tr>
+		<td id="checkin">28 Nov 2022</td>
+		<td id="checkout">30 Nov 2022</td>
+	</tr>
+</table>
 
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		p {
-			text-align: center;
-			font-size: 60px;
-			margin-top: 0px;
-		}
-	</style>
-</head>
-
-<body>
-
-	<p id="demo"></p>
-
-	<script>
-		// Set the date we're counting down to
-		var countDownDate = new Date().getTime() + 30 * 60000;
-
-		// Update the count down every 1 second
-		var x = setInterval(function () {
-
-			// Get today's date and time
-			var now = new Date().getTime();
-
-			// Find the distance between now and the count down date
-			var distance = countDownDate - now;
-
-			// Time calculations for days, hours, minutes and seconds
-			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-			// Output the result in an element with id="demo"
-			document.getElementById("demo").innerHTML =
-				+ minutes + "m " + seconds + "s ";
-
-			// If the count down is over, write some text 
-			if (distance < 0) {
-				clearInterval(x);
-				document.getElementById("demo").innerHTML = "EXPIRED";
-			}
-		}, 1000);
-	</script>
-
-</body>
-
-</html>
+<input type="date" id="checkin_val" name="checkin" style="display: none;">
+<input type="date" id="checkout_val" name="checkout" style="display: none;">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#checkin').on('click', function () {
+			jQuery("#checkin_val").show();
+		});
+	});
+</script>

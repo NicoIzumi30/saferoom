@@ -94,26 +94,48 @@
                                             <?php
                                             $room = $this->db->get_where('room', ['id' => $order->room_id])->row_array();
                                             ?>
-                                            <div class="row m-2 mx-4 p-1 py-3 mb-3" style="border: 2px solid grey; border-radius:10px">
-                                                <div class="col-3">
-                                                    <?php $img = explode(',', $room['image']); ?>
-                                                    <img src="<?= base_url('assets/image/room/' . $img[0]) ?>" class="w-100">
-                                                </div>
-                                                <div class="col-9 text-start">
-                                                    <h4 class="text-dark"><?= $room['room_name']; ?></h4>
-                                                    <small><?= $room['address']; ?></small>
-                                                    <div style="height: 20px;"></div>
-                                                    <div class="text-end">
-                                                        <p style="margin-bottom:0" class="text-danger"><?= $order->status; ?> Pembayaran</p>
+                                            <a href="<?= base_url('home/booking/') . $order->kode ?>" class="text-decoration-none text-dark">
+                                                <div class="row m-2 mx-4 p-1 py-3 mb-3" style="border: 2px solid grey; border-radius:10px">
+                                                    <div class="col-3">
+                                                        <?php $img = explode(',', $room['image']); ?>
+                                                        <img src="<?= base_url('assets/image/room/' . $img[0]) ?>" class="w-100">
+                                                    </div>
+                                                    <div class="col-9 text-start">
+                                                        <h4 class="text-dark"><?= $room['room_name']; ?></h4>
+                                                        <small><?= $room['address']; ?></small>
+                                                        <div style="height: 20px;"></div>
+                                                        <div class="text-end">
+                                                            <p style="margin-bottom:0" class="text-danger"><?= $order->status; ?> Pembayaran</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                                     <div class="bdibayar text-center pt-3" style="background-color: #ececec; height:399px">
-                                        <p> Tidak ada booking baru</p>
+                                        <?php foreach ($transaksi as $order) : ?>
+                                            <?php
+                                            $room = $this->db->get_where('room', ['id' => $order->room_id])->row_array();
+                                            ?>
+                                            <a href="<?= base_url('home/struk/') . $order->kode ?>" class="text-decoration-none text-dark">
+                                                <div class="row m-2 mx-4 p-1 py-3 mb-3" style="border: 2px solid grey; border-radius:10px">
+                                                    <div class="col-3">
+                                                        <?php $img = explode(',', $room['image']); ?>
+                                                        <img src="<?= base_url('assets/image/room/' . $img[0]) ?>" class="w-100">
+                                                    </div>
+                                                    <div class="col-9 text-start">
+                                                        <h4 class="text-dark"><?= $room['room_name']; ?></h4>
+                                                        <small><?= $room['address']; ?></small>
+                                                        <div style="height: 20px;"></div>
+                                                        <div class="text-end">
+                                                            <p style="margin-bottom:0" class="text-success"><?= $order->status; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
                             </div>

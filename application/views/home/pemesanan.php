@@ -103,18 +103,18 @@
                                     <p style="font-size:12px;"><?= $room['address']; ?></p>
                                 </div>
                             </div>
-                            <div class="tbl3 p-2">
+                            <div class="tbl3 p-2 mt-4">
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                            <td>Mendaftar</td>
-                                            <td>Periksa</td>
+                                            <td>Checkin</td>
+                                            <td>Checkout</td>
                                         </tr>
                                     </thead>
                                     <tbody style="font-weight:500;font-size: 17px;">
                                         <tr>
-                                            <td>Sunday, 13 Nov</td>
-                                            <td>Monday, 14 Nov</td>
+                                            <td><?= $date['checkin']; ?></td>
+                                            <td><?= $date['checkout']; ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -169,6 +169,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <input type="hidden" name="checkin" value="<?= $date['checkin'] ?>">
+                                <input type="hidden" name="checkout" value="<?= $date['checkout'] ?>">
                                 <input type="hidden" name="email" value="<?= $this->session->userdata('email') ?>">
                                 <input type="hidden" name="name" value="<?= $this->session->userdata('full_name') ?>">
                                 <input type="hidden" name="room" value="<?= $room['room_name'] ?>">

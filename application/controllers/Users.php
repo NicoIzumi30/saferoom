@@ -3,6 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Users extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        is_logged_in();
+        // if (!$this->session->userdata('email')) {
+        //     redirect('auth');
+        // }
+    }
     public function user_admin()
     {
         $data['title'] = 'Users Admin';

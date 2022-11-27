@@ -107,10 +107,18 @@ class Home extends CI_Controller
     public function pemesanan()
     {
         if ($this->session->userdata('full_name')) {
-            if ($this->uri->segment(3) === NULL) {
+            $this->form_validation->set_rules('checkin', 'Checkin', 'required');
+            $this->form_validation->set_rules('checkout', 'Checkout', 'required');
+            $this->form_validation->set_rules('id', 'ID', 'required');
+            if ($this->form_validation->run() == false) {
                 redirect('home');
             } else {
-                $id = $this->uri->segment(3);
+                $id = $this->input->post('id');
+                $data['date'] = [
+                    'checkin' => $this->input->post('checkin'),
+                    'checkout' => $this->input->post('checkout'),
+                ];
+                // $id = $this->uri->segment(3);
                 $data['room'] = $this->M_room->getRoomWH($id);
                 $this->load->view('home/pemesanan', $data);
             }
@@ -123,6 +131,7 @@ class Home extends CI_Controller
 
         if ($this->session->userdata('full_name')) {
             $data['pesanan'] = $this->db->get_where('pesanan', ['user_id' => $this->session->userdata('id')])->result();
+            $data['transaksi'] = $this->db->get_where('transaksi', ['user_id' => $this->session->userdata('id')])->result();
             $this->load->view('home/pesanan', $data);
         } else {
             redirect('home/login');
@@ -139,8 +148,8 @@ class Home extends CI_Controller
         $this->db->where('id', $id);
         $this->db->update('barang');
         redirect('user/struk_order/' .
-        
-         $order_id);
+
+            $order_id);
     }
 
     public function _booking()
@@ -226,6 +235,8 @@ class Home extends CI_Controller
                     'address' => $this->input->post('address'),
                     'type' => $this->input->post('type'),
                     'harga' => $this->input->post('harga'),
+                    'checkin' => $this->input->post('checkin'),
+                    'checkout' => $this->input->post('checkout'),
                     'layanan' => $this->input->post('layanan'),
                     'hotel' => $this->input->post('hotel'),
                     'total' => $this->input->post('total'),
