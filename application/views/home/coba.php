@@ -70,6 +70,11 @@
 
     </div>
 
+    <form action="<?= base_url('user/update_qty/') . $row->order_id_barang ?>" method="post">
+        <input type="hidden" name="qty" value="<?= $row->order_qty ?>">
+        <input type="hidden" name="order_id" value="<?= $row->order_id ?>">
+        <button type="submit" class="btn btn-success">Confirm</button>
+    </form>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

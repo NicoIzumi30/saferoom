@@ -128,6 +128,20 @@ class Home extends CI_Controller
             redirect('home/login');
         }
     }
+    public function update_qty($id)
+    {
+        $query = $this->db->get_where('barang', ['id' => $id])->row_array();
+        $count = $query['total_qty'];
+        $qty =  $this->input->post('qty');
+        $order_id =  $this->input->post('order_id');
+        $new_count = $count - $qty;
+        $this->db->set('total_qty', $new_count);
+        $this->db->where('id', $id);
+        $this->db->update('barang');
+        redirect('user/struk_order/' .
+        
+         $order_id);
+    }
 
     public function _booking()
     {
