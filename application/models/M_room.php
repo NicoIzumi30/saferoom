@@ -24,6 +24,14 @@ class M_room extends CI_Model
         ";
         return $this->db->query($query)->result();
     }
+    public function search($keywoard)
+    {
+        $query = "SELECT `room`.*,`city`.`city`
+                    FROM `room` JOIN `city` ON `room`.`city_id` = `city`.`id`
+                    WHERE `room`.`room_name` LIKE '%$keywoard%'
+        ";
+        return $this->db->query($query)->result();
+    }
     public function getRoomW($id)
     {
         $query = "SELECT `room`.*,`hotel`.`nama_hotel`,`hotel`.`id_city`,`user`.`email`,`room_type`.`name`

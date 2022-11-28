@@ -25,7 +25,7 @@ class Home extends CI_Controller
                 <div class="card col-md-12 mt-3">
                 <img src=" ' . base_url('assets/image/room/') . $img[0] . '" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">' . $add[0] . $add[1] . $add[2] . $add[3] . '</p>
+                    <p class="card-text">' . $kamar->room_name . '</p>
                     <p class="card-text"><i class="fa-solid fa-location-dot"></i>
                             ' . $kamar->city . '</p>
                     <p class="card-text text-danger">Rp
@@ -47,6 +47,40 @@ class Home extends CI_Controller
         $this->output->set_output($output);
     }
 
+
+    public function search()
+    {
+        $keywoard = $this->input->get('keywoard');
+        $room = $this->M_room->search($keywoard);
+        $countWisata = count($room);
+        $output = "";
+        if ($keywoard) {
+            foreach ($room as $kamar) {
+                $img = explode(',', $kamar->image);
+                $add = explode(' ', $kamar->address);
+                $output .=  '<div class="swiper-slide">
+                <a href="' . base_url('home/halaman3/') . $kamar->id . '">
+                <div class="card col-md-12 mt-3">
+                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">' . $kamar->room_name . '</p>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i>
+                            ' . $kamar->city . '</p>
+                    <p class="card-text text-danger">Rp
+                    ' . number_format($kamar->price) . '</p>
+                    </div>
+                    </div>
+                </a>
+                    </div>';
+            }
+            if ($countWisata == 0) {
+                $output .= '<div class="col-lg-12 text-black p-3 mx-5 text-center">
+                <h4>Tidak ada data</h4>
+                        </div>';
+            }
+        }
+        $this->output->set_output($output);
+    }
 
     public function coba($id)
     {
