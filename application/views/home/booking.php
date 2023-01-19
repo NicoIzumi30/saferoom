@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Halaman 2</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Booking</title>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> -->
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <script type='text/javascript' src=''></script>
@@ -20,8 +20,9 @@
         <nav class="navbar navbar-expand-sm" style="background-color: #C6C6C6;">
             <div class="row">
                 <div class="col-3 text-center">
-
-                    <h1 class="navbar-brand text-white" style="font-size: 32px;">SafeRoom</h1>
+                    <a href="<?= base_url() ?>" class="text-white text-decoration-none">
+                        <h1 class="navbar-brand text-white" style="font-size: 32px;">SafeRoom</h1>
+                    </a>
                 </div>
                 <div class="col-6">
                     <div class="row justify-content-center">
@@ -32,19 +33,25 @@
 
 
                     <div class="dropdown mt-2">
-                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
+                        <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
                             border: none;">
-                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                            <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
+                                width="20px" height="auto" title loading="auto"
+                                style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
                             </span>
                         </a>
 
                         <ul class="dropdown-menu" id="profile">
-                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
+                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>"
+                                    style="border-bottom: 1px solid black;"><i class="fa-solid fa-user"></i>
                                     Profile</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>" style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i>
+                            <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>"
+                                    style="border-bottom: 1px solid black;"><i class="fa-solid fa-briefcase"></i>
                                     Pesanan
                                     Saya</a></li>
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i class="fa-solid fa-right-from-bracket"></i>Log
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#"><i
+                                        class="fa-solid fa-right-from-bracket"></i>Log
                                     out</a></li>
                         </ul>
                     </div>
@@ -72,7 +79,8 @@
                         </p>
                     </div>
                     <div class="payYGY p-4">
-                        <h6><img src="<?= base_url('assets/image/payment/') . $pay['icon'] ?>" width="48px" alt=""> <?= $pay['method']; ?></h6>
+                        <h6><img src="<?= base_url('assets/image/payment/') . $pay['icon'] ?>" width="48px" alt="">
+                            <?= $pay['method']; ?></h6>
                         <hr style="padding: 1px;">
                         <table width="100%">
                             <tr>
@@ -81,7 +89,9 @@
                                 <td>Reference Number</td>
                             </tr>
                             <tr class="capee">
-                                <td><span id="norek"><?= $pay['norek']; ?></span><span style="font-size: 13px;user-select: none;cursor: pointer;" class="text-danger" onclick="myFunction()" id="liveToastBtn"> copy</span></td>
+                                <td><span id="norek"><?= $pay['norek']; ?></span><span
+                                        style="font-size: 13px;user-select: none;cursor: pointer;" class="text-danger"
+                                        onclick="myFunction()" id="liveToastBtn"> copy</span></td>
                                 <td>Rp. <?= number_format($trx['total']) ?></td>
                                 <td><?= $trx['kode']; ?></td>
                             </tr>
@@ -105,11 +115,14 @@
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ATM" aria-expanded="false" aria-controls="ATM" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#ATM" aria-expanded="false" aria-controls="ATM"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     ATM
                                 </button>
                             </h2>
-                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div id="ATM" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li>Pilih Transaksi Lainnya > Transfer > Ke Rek BCA Virtual Account</li>
@@ -125,15 +138,20 @@
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#InternetBanking" aria-expanded="false" aria-controls="InternetBanking" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#InternetBanking" aria-expanded="false"
+                                    aria-controls="InternetBanking"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Internet Banking
                                 </button>
                             </h2>
-                            <div id="InternetBanking" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div id="InternetBanking" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li> Log in BCA Internet Banking :
-                                            <a target="_blank" href="https://ibank.klikbca.com/" style="text-decoration: none;">https://ibank.klikbca.com/</a>
+                                            <a target="_blank" href="https://ibank.klikbca.com/"
+                                                style="text-decoration: none;">https://ibank.klikbca.com/</a>
                                         </li>
                                         <li>Pilih Transaksi Dana > Ke Rek BCA Virtual Account</li>
                                         <li>Centang Nomor Virtual Account dan masukkan Nomor Virtual Account. Klik
@@ -149,11 +167,14 @@
                     <div class="accordion mt-3" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#MobileBanking" aria-expanded="false" aria-controls="MobileBanking" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#MobileBanking" aria-expanded="false" aria-controls="MobileBanking"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Mobile Banking
                                 </button>
                             </h2>
-                            <div id="MobileBanking" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="MobileBanking" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <ol>
                                         <li>Log in BCA Mobile Banking</li>
@@ -175,7 +196,8 @@
                                 <!-- <img src="" class="rounded me-2" alt="..."> -->
                                 <strong class="me-auto">SafeRoom</strong>
                                 <small>Now</small>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="toast-body">
                                 Virtual Account Number Copied
@@ -183,16 +205,22 @@
                         </div>
                     </div>
                     <h4 class="mt-3">Lihat di dalam peta</h4>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.053212309761!2d110.3534053143275!3d-7.88950208066683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7b00889ad8f84d%3A0x2e0009ca7815eaf0!2sSMK%20Negeri%201%20Bantul!5e0!3m2!1sid!2sid!4v1668356664084!5m2!1sid!2sid" width="100%" height="280" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.053212309761!2d110.3534053143275!3d-7.88950208066683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7b00889ad8f84d%3A0x2e0009ca7815eaf0!2sSMK%20Negeri%201%20Bantul!5e0!3m2!1sid!2sid!4v1668356664084!5m2!1sid!2sid"
+                        width="100%" height="280" style="border:0; border-radius: 15px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <div class="accordion mt-5" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Cancellation" aria-expanded="false" aria-controls="Cancellation" style="padding: 33px;font-weight: 500;font-size: 17px;">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#Cancellation" aria-expanded="false" aria-controls="Cancellation"
+                                    style="padding: 33px;font-weight: 500;font-size: 17px;">
                                     Cancellation Policy
                                 </button>
                             </h2>
-                            <div id="Cancellation" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                            <div id="Cancellation" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample" style="">
                                 <div class="accordion-body" style="font-weight: 400;">
                                     <p>Safe Room adalah agen komisi yang bertindak atas nama hotel yang dimiliki dan
                                         dioperasikan secara independen di seluruh Indonesia.</p>
@@ -305,7 +333,8 @@
 
 
     </div>
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -324,94 +353,95 @@
     </div>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
-        const toastTrigger = document.getElementById('liveToastBtn')
-        const toastLiveExample = document.getElementById('liveToast')
-        if (toastTrigger) {
-            toastTrigger.addEventListener('click', () => {
-                const toast = new bootstrap.Toast(toastLiveExample)
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
 
-                toast.show()
-            })
-        }
+            toast.show()
+        })
+    }
     </script>
     <script>
-        let now = new Date()
-        let today = now.format('D')
-        let today2 = now.format('d M')
-        let tomorrow = new Date()
-        tomorrow.setDate(now.getDate() + 1)
-        let besok = tomorrow.format('D')
-        let besok2 = tomorrow.format('d M')
-        document.getElementById("today").innerHTML = today + ', ' + today2
-        document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2
+    let now = new Date()
+    let today = now.format('D')
+    let today2 = now.format('d M')
+    let tomorrow = new Date()
+    tomorrow.setDate(now.getDate() + 1)
+    let besok = tomorrow.format('D')
+    let besok2 = tomorrow.format('d M')
+    document.getElementById("today").innerHTML = today + ', ' + today2
+    document.getElementById("tomorrow").innerHTML = besok + ', ' + besok2
     </script>
     <script>
-        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
-        const alert = (message, type) => {
-            const wrapper = document.createElement('div')
-            wrapper.innerHTML = [
-                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-                `   <div>${message}</div>`,
-                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-                '</div>'
-            ].join('')
+    const alert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
 
-            alertPlaceholder.append(wrapper)
-        }
+        alertPlaceholder.append(wrapper)
+    }
 
-        const alertTrigger = document.getElementById('liveAlertBtn')
-        if (alertTrigger) {
-            alertTrigger.addEventListener('click', () => {
-                alert('Nice, you triggered this alert message!', 'success')
-            })
-        }
+    const alertTrigger = document.getElementById('liveAlertBtn')
+    if (alertTrigger) {
+        alertTrigger.addEventListener('click', () => {
+            alert('Nice, you triggered this alert message!', 'success')
+        })
+    }
 
-        function myFunction() {
-            // const el = document.createElement("textarea");
-            // el.value = event.target.innerHTML;
-            // document.body.appendChild(el);
-            // el.select();
-            // document.execCommand("copy");
-            // document.body.removeChild(el);
-            var copyText = document.getElementById('norek').innerHTML;
-            navigator.clipboard.writeText(copyText);
-        }
+    function myFunction() {
+        // const el = document.createElement("textarea");
+        // el.value = event.target.innerHTML;
+        // document.body.appendChild(el);
+        // el.select();
+        // document.execCommand("copy");
+        // document.body.removeChild(el);
+        var copyText = document.getElementById('norek').innerHTML;
+        navigator.clipboard.writeText(copyText);
+    }
     </script>
     <script>
-        // Set the date we're counting down to
-        var countDownDate = <?= $trx['expired'] ?>;
+    // Set the date we're counting down to
+    var countDownDate = <?= $trx['expired'] ?>;
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
-            // Get today's date and time
-            var now = new Date().getTime();
+        // Get today's date and time
+        var now = new Date().getTime();
 
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes and seconds
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Output the result in an element with id="demo"
-            document.getElementById("count").innerHTML = minutes + "m " + seconds + "s ";
+        // Output the result in an element with id="demo"
+        document.getElementById("count").innerHTML = minutes + "m " + seconds + "s ";
 
-            // If the count down is over, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("alert-danger").innerHTML = '<h6>Order failed due to late payment</h6>';
-                <?php if ($trx['status'] == 'Menunggu') { ?>
-                    window.location.href = 'http://localhost:8080/safe_room/home/update_status/<?= $trx['kode'] ?>'
-                <?php } ?>
-            }
-        }, 1000);
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("alert-danger").innerHTML = '<h6>Order failed due to late payment</h6>';
+            <?php if ($trx['status'] == 'Menunggu') { ?>
+            window.location.href = 'http://localhost:8080/safe_room/home/update_status/<?= $trx['kode'] ?>'
+            <?php } ?>
+        }
+    }, 1000);
     </script>
 </body>

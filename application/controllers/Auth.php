@@ -18,9 +18,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'password', 'trim|required');
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login';
-            $this->load->view('template/auth_header', $data);
-            $this->load->view('login/login');
-            $this->load->view('template/auth_footer');
+            $this->load->view('login/login2');
         } else {
             // Validasinya success
             $this->_login();
@@ -100,7 +98,7 @@ class Auth extends CI_Controller
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'image' => 'default.jpg',
-                'password' =>   ,
+                'password' =>   password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 1,
                 'date_created' => time()

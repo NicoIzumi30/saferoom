@@ -15,7 +15,11 @@ class Transaksi extends CI_Controller
     {
         $data['title'] = 'Data Transaksi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['transaksi'] = $this->M_room->transaksi();
+        if ($this->session->userdata('role_id') == '7') {
+            $data['transaksi'] = $this->M_room->transaksiPart();
+        } else {
+            $data['transaksi'] = $this->M_room->transaksi();
+        }
         $this->load->view('template/header', $data);
         $this->load->view('transaksi/transaksi', $data);
         $this->load->view('template/footer');

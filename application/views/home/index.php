@@ -4,8 +4,11 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/bootstrap.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/style-footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript' src='<?= base_url() ?>assets/build/js/bootstrap.min.js'></script>
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/styleU.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/style-footer.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/fontawesome/css/all.min.css">
     <script type='text/javascript' src='<?= base_url() ?>assets/build/js/popper.min.js'></script>
     <script type='text/javascript' src='<?= base_url() ?>assets/build/js/bootstrap.min.js'></script>
@@ -15,6 +18,11 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/fonts/icomoon/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/build/css/bootstrap.min.css">
     <style>
+    .konten p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
     .swiper {
         width: 100%;
         height: 100%;
@@ -44,6 +52,10 @@
         height: 100%;
         object-fit: cover;
     }
+
+    .isii p {
+        font-size: 16px;
+    }
     </style>
     <script src="<?= base_url() ?>assets/vendors/jquery/jquery.min.js"></script>
 
@@ -67,7 +79,7 @@
                                     aria-expanded="false" style="border-radius:9999px">
                                     <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
                                         width="20px" height="auto" title loading="auto"
-                                        style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
+                                        style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;">
                                     </span>
                                 </a>
 
@@ -93,7 +105,7 @@
                         </div>
                     </nav>
 
-                    <div class="row justify-content-center mt-5">
+                    <div class="row justify-content-center mt-5" style="padding-top: 120px;">
                         <div class="col-sm-5 mt-5">
                             <div class="input-group mb-3 mt-4">
                                 <input type="text" class="form-control"
@@ -180,29 +192,93 @@
                                             <div class="swiper-wrapper" id="roomYGY">
 
                                             </div>
-                                            <div class="swiper-pagination"></div>
+                                            <div class="swiper-pagination">
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-
-
-
-
                 </div>
+                <hr style="margin-top: 8rem!important;">
+                <div class="judul text-center mt-4">
+                    <h2>Promo Hotel Terbaik Untukmu</h2>
+                    <h5>Lebih hemat dengan promo terbaik kami.</h5>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/1.svg" alt="">
+                            <h5>Promo Early Bird</h5>
+                            <p>Pesan lebih awal dijamin lebih hemat! Pas untuk rencana liburan dari jauh
+                                hari.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/2.svg" alt="">
+                            <h5>Last Minute</h5>
+                            <p>Belum terlambat untuk liburan! Dapatkan diskon spesial untuk pemesanan dadakan!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/3.svg" alt="">
+                            <h5>Hotel Now!</h5>
+                            <p>Nikmati harga spesial untuk pesan & check-in di hari yang sama.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/4.svg" alt="">
+                            <h5>Bonus Menginap</h5>
+                            <p>Pesan untuk beberapa malam dan dapatkan ekstra menginap 1 malam gratis!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/5.svg" alt="">
+                            <h5>Benefit Extra</h5>
+                            <p>Pesan di Saferoom dan dapatkan benefit extra di hotel-hotel pilihan.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-5">
+                        <div class="konten text-center">
+                            <img src="<?= base_url() ?>assets/build/images/4.svg" alt="">
+                            <h5>Diskon</h5>
+                            <p>Pesan di Saferoom lebih hemat! Nikmati harga terbaik kami setiap hari.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="margin-top: 5rem!important;">
+
+                <div class="judul mt-5 text-center">
+                    <h3>Booking Hotel Murah dengan Cepat dan Mudah di Saferoom</h3>
+                </div>
+                <div class="isii mt-2 px-5 mb-5">
+                    <p>Jangan lupa menyiapkan akomodasi sebelum liburan! Kebutuhan untuk mencari hotel nyaman memang
+                        menjadi hal penting saat kamu bepergian ke luar kota ataupun luar negeri. Ingin mendapatkan
+                        pengalaman menginap terbaik di destinasi yang kamu tuju? Dengan pesan hotel online di Saferoom
+                        kamu bisa memesan hotel di mana pun dan kapan pun kamu mau. Dengan pilihan hotel yang beragam,
+                        kamu bisa lebih mudah untuk mendapatkan hotel yang sesuai dengan kebutuhan dan bujet yang kamu
+                        miliki.</p>
+                    <p>Saferoom selalu bisa kamu andalkan untuk menjadi teman perjalanan kamu. Temukan beragam hotel
+                        terbaik di berbagai kota di Indonesia, seperti kota-kota favorit di Jakarta, Bandung, Jogja,
+                        Bali, dan lainnya. Booking hotel online di Saferoom tentunya mudah, cepat, dan akurat.</p>
+                    <p>Bingung mau menginap di mana saat di kota atau negara tujuan kamu nanti? Kamu hanya perlu membuka
+                        aplikasi atau website Saferoom, dan cari hotel berdasarkan kota dan negara yang kamu tuju.</p>
+                </div>
+
             </div>
         </div>
 
     </section>
 
-    <section id="about" class="mb-5">
+    <!-- <section id="about" class="mb-5">
 
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-11">
@@ -373,7 +449,10 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
+
+
+
 
     <footer class="footer-20192 mt-5">
         <div class="site-section">
@@ -585,18 +664,30 @@
     </div>
     <script src="<?= base_url() ?>assets/build/js/jquery-3.3.1.min.js"></script>
     <script src="<?= base_url() ?>assets/build/js/popper.min.js"></script>
-    <!-- <script src="<?= base_url() ?>assets/build/js/bootstrap.min.js"></script> -->
+    <script src="<?= base_url() ?>assets/build/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
     var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 30,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false,
         },
+        breakpoints: {
+            // when window width is <= 499px
+            499: {
+                slidesPerView: 3,
+                spaceBetweenSlides: 30
+            },
+            // when window width is <= 999px
+            1400: {
+                slidesPerView: 4,
+                spaceBetweenSlides: 30
+            }
+        }
     });
     </script>
     <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>

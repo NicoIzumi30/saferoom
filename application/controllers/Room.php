@@ -14,9 +14,7 @@ class Room extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('type', 'Type', 'required');
         $this->form_validation->set_rules('room_name', 'Room_name', 'required');
-        $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('price', 'Price', 'required');
-        $this->form_validation->set_rules('about', 'About', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -43,12 +41,17 @@ class Room extends CI_Controller
                 $_FILES['file']['name']     = $_FILES['image']['name'][$i];
                 $_FILES['file']['type']     = $_FILES['image']['type'][$i];
                 $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
                 $_FILES['file']['size']     = $_FILES['image']['size'][$i];
 
                 // Konfigurasi Upload
                 $config['upload_path']          = './assets/image/room/';
                 $config['overwrite'] = TRUE;
                 $config['allowed_types']        = 'gif|jpg|png';
+                $config['quality'] = '50%';
+                $config['width'] = 600;
+                $config['height'] = 400;
+
 
                 // Memanggil Library Upload dan Setting Konfigurasi
                 $this->load->library('upload', $config);
@@ -61,6 +64,7 @@ class Room extends CI_Controller
                 }
 
             endfor;
+            $getData = $this->db->get_where('hotel', ['id_user' => $this->session->userdata('id')])->row_array();
             $fasilitas = implode(',', $this->input->post('fasilitas'));
             $image = implode(',', $_FILES['image']['name']);
             $data = [
@@ -70,10 +74,10 @@ class Room extends CI_Controller
                 'city_id' => $this->input->post('city'),
                 'room_name' => $this->input->post('room_name'),
                 'image' => $image,
-                'address' => $this->input->post('address'),
+                'address' => $getData['alamat'],
                 'facility' => $fasilitas,
                 'price' => $this->input->post('price'),
-                'about' => $this->input->post('about'),
+                'about' => $getData['about'],
                 'status' => $this->input->post('status')
             ];
             $this->db->insert('room', $data);
@@ -83,33 +87,67 @@ class Room extends CI_Controller
     }
     public function update($id)
     {
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('city', 'City', 'required');
-        $this->form_validation->set_rules('user', 'User', 'required');
-        $this->form_validation->set_rules('pemilik', 'Pemilik', 'required');
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->form_validation->set_rules('room', 'Room', 'required|trim');
+        $this->form_validation->set_rules('type', 'Type', 'required|trim');
+        $this->form_validation->set_rules('price', 'Price', 'required|trim');
+        $this->form_validation->set_rules('status', 'Status', 'required|trim');
         if ($this->form_validation->run() == false) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            Update Failed!
-          </div>');
-            redirect('hotel');
+            $this->session->set_flashdata('flash-gagal', 'Di Update');
+            redirect('room');
         } else {
-            $data = [
-                'nama_hotel' => $this->input->post('name'),
-                'id_city' => $this->input->post('city'),
-                'id_user' => $this->input->post('user'),
-                'pemilik' => $this->input->post('pemilik'),
-                'kebijakan' => $this->input->post('kebijakan'),
-                'status' => $this->input->post('status')
+            $jumlahData = count($_FILES['image']['name']);
 
+            // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+            for ($i = 0; $i < $jumlahData; $i++) :
+
+                // Inisialisasi Nama,Tipe,Dll.
+                $_FILES['file']['name']     = $_FILES['image']['name'][$i];
+                $_FILES['file']['type']     = $_FILES['image']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['image']['tmp_name'][$i];
+                $_FILES['file']['size']     = $_FILES['image']['size'][$i];
+
+                // Konfigurasi Upload
+                $config['upload_path']          = './assets/image/room/';
+                $config['overwrite'] = TRUE;
+                $config['allowed_types']        = 'gif|jpg|png';
+
+
+                // Memanggil Library Upload dan Setting Konfigurasi
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('file')) { // Jika Berhasil Upload
+
+                    $fileData = $this->upload->data(); // Lakukan Upload Data
+                    $old_image = $this->input->post('old_image');
+                    $img = explode(',', $old_image);
+                    foreach ($img as $foto) {
+                        $delima = unlink(FCPATH . 'assets/image/room/' . $foto);
+                    }
+                }
+
+            endfor;
+            $kamar = $this->db->get_where('room', ['id' => $id])->row_array();
+            $image = implode(',', $_FILES['image']['name']);
+            if ($image === null) {
+                $image == $this->input->post('old');
+            }
+
+            $data = [
+                'room_name' => htmlspecialchars($this->input->post('room')),
+                'type_id' => htmlspecialchars($this->input->post('type')),
+                'image' => $image,
+                'price' => htmlspecialchars($this->input->post('price')),
+                'status' => htmlspecialchars($this->input->post('status')),
             ];
-            $where = array(
+            $where = [
                 'id' => $id
-            );
-            $this->M_hotel->update($where, 'hotel', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Update Success
-          </div>');
-            redirect('hotel');
+            ];
+            $this->db->where($where);
+            $this->db->update('room', $data);
+            $this->session->set_flashdata('flash', 'Di Update');
+            redirect('room');
         }
     }
     public function delete($id)
@@ -117,11 +155,14 @@ class Room extends CI_Controller
         $where = array(
             'id' => $id
         );
+        $kamar = $this->db->get_where('room', ['id' => $id])->row_array();
+        $img = explode(',', $kamar['image']);
+        foreach ($img as $foto) {
+            $delima = unlink(FCPATH . 'assets/image/room/' . $foto);
+        }
         $this->db->where($where);
-        $this->db->delete('hotel');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Hotel has been deleted!
-                 </div>');
-        redirect('hotel');
+        $this->db->delete('room');
+        $this->session->set_flashdata('flash', 'Di Hapus');
+        redirect('room');
     }
 }

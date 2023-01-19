@@ -1,3 +1,44 @@
+<link rel="stylesheet" href="<?= base_url() ?>assets/build/css/styleup.css">
+<style>
+td .popup-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .9);
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+    display: none
+}
+
+td .popup-image span {
+    position: absolute;
+    top: 5;
+    right: 0;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100
+}
+
+td .popup-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 750px;
+    object-fit: cover
+}
+
+@media(max-width:768px) {
+    td .popup-image img {
+        width: 95%
+    }
+}
+</style>
 <div class="right_col" role="main">
     <div class="container-fluid ">
 
@@ -46,10 +87,8 @@
                                                     <th>Type Room</th>
                                                     <th>Image</th>
                                                     <th>Account</th>
-                                                    <th>Address</th>
                                                     <th>Price</th>
                                                     <th>Fasility </th>
-                                                    <th>About</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -71,21 +110,19 @@
                                                                 ?>
                                                         <div class="image-container">
                                                             <img src="<?= base_url('assets/image/room/') ?><?= $foto ?>"
-                                                                width="30px">
+                                                                width="30px" height="30px" class="mb-1">
                                                         </div>
                                                         <?php endforeach ?>
                                                         <div class="popup-image">
                                                             <span>&times;</span>
                                                             <img
-                                                                src="<?= base_url('assets/image/room/') ?><?= $img[0] ?>">
+                                                                src="<?= base_url('assets/image/room/') ?><?= $img[1] ?>">
                                                         </div>
 
                                                     </td>
                                                     <td><?= $t->email ?></td>
-                                                    <td><?= $t->address ?></td>
                                                     <td>Rp. <?= number_format($t->price) ?></td>
                                                     <td><?= $t->facility ?></td>
-                                                    <td><?= $this->M_room->shorten($t->about, 80) ?></td>
                                                     <?php if ($t->status) { ?>
                                                     <td><span class="badge text-bg-success"
                                                             style="color: #fff !important;background-color: RGBA(25, 135, 84, var(--bs-bg-opacity, 1)) !important;">Active</span>
@@ -100,6 +137,11 @@
                                                         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal"
                                                             data-target="#myModal<?= $t->id ?>"><i
                                                                 class="fa fa-edit"></i></a>
+                                                        <a href="<?= base_url('room/delete/') . $t->id ?>"
+                                                            class="tombol-hapus btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+
                                                     </td>
                                                 </tr>
                                                 <div class="modal fade" id="myModal<?= $t->id ?>" tabindex="-1"
@@ -116,7 +158,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="<?= base_url() ?>room/index/"
+                                                                <form action="<?= base_url('room/update/' . $t->id) ?>"
                                                                     method="post" enctype="multipart/form-data">
                                                                     <?php
                                                                         $getData = $this->db->get_where('hotel', ['id' => '2'])->row_array();
@@ -124,10 +166,13 @@
                                                                     <div class="form-group">
                                                                         <label for="name">Room Name</label>
                                                                         <input type="text" class="form-control"
-                                                                            id="room_name" name="room_name"
+                                                                            id="room" name="room"
                                                                             value="<?= $t->room_name ?>">
                                                                     </div>
                                                                     <div class="form-group">
+                                                                        <?php
+                                                                            $getData = $this->db->get_where('hotel', ['id_user' => $this->session->userdata('id')])->row_array();
+                                                                            ?>
                                                                         <label for="hotel">Hotel</label>
                                                                         <input type="text" class="form-control"
                                                                             id="hotel" name="hotel"
@@ -138,7 +183,7 @@
                                                                         <label for="type">Type Room </label>
                                                                         <select name="type" id="type"
                                                                             class="form-control">
-                                                                            <option value="<?= $t->name ?>">
+                                                                            <option value="<?= $t->type_id ?>">
                                                                                 <?= $t->name ?></option>
                                                                             <?php foreach ($type as $u) : ?>
                                                                             <option value="<?= $u['id'] ?>">
@@ -156,14 +201,7 @@
                                                                     <div class="form-group3">
                                                                         <label for="image">Image</label>
                                                                         <input type="file" class="form-control"
-                                                                            name="image[]" id="image" multiple required>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="address"
-                                                                            class="form-label">Address</label>
-                                                                        <textarea class="form-control" name="address"
-                                                                            id="address"
-                                                                            rows="3"><?= $t->address ?></textarea>
+                                                                            name="image[]" id="image" multiple>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="price">Price</label>
@@ -171,66 +209,34 @@
                                                                             class="form-control" id="price"
                                                                             name="price">
                                                                     </div>
-                                                                    <p style="margin-bottom:0">Fasilitas</p>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            value="Resepsionis" name="fasilitas[]"
-                                                                            id="flexCheckDefault">
-                                                                        <label class="form-check-label" for="fasilitas">
-                                                                            Resepsionis
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            value="AC" name="fasilitas[]"
-                                                                            id="flexCheckDefault">
-                                                                        <label class="form-check-label" for="fasilitas">
-                                                                            AC
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            value="Televisi" name="fasilitas[]"
-                                                                            id="flexCheckDefault">
-                                                                        <label class="form-check-label" for="fasilitas">
-                                                                            Televisi
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            value="wifi Gratis" name="fasilitas[]"
-                                                                            id="flexCheckDefault">
-                                                                        <label class="form-check-label"
-                                                                            for="fasilita   s">
-                                                                            wifi Gratis
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group  mt-3">
-                                                                        <label for="about"
-                                                                            class="form-label">About</label>
-                                                                        <textarea class="form-control" name="about"
-                                                                            id="about"
-                                                                            rows="3"><?= $t->about ?></textarea>
-                                                                    </div>
+
                                                                     <div class="form-group">
                                                                         <label for="status">Status </label>
                                                                         <select name="status" id="status"
                                                                             class="form-control">
-                                                                            <option value="">Select Status</option>
-                                                                            <option value="1">Activate </option>
-                                                                            <option value="0">Deactivate</option>
+                                                                            <?php if ($t->status == 1) {
+                                                                                    echo '<option value="1">Activate </option>';
+                                                                                    echo '<option value="0">Deactivate</option>';
+                                                                                } else {
+                                                                                    echo '<option value="0">Deactivate</option>';
+                                                                                    echo '<option value="1">Activate </option>';
+                                                                                } ?>
+
                                                                         </select>
                                                                     </div>
+                                                                    <input type="hidden" name="old_image"
+                                                                        value="<?= $t->image ?>">
                                                                     <div class="modal-footer">
                                                                         <button class="btn btn-secondary" type="button"
                                                                             data-dismiss="modal">Cancel</button>
-                                                                        <input class="btn btn-primary" type="submit"
-                                                                            value="Add">
+                                                                        <button class="btn btn-primary"
+                                                                            type="submit">Save Changes</button>
                                                                     </div>
                                                                     <input type="hidden" name="hotel_id"
                                                                         value="<?= $getData['id'] ?>">
                                                                     <input type="hidden" name="user_id"
                                                                         value="<?= $this->session->userdata('id') ?>">
+
 
                                                                 </form>
                                                             </div>
@@ -309,14 +315,23 @@
                     <?php } else { ?>
                     <input type="hidden" name="city" value="<?= $getData['id_city'] ?>">
                     <?php } ?>
-                    <div class="form-group3">
+                    <div class="col-md-12">
+                        <div class="custom-file-container" data-upload-id="mySecondImage">
+                            <label>Upload (Allow Multiple) <a href="javascript:void(0)"
+                                    class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                            <label class="custom-file-container__custom-file">
+                                <input type="file" name="image[]"
+                                    class="custom-file-container__custom-file__custom-file-input" multiple>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                <span class="custom-file-container__custom-file__custom-file-control"></span>
+                            </label>
+                            <div class="custom-file-container__image-preview"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group3">
                         <label for="image">Image</label>
                         <input type="file" class="form-control" name="image[]" id="image" multiple required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" name="address" id="address" rows="3"></textarea>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="price">Price</label>
                         <input type="number" class="form-control" id="price" name="price">
@@ -350,10 +365,6 @@
                             wifi Gratis
                         </label>
                     </div>
-                    <div class="form-group  mt-3">
-                        <label for="about" class="form-label">About</label>
-                        <textarea class="form-control" name="about" id="about" rows="3"></textarea>
-                    </div>
                     <div class="form-group">
                         <label for="status">Status </label>
                         <select name="status" id="status" class="form-control">
@@ -375,6 +386,10 @@
         </div>
     </div>
 </div>
+<script src="<?= base_url() ?>assets/build/js/jquery-3.6.0.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/fileupload/fileupload.min.js"></script>
+
+<script src="<?= base_url() ?>assets/build/js/scripta.js"></script>
 <script>
 document.querySelectorAll('.image-container img').forEach(image => {
     image.onclick = () => {

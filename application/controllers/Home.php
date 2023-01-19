@@ -22,10 +22,10 @@ class Home extends CI_Controller
                 $add = explode(' ', $kamar->address);
                 $output .=  '<div class="swiper-slide">
                 <a href="' . base_url('home/halaman3/') . $kamar->id . '">
-                <div class="card col-md-12 mt-3">
-                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">' . $kamar->room_name . '</p>
+                <div class="card col-md-12 mt-3 border-0">
+                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" style="border-radius:15px;max-height:225px"  class="card-img-top" alt="...">
+                <div class="card-body ">
+                    <p class="card-text" style="font-size:17px">' . $kamar->room_name . '</p>
                     <p class="card-text"><i class="fa-solid fa-location-dot"></i>
                             ' . $kamar->city . '</p>
                     <p class="card-text text-danger">Rp
@@ -60,8 +60,8 @@ class Home extends CI_Controller
                 $add = explode(' ', $kamar->address);
                 $output .=  '<div class="swiper-slide">
                 <a href="' . base_url('home/halaman3/') . $kamar->id . '">
-                <div class="card col-md-12 mt-3">
-                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" class="card-img-top" alt="...">
+                <div class="card col-md-12 mt-3 border-0">
+                <img src=" ' . base_url('assets/image/room/') . $img[0] . '" style="border-radius:15px; max-height:245px" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">' . $kamar->room_name . '</p>
                     <p class="card-text"><i class="fa-solid fa-location-dot"></i>
@@ -148,10 +148,17 @@ class Home extends CI_Controller
                 redirect('home');
             } else {
                 $id = $this->input->post('id');
+                $checkin = $this->input->post('checkin');
+                $checkout = $this->input->post('checkout');
+                $tgl1 = explode('-', $checkout);
+                $tgl2 = explode('-', $checkin);
+                $hasil = $tgl1[2] - $tgl2[2];
                 $data['date'] = [
-                    'checkin' => $this->input->post('checkin'),
-                    'checkout' => $this->input->post('checkout'),
+                    'checkin' => $checkin,
+                    'checkout' => $checkout,
+                    'hasil' => $hasil
                 ];
+
                 // $id = $this->uri->segment(3);
                 $data['room'] = $this->M_room->getRoomWH($id);
                 $this->load->view('home/pemesanan', $data);

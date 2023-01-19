@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Halaman 3</title>
+    <title>Detail Room</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
@@ -177,9 +177,12 @@
         <nav class="navbar navbar-expand-sm" style="background-color: #c6c6c6">
             <div class="row">
                 <div class="col-3 text-center">
-                    <h1 class="navbar-brand text-white" style="font-size: 32px">
-                        SafeRoom
-                    </h1>
+                    <a href="<?= base_url() ?>" class="text-white text-decoration-none">
+                        <h1 class="navbar-brand text-white" style="font-size: 32px">
+                            SafeRoom
+                        </h1>
+                    </a>
+
                 </div>
                 <div class="col-6">
                     <div class="row justify-content-center"></div>
@@ -194,11 +197,11 @@
                 ">
                             <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
                                 width="20px" height="auto" title loading="auto"
-                                style="margin-right: 5px; margin-left: 5px" /><span style="margin-right: 5px"> H </span>
+                                style="margin-right: 5px; margin-left: 5px" />
                         </a>
 
                         <ul class="dropdown-menu" style="padding-bottom: 0.5px">
-                            <li><a class="d ropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('home/pesanansaya') ?>">Saya Booking</a>
                             </li>
                             <li>
@@ -255,10 +258,7 @@
                     </table>
                     <hr>
                     <h4>Lihat di dalam peta</h4>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.598456531776!2d106.73160021430984!3d-6.184459562316759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f23010401b%3A0x4d1d02e78a9ac813!2sSans%20Hotel%20Puri%20Indah%20Jakarta!5e0!3m2!1sid!2sid!4v1669613995070!5m2!1sid!2sid"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <?= $kamar->maps; ?>
                     <hr>
                     <div class="about">
                         <h4>Tentang Hotel</h4>
