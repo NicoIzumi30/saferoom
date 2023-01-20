@@ -76,11 +76,10 @@
                             ?>
                             <div class="dropdown">
                                 <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false" style="border-radius:9999px">
+                                    aria-expanded="false" style="border-radius:10px">
                                     <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
                                         width="20px" height="auto" title loading="auto"
-                                        style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;">
-                                    </span>
+                                        style="margin-right: 5px; margin-left: 5px;">
                                 </a>
 
                                 <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
@@ -157,7 +156,7 @@
                                     const value = <?= $kota->id ?>;
                                     $.ajax({
                                         type: 'get',
-                                        url: '/safe_room/home/filter',
+                                        url: '/saferoom/home/filter',
                                         data: {
                                             'kota': value
                                         },
@@ -698,7 +697,7 @@
             const value = document.getElementById("keywoard").value;
             $.ajax({
                 type: 'get',
-                url: '/safe_room/home/search',
+                url: '/saferoom/home/search',
                 data: {
                     'keywoard': value
                 },
