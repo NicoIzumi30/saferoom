@@ -191,7 +191,7 @@
                     <div class="dropdown mt-2">
                         <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false" style="
-                  border-radius: 9999px;
+                  border-radius: 10px;
                   background-color: #a9a4a4;
                   border: none;
                 ">

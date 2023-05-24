@@ -19,8 +19,10 @@
         <nav class="navbar navbar-expand-sm" style="background-color: #C6C6C6;">
             <div class="row">
                 <div class="col-3 text-center">
+                    <a href="<?= base_url() ?>" class="text-white text-decoration-none">
+                        <h1 class="navbar-brand text-white" style="font-size: 32px;">SafeRoom</h1>
+                    </a>
 
-                    <h1 class="navbar-brand text-white" style="font-size: 32px;">SafeRoom</h1>
                 </div>
                 <div class="col-6">
                     <div class="row justify-content-center">
@@ -32,12 +34,11 @@
 
                     <div class="dropdown mt-2">
                         <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
+                            aria-expanded="false" style="border-radius:10px;background-color:#a9a4a4;
                             border: none;">
                             <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
                                 width="20px" height="auto" title loading="auto"
-                                style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
-                            </span>
+                                style="margin-right: 5px; margin-left: 5px;">
                         </a>
 
                         <ul class="dropdown-menu" id="profile">

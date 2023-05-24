@@ -23,7 +23,7 @@ body {
 
 .dropdown-menu[data-bs-popper] {
     top: 100%;
-    left: -20px;
+    left: -10px;
     margin-top: 1rem;
 }
 

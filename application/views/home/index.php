@@ -74,11 +74,21 @@
                             <?php
                             if ($this->session->userdata('full_name')) {
                             ?>
+<<<<<<< HEAD
                                 <div class="dropdown">
                                     <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:9999px">
                                         <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png" width="20px" height="auto" title loading="auto" style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;">
                                         </span>
                                     </a>
+=======
+                            <div class="dropdown">
+                                <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="border-radius:10px">
+                                    <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
+                                        width="20px" height="auto" title loading="auto"
+                                        style="margin-right: 5px; margin-left: 5px;">
+                                </a>
+>>>>>>> 80ccac79f66ce7606f3ce2889d4c2f70475b9a6b
 
                                     <ul class="dropdown-menu" style="border-radius: 15px; padding-bottom:.5px ;">
                                         <li><a class="dropdown-item" href="<?= base_url('home/profile') ?>">Profile Saya</a>
@@ -136,6 +146,7 @@
                             foreach ($city as $kota) :
                                 $no1 = $no++;
                             ?>
+<<<<<<< HEAD
                                 <div class="city-detail text-center mx-2" id="kota<?= $no1 ?>">
                                     <!-- <a href="<?= base_url('home/list/') . $kota->id ?>" id="kota"> -->
                                     <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
@@ -158,6 +169,28 @@
                                                 }
                                             });
                                         });
+=======
+                            <div class="city-detail text-center mx-2" id="kota<?= $no1 ?>">
+                                <!-- <a href="<?= base_url('home/list/') . $kota->id ?>" id="kota"> -->
+                                <img src="<?= base_url() ?>assets/image/city/<?= $kota->image ?>">
+                                <p style="font-weight:500"><?= $kota->city ?></p>
+                                <!-- </a> -->
+                            </div>
+                            <script>
+                            $(document).ready(function() {
+                                $("#kota<?= $no1 ?>").click(function() {
+                                    const value = <?= $kota->id ?>;
+                                    $.ajax({
+                                        type: 'get',
+                                        url: '/saferoom/home/filter',
+                                        data: {
+                                            'kota': value
+                                        },
+                                        success: function(data) {
+                                            $('#roomYGY').html(data);
+                                            // console.info(data)
+                                        }
+>>>>>>> 80ccac79f66ce7606f3ce2889d4c2f70475b9a6b
                                     });
                                 </script>
                             <?php endforeach; ?>
@@ -676,6 +709,7 @@
     <script src="<?= base_url() ?>assets/vendors/fontawesome/js/all.min.js"></script>
     <script src="<?= base_url() ?>assets/build/js/bootstrap.bundle.min.js"></script>
     <script>
+<<<<<<< HEAD
         $(document).ready(function() {
             $("#subm").click(function() {
                 const value = document.getElementById("keywoard").value;
@@ -711,6 +745,20 @@
                         rangeInput[1].value = maxPrice;
                         range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
                     }
+=======
+    $(document).ready(function() {
+        $("#subm").click(function() {
+            const value = document.getElementById("keywoard").value;
+            $.ajax({
+                type: 'get',
+                url: '/saferoom/home/search',
+                data: {
+                    'keywoard': value
+                },
+                success: function(data) {
+                    $('#roomYGY').html(data);
+                    // console.info(data)
+>>>>>>> 80ccac79f66ce7606f3ce2889d4c2f70475b9a6b
                 }
             });
         });

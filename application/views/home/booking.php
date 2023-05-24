@@ -4,7 +4,9 @@
 <head>
     <title>Booking</title>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <script type='text/javascript' src=''></script>
@@ -34,12 +36,11 @@
 
                     <div class="dropdown mt-2">
                         <a class="btn btn-lg btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="border-radius:9999px;background-color:#a9a4a4;
+                            aria-expanded="false" style="border-radius:10px;background-color:#a9a4a4;
                             border: none;">
                             <img fetchpriority="auto" src="https://massets.reddoorz.com/images/menu-white.png"
                                 width="20px" height="auto" title loading="auto"
-                                style="margin-right: 5px; margin-left: 5px;"><span style="margin-right: 5px;"> H
-                            </span>
+                                style="margin-right: 5px; margin-left: 5px;">
                         </a>
 
                         <ul class="dropdown-menu" id="profile">
